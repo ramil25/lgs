@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Student Admission</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -129,6 +129,98 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin"> 
+                      <form method="POST" class="card card-sm">
+        <div class="card-body row no-gutters align-items-center">
+          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
+           <button type="submit" name="submit-search" class="col-auto">
+           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
+           </div>
+          </form>
+            </div>
+          <?php
+            
+    require '../db.php';
+    if(isset($_POST['submit-search'])) {
+    $search = $_POST["search"];
+    $sql = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR strand_course LIKE '%$search%'";
+    $result = mysqli_query($conn,$sql);
+    $checkResult = mysqli_num_rows($result);
+
+    echo "  About ".$checkResult." result(s)!";
+    if ($checkResult > 0) {
+      while ($row = mysqli_fetch_assoc($result)) {
+
+            $fname = $row['full_name'];
+            $std_id = $row['student_id'];
+            
+            echo '<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <h3 class="float-right ml-5 mt-2"><a href="student_profile.php?std_id='.$std_id.'">'.$fname.'</a></h3>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>';
+      }
+    }
+
+  }
+  ?>
+        
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Add Student</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+
+             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi  mdi-sync text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Update Student</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+
+             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">View All</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+            
+          </div>
+          
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
