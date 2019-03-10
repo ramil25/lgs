@@ -95,7 +95,10 @@
                   <a class="nav-link" href="student_admission.php">Student Admission</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Student Account</a>
+                  <a class="nav-link" href="student_account.php">Student Account</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="manage_student.php">Student Account</a>
                 </li>
               </ul>
             </div>

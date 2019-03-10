@@ -181,7 +181,7 @@
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Add Student</h1>
+                      <h1 class="float-right ml-5 mt-2">Create Account</h1>
                     </div>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi  mdi-sync text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Update Student</h1>
+                      <h1 class="float-right ml-5 mt-2">Update Account</h1>
                     </div>
                   </div>
                 </div>

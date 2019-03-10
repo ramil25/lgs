@@ -13,7 +13,7 @@ if($conn)
 	$row=mysqli_fetch_assoc($result);
 	if (empty($un) || empty($ps))
 	{
-		$empty .= '<p style="margin-top:-40px;text-align:center;color:#e60000;font-weight:bold;font-size: 17px;text-transform: uppercase;">please fill the required fields</p>';
+		$empty .= '<p style="margin-top:10px;text-align:center;color:#e60000;font-weight:bold;font-size: 17px;text-transform: uppercase;">please fill the required fields</p>';
 	}
 	else if($row)
 	{
@@ -28,7 +28,7 @@ if($conn)
 	}
 	else if (!$row)
 	{
-		$error .= '<p style="margin-top:-40px;text-align:center;color:#e60000;font-weight:bold;font-size: 17px;text-transform: uppercase;">Wrong username or password</p>';
+		$error .= '<p style="margin-top:10px;text-align:center;color:#e60000;font-weight:bold;font-size: 17px;text-transform: uppercase;">Wrong username or password</p>';
 	}
 		}
 	}
@@ -63,7 +63,10 @@ if($conn)
           	        	<center>
 <span><img src="images/lspu.png" width="120" height="120"></span>
 </center>
+
             <div class="auto-form-wrapper">
+				<?php echo $empty ?>
+				<?php echo $error ?>
               <form method="post">
                 <div class="form-group">
                   <label class="label">Username</label>
