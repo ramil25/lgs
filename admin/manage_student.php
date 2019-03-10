@@ -133,58 +133,15 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin"> 
-                      <form method="POST" class="card card-sm">
-        <div class="card-body row no-gutters align-items-center">
-          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
-           <button type="submit" name="submit-search" class="col-auto">
-           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
-           </div>
-          </form>
-            </div>
-          <?php
-            
-    require '../db.php';
-    if(isset($_POST['submit-search'])) {
-    $search = $_POST["search"];
-    $sql = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR strand_course LIKE '%$search%'";
-    $result = mysqli_query($conn,$sql);
-    $checkResult = mysqli_num_rows($result);
-
-    echo "  About ".$checkResult." result(s)!";
-    if ($checkResult > 0) {
-      while ($row = mysqli_fetch_assoc($result)) {
-
-            $fname = $row['full_name'];
-            $std_id = $row['student_id'];
-            
-            echo '<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <h3 class="float-right ml-5 mt-2"><a href="student_profile.php?std_id='.$std_id.'">'.$fname.'</a></h3>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>';
-      }
-    }
-
-  }
-  ?>
-        
+ <!-- partial -->
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
                   <a href="">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Add Student</h1>
+                      <i class="mdi mdi-clock text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Schedule of Video/Personal Counseling</h1>
                     </div>
                   </div>
                 </div>
@@ -198,8 +155,8 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi  mdi-sync text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Update Student</h1>
+                      <i class="mdi mdi-newspaper text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Good Moral</h1>
                     </div>
                   </div>
                 </div>
@@ -207,20 +164,6 @@
               </div>
             </div>
 
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">View All</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
             
           </div>
           
@@ -230,7 +173,7 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="" target="_blank"></a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
