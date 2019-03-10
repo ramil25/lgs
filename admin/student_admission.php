@@ -116,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="year_menu.php?category=Qualifying Exam">
               <i class="menu-icon mdi mdi-newspaper"></i>
               <span class="menu-title">Qualifying Exams</span>
             </a>
