@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student Admission</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -138,39 +138,44 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
- <!-- partial -->
-
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-newspaper text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Good Moral</h1>
-                    </div>
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header">ENROLEES CHART</h1>
                   </div>
+                 </div>
+
+
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Yearly Enrolees</h4>
+                  <canvas id="lineChart" style="height:250px"></canvas>
                 </div>
-                </a>
               </div>
             </div>
-
-            
-          </div>
-          
-        </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Yearly Enrolees</h4>
+                  <canvas id="barChart" style="height:230px"></canvas>
+                </div>
+              </div>
+            </div>
+             </div> 
+           </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank"></a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -178,7 +183,6 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -192,6 +196,7 @@
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
+    <script src="../js/chart.js"></script>
 </body>
 
 </html>

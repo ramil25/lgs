@@ -69,7 +69,7 @@ if($conn)
 				<?php echo $error ?>
               <form method="post">
                 <div class="form-group">
-                  <label class="label">Username</label>
+                 <label class="label-dark">Username</label>
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Username" name="un">
                     <div class="input-group-append">
@@ -80,7 +80,7 @@ if($conn)
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="label">Password</label>
+                  <label class="label-dark">Password</label>
                   <div class="input-group">
                     <input type="password" class="form-control" placeholder="Password" name="ps">
                     <div class="input-group-append">

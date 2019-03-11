@@ -106,9 +106,15 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="chart.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="menu-icon mdi mdi-folder-outline"></i>
+              <span class="menu-title">Consoledated Report</span>
             </a>
           </li>
           <li class="nav-item">

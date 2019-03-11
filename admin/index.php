@@ -104,9 +104,15 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="chart.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="menu-icon mdi mdi-folder-outline"></i>
+              <span class="menu-title">Consoledated Report</span>
             </a>
           </li>
           <li class="nav-item">
@@ -132,18 +138,145 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-        </div>
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header">ADMIN PANEL</h1>
+                  </div>
+                 </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="student_admission.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-account text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">Student Admission</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+              </div>
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="student_account.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-account-box text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">Student Account</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+             </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="manage_student.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-folder-multiple text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">Manage Request</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+                </div>
+
+               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="chart.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0 ml-3">Enrolees Charts</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                     </a>
+              </div>
+            </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0 text-center">Consoledated Report</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+          </div>
+
+             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-check-all text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <br>
+                        <h3 class="font-weight-medium mb-0 text-center ml-3">Cluster Program</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+          </div>
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="year_menu.php?category=Qualifying Exam">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-transcribe text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0">Qualifying Exams</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+          </div>
+             </div> 
+           </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -151,7 +284,6 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
