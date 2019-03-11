@@ -94,7 +94,7 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="student_admission.php">Request Good Moral</a>
+                  <a class="nav-link" href="req_moral.php">Request Good Moral</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="sched_guidance.php">Schedule for Guidance</a>
@@ -103,10 +103,21 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="menu-icon mdi mdi-message"></i>
-              <span class="menu-title">Message</span>
+            <a class="nav-link" data-toggle="collapse" href="#ui-message" aria-expanded="false" aria-controls="ui-message">
+              <i class="menu-icon mdi mdi-account"></i>
+              <span claclass="navbar-nav navbar-nav-left header-links d-none d-md-flex"ss="menu-title">Message</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-message">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="create_message.php">Create Message</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_mail.php">View Mailbox</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../index.php">
@@ -125,8 +136,8 @@
                 <form>
                  <div class="form-group">
                   <label for="comment">Comment:</label>
-                  <textarea class="form-control" rows="5" id="comment"></textarea>
-                  <center><button style="font-weight: bold; font-size: 20px; margin-top: 20px;" class="submit-message btn btn-lg btn-success" type="submit" name="submit-message" >Submit</button></center>
+                  <textarea class="form-control" rows="5" id="comment"></textarea><br><br>
+                  <center><button type="submit" class="btn btn-lg btn-success">Submit</button></center>
                 </div>
               </form>
               </div>   

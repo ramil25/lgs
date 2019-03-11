@@ -5,12 +5,13 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Schedule for Guidance</title>
+  <title>Create Message</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -131,17 +132,12 @@
         <div class="content-wrapper">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin"> 
             <div class="container">
-              <form>
-                <div class="form-group">
-                  <label> Name of Student: </label>
-                  <input type="text" class="form-control" id="name" placeholder="Name of Student.."><br><br>
-                  <label> Cause of Counselling: </label>
-                  <input type="text" class="form-control" id="cause" placeholder="Cause.."><br><br>
-                  <label> Date: </label>
-                  <input type="date" class="form-control" id="date"><br><br>
-                  <label> Time: </label>
-                  <input type="time" class="form-control" id="time"><br><br>
-                  <center><button type="submit" class="btn btn-lg btn-success" >Submit</button></center>
+            <h2>Create Message: </h2><br>
+                <form>
+                 <div class="form-group">
+                  <label for="comment">Comment:</label>
+                  <textarea class="form-control" rows="5" id="comment"></textarea><br><br>
+                  <center><button type="submit" class="btn btn-lg btn-success">Submit</button></center>
                 </div>
               </form>
               </div>   

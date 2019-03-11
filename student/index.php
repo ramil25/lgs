@@ -100,11 +100,22 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="menu-icon mdi mdi-message"></i>
-              <span class="menu-title">Message</span>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-message" aria-expanded="false" aria-controls="ui-message">
+              <i class="menu-icon mdi mdi-account"></i>
+              <span claclass="navbar-nav navbar-nav-left header-links d-none d-md-flex"ss="menu-title">Message</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-message">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="create_message.php">Create Message</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_mail.php">View Mailbox</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../index.php">
