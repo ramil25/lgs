@@ -143,58 +143,128 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                
-         
-            
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                    <div class="float-left">
-                    	<div class="add-student">
-                       <form class="form" method="post" />
-          <label>Name: </label>
-          <input type="text" name="fullname" placeholder="Full Name" required /><br>
-          <label>Gender: </label>
-          <input type="text" name="gender" placeholder="Gender" required /><br>
-          <label>Last School Attended: </label> 
-          <input type="text" name="school_last_attended" placeholder="School Name" required  /><br>
-          <label>Strand / Course: </label>
-          <input type="text" name="strand_course" placeholder="Enter Student Strand" required /><br>
-          <label>GWA: </label>
-          <input type="text" name="grade_GWA" placeholder="Grade" required /><br>
-          <label>Math: </label>
-          <input type="text" name="grade_Math" placeholder="Grade" required /><br>
-          <label>English: </label>
-          <input type="text" name="grade_English" placeholder="Grade" required /><br>
-          <label>Science: </label>
-          <input type="text" name="grade_Science" placeholder="Grade" required /><br>
-          
-          <label>1st Choice: </label>
-          <input type="text" name="fchoice" placeholder="Course" required><br>
-          <label>2nd Choice: </label>
-          <input type="text" name="schoice" placeholder="Course" required><br>
-          <label>3rd Choice: </label>
-          <input type="text" name="tchoice" placeholder="Course" required><br>
-          <label>Raw Score: </label>
-          <input type="text" name="raw_score" placeholder="Input Score" required><br>
-          <label>Remarks: </label>
-          <input type="text" name="remarks" placeholder="Remarks Here" required><br>
-          <label>Date: </label><br>
-          </div>
-          <select name="year">
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-            <option value="2027">2027</option>
-            <option value="2028">2028</option>
-            <option value="2029">2029</option>
-             <option value="2030">2030</option>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header">ADD STUDENT</h1>
+                  </div>
+                 </div>
+            </div>
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+                  <div class="col-lg-6 mx-auto">
+                      <div class="auto-form-wrapper">
+
+              <form method="post">
+                <div class="form-group">
+                 <label class="label-dark">Name</label>
+                  <div class="input-group">
+                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label-dark">Gender</label>
+                  <div class="input-group">
+                  <select class="form-control" name="gender" required>
+                   <option>Gender</option>
+                   <option value="Male">Male</option>
+                   <option value="Female">Female</option>
+                  </select>
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">School Attended</label>
+                  <div class="input-group">
+                     <input type="text" name="school_last_attended" placeholder="School Name" required class="form-control" />
+                  </div>
+                </div> <div class="form-group">
+                  <label class="label-dark">Strand / Course</label>
+                  <div class="input-group">
+                    <input type="text" name="strand_course" placeholder="Enter Student Strand" required class="form-control" />
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">GWA</label>
+                  <div class="input-group">
+                   <input type="text" name="grade_GWA" placeholder="Grade" required class="form-control"/>
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">Math</label>
+                  <div class="input-group">
+                   <input type="text" name="grade_Math" placeholder="Grade" required class="form-control"/><br>
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">English</label>
+                  <div class="input-group">
+                    <input type="text" name="grade_English" placeholder="Grade" required class="form-control"/>
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">Science</label>
+                  <div class="input-group">
+                  <input type="text" name="grade_Science" placeholder="Grade" required class="form-control"/>
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">1st Choice</label>
+                  <div class="input-group">
+                    <input type="text" name="fchoice" placeholder="Course" required class="form-control">
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">2nd Choice</label>
+                  <div class="input-group">
+                    <input type="text" name="schoice" placeholder="Course" required class="form-control">
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">3rd Choice</label>
+                  <div class="input-group">
+                    <input type="text" name="tchoice" placeholder="Course" required class="form-control">
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">Raw Score:</label>
+                  <div class="input-group">
+                    <input type="text" name="raw_score" placeholder="Input Score" required class="form-control">
+                  </div>
+                </div>
+
+                 <div class="form-group">
+                  <label class="label-dark">Remarks:</label>
+                  <div class="input-group">
+                   <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control">
+                  </div>
+                </div>
+
+                   <div class="form-group">
+                  <label class="label-dark">Date:</label>
+                  <div class="input-group">
+                   <select name="month">
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+             <option value="May">May</option>
           </select>
+                  
        <select name="day">
          <option value="1">1</option>
          <option value="2">2</option>
@@ -228,35 +298,46 @@
          <option value="30">30</option>
          <option value="31">31</option>
        </select>
-       </select>
-          <select name="month">
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-             <option value="May">May</option>
-          </select><br> 
-          <br><label>Upload File: </label>
-          <input type="file" name="photo_link" placeholder="Course" style="text-indent: 0px"><br>
-        <br>  
-          <button style="margin-top: -15px;" type="submit" name="add-std" class="btn btn-success">Add</button>
-        </form>
-                    
-                 
+
+       <select name="year">
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+             <option value="2030">2030</option>
+          </select>
+         
+                  </div>
                 </div>
-                
-              </div>
+
+                <div class="form-group">
+                  <label class="label-dark">Upload File:</label>
+                  <div class="input-group">
+                    <input type="file" name="photo_link" style="text-indent: 0px">
+                  </div>
+                </div>
+
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                  <div class="form-check form-check-flat mt-0">
+           
+                  </div>
+                </div>
+              </form>
             </div>
-  
-        
-            
+                </div>
+           </div>
+           </div>
+            </div>
           </div>
         </div>
         <!-- content-wrapper ends -->

@@ -152,7 +152,7 @@
                       <i class="mdi mdi-account text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">Student Admission</h3>
+                        <h3 class="font-weight-medium text-center mb-0">Student Admission</h3>
                       </div>
                     </div>
                   </div>
@@ -169,7 +169,7 @@
                       <i class="mdi mdi-account-box text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">Student Account</h3>
+                        <h3 class="font-weight-medium text-center mb-0">Student Account</h3>
                       </div>
                     </div>
                   </div>
@@ -186,7 +186,7 @@
                       <i class="mdi mdi-folder-multiple text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">Manage Request</h3>
+                        <h3 class="font-weight-medium text-center mb-0">Manage Request</h3>
                       </div>
                     </div>
                   </div>
@@ -203,7 +203,7 @@
                       <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0 ml-3">Enrolees Charts</h3>
+                        <h3 class="font-weight-medium text-center mb-0 ml-3">Enrolees Charts</h3>
                       </div>
                     </div>
                   </div>
@@ -220,7 +220,7 @@
                       <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0 text-center">Consoledated Report</h3>
+                        <h3 class="font-weight-medium text-center mb-0 text-center">Consoledated Report</h3>
                       </div>
                     </div>
                   </div>
@@ -255,7 +255,7 @@
                       <i class="mdi mdi-transcribe text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">Qualifying Exams</h3>
+                        <h3 class="font-weight-medium text-center mb-0">Qualifying Exams</h3>
                       </div>
                     </div>
                   </div>
