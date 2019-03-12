@@ -166,7 +166,7 @@
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="view_student.php?title=Select or search student to update">
+                  <a href="view_student.php?title=Select student to update">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
