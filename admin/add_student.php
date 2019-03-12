@@ -145,7 +145,7 @@
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header">ADD STUDENT</h1>
+                    <h1 class="text-center page-header p-2">ADD STUDENT</h1>
                   </div>
                  </div>
             </div>

@@ -141,7 +141,7 @@
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header">ADMIN PANEL</h1>
+                    <h1 class="text-center page-header p-2">ADMIN PANEL</h1>
                   </div>
                  </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
