@@ -155,15 +155,15 @@
                       <div class="auto-form-wrapper">
 
               <form method="post">
-                <div class="form-group">
-                 <label class="label-dark">Name</label>
-                  <div class="input-group">
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                  <div class="col-sm-8">
                      <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="label-dark">Gender</label>
-                  <div class="input-group">
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-8">
                   <select class="form-control" name="gender" required>
                    <option>Gender</option>
                    <option value="Male">Male</option>
@@ -172,84 +172,84 @@
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">School Attended</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">School Attended</label>
+                  <div class="col-sm-8">
                      <input type="text" name="school_last_attended" placeholder="School Name" required class="form-control" />
                   </div>
-                </div> <div class="form-group">
-                  <label class="label-dark">Strand / Course</label>
-                  <div class="input-group">
+                </div> <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Strand / Course</label>
+                  <div class="col-sm-8">
                     <input type="text" name="strand_course" placeholder="Enter Student Strand" required class="form-control" />
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">GWA</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">GWA</label>
+                  <div class="col-sm-8">
                    <input type="text" name="grade_GWA" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">Math</label>
-                  <div class="input-group">
-                   <input type="text" name="grade_Math" placeholder="Grade" required class="form-control"/><br>
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Math</label>
+                  <div class="col-sm-8">
+                   <input type="text" name="grade_Math" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">English</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">English</label>
+                  <div class="col-sm-8">
                     <input type="text" name="grade_English" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">Science</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Science</label>
+                  <div class="col-sm-8">
                   <input type="text" name="grade_Science" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">1st Choice</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">1st Choice</label>
+                  <div class="col-sm-8">
                     <input type="text" name="fchoice" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">2nd Choice</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">2nd Choice</label>
+                  <div class="col-sm-8">
                     <input type="text" name="schoice" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">3rd Choice</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">3rd Choice</label>
+                  <div class="col-sm-8">
                     <input type="text" name="tchoice" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">Raw Score:</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Raw Score:</label>
+                  <div class="col-sm-8">
                     <input type="text" name="raw_score" placeholder="Input Score" required class="form-control">
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label class="label-dark">Remarks:</label>
-                  <div class="input-group">
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Remarks:</label>
+                  <div class="col-sm-8">
                    <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control">
                   </div>
                 </div>
 
-                   <div class="form-group">
-                  <label class="label-dark">Date:</label>
-                  <div class="input-group">
+                   <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Date:</label>
+                  <div class="col-sm-8 form-control">
                    <select name="month">
             <option value="June">June</option>
             <option value="July">July</option>
@@ -317,9 +317,9 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="label-dark">Upload File:</label>
-                  <div class="input-group">
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Upload File:</label>
+                  <div class="col-sm-8">
                     <input type="file" name="photo_link" style="text-indent: 0px">
                   </div>
                 </div>
