@@ -151,7 +151,7 @@ if($conn)
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">UPDATE STUDENT</h1>
+                    <h1 class="text-center page-header p-2">STUDENT PROFILE</h1>
                   </div>
                  </div>
             </div>
@@ -164,102 +164,91 @@ if($conn)
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" value="<?php echo $fetch['full_name']; ?>" />
+                     <input type="text"  name="fullname" placeholder="Full Name" required readonly class="form-control-plaintext" value="<?php echo $fetch['full_name']; ?>" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
-                  <select class="form-control" name="gender" required value="<?php echo $fetch['gender']; ?>" >
-                   <option>Gender</option>
-                   <option value="Male">Male</option>
-                   <option value="Female">Female</option>
-                  </select>
+                  <input type="text" readonly class="form-control-plaintext"  name="gender" required value="<?php echo $fetch['gender']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">School Attended</label>
                   <div class="col-sm-8">
-                     <input type="text" name="school_last_attended" placeholder="School Name" required class="form-control" value="<?php echo $fetch['school_last_attended']; ?>" >
+                     <input type="text" name="school_last_attended" placeholder="School Name" required readonly class="form-control-plaintext" value="<?php echo $fetch['school_last_attended']; ?>" >
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Strand / Course</label>
                   <div class="col-sm-8">
-                    <input type="text" name="strand_course" placeholder="Enter Student Strand" required class="form-control" value="<?php echo $fetch['strand_course']; ?>" >
+                    <input type="text" name="strand_course" placeholder="Enter Student Strand" required readonly class="form-control-plaintext" value="<?php echo $fetch['strand_course']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">GWA</label>
                   <div class="col-sm-8">
-                   <input type="text" name="grade_GWA" placeholder="Grade" required class="form-control" value="<?php echo $fetch['grade_GWA']; ?>" >
+                   <input type="text" name="grade_GWA" placeholder="Grade" required readonly class="form-control-plaintext" value="<?php echo $fetch['grade_GWA']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Math</label>
                   <div class="col-sm-8">
-                   <input type="text" name="grade_Math" placeholder="Grade" required class="form-control" value="<?php echo $fetch['grade_Math']; ?>" >
+                   <input type="text" name="grade_Math" placeholder="Grade" readonly class="form-control-plaintext" value="<?php echo $fetch['grade_Math']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">English</label>
                   <div class="col-sm-8">
-                    <input type="text" name="grade_English" placeholder="Grade" required class="form-control" value="<?php echo $fetch['grade_English']; ?>" >
+                    <input type="text" name="grade_English" placeholder="Grade" readonly class="form-control-plaintext" value="<?php echo $fetch['grade_English']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Science</label>
                   <div class="col-sm-8">
-                  <input type="text" name="grade_Science" placeholder="Grade" required class="form-control" value="<?php echo $fetch['grade_Science']; ?>" >
+                  <input type="text" name="grade_Science" placeholder="Grade" readonly class="form-control-plaintext" value="<?php echo $fetch['grade_Science']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">1st Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="fchoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['fchoice']; ?>" >
+                    <input type="text" name="fchoice" placeholder="Course" readonly class="form-control-plaintext" value="<?php echo $fetch['fchoice']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">2nd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="schoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['schoice']; ?>">
+                    <input type="text" name="schoice" placeholder="Course" readonly class="form-control-plaintext" value="<?php echo $fetch['schoice']; ?>">
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">3rd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="tchoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['tchoice']; ?>" >
+                    <input type="text" name="tchoice" placeholder="Course" readonly class="form-control-plaintext" value="<?php echo $fetch['tchoice']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Raw Score:</label>
                   <div class="col-sm-8">
-                    <input type="text" name="raw_score" placeholder="Input Score" required class="form-control" value="<?php echo $fetch['raw_score']; ?>" >
+                    <input type="text" name="raw_score" placeholder="Input Score" readonly class="form-control-plaintext" value="<?php echo $fetch['raw_score']; ?>" >
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks:</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control"value="<?php echo $fetch['remarks']; ?>" >
+                   <input type="text" name="remarks" placeholder="Remarks Here" readonly class="form-control-plaintext" value="<?php echo $fetch['remarks']; ?>" >
                   </div>
                 </div>
 
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="update">Update</button>
-                </div>
-                <div class="form-group d-flex justify-content-between">
-                  <div class="form-check form-check-flat mt-0">
-           
-                  </div>
                 </div>
               </form>
             </div>
@@ -301,33 +290,7 @@ if($conn)
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
-  <?php
-if(isset($_POST['update']))
-{
-  $fn =$_POST['fullname'];
-  $gender =$_POST['gender'];
-  $lsa =$_POST['school_last_attended'];
-  $sc =$_POST['strand_course'];
-  $gwa=$_POST['grade_GWA'];
-  $math =$_POST['grade_Math'];
-  $eng=$_POST['grade_English'];
-  $scie=$_POST['grade_Science'];
-  $fchoice =$_POST['fchoice'];
-  $schoice =$_POST['schoice'];
-  $tchoice =$_POST['tchoice'];
-  $rs =$_POST['raw_score'];
-  $rem =$_POST['remarks'];
-  $updatesql ="UPDATE students set full_name='".$fn."',gender='".$gender."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
-   $res= mysqli_query($conn,$updatesql);
-  if($res)
-  {
-    echo "<script>alert('Updated successfully');
-    location.href='student_admission.php';
-    </script>";
-  }
-}
-
- } ?>
+  <?php } ?>
 </body>
 
 </html>
