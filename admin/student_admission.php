@@ -151,7 +151,7 @@
         
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="add_student.php">
+                  <a href="add_student.php?title=Add Student">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">

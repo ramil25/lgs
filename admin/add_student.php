@@ -1,6 +1,33 @@
 <?php  
-
+$title=$_GET['title'];
+if(isset($_POST['add']))
+{
+  require '../db.php';
+  $fn =$_POST['fullname'];
+  $gender =$_POST['gender'];
+  $lsa =$_POST['school_last_attended'];
+  $sc =$_POST['strand_course'];
+  $gwa=$_POST['grade_GWA'];
+  $math =$_POST['grade_Math'];
+  $eng=$_POST['grade_English'];
+  $scie=$_POST['grade_Science'];
+  $fchoice =$_POST['fchoice'];
+  $schoice =$_POST['schoice'];
+  $tchoice =$_POST['tchoice'];
+  $rs =$_POST['raw_score'];
+  $rem =$_POST['remarks'];
+  $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
+  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,raw_score,remarks,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$rs."','".$rem."','".$date."','')";
+  $res= mysqli_query($conn,$addsql);
+  if($res)
+  {
+    echo "<script>alert('Student added successfully');
+    location.href='student_admission.php';
+    </script>";
+  }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -345,7 +372,7 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
