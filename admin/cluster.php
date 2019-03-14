@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Cluster</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -116,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cluster.php">
+            <a class="nav-link" href="#">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -141,7 +141,7 @@
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">ADMIN PANEL</h1>
+                    <h1 class="text-center page-header p-2">CLUSTER</h1>
                   </div>
                  </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
@@ -149,10 +149,10 @@
                 <a href="student_admission.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-account text-primary icon-lg"></i>
+                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Student Admission</h3>
+                        <h3 class="font-weight-medium text-center mb-0">CBMA</h3>
                       </div>
                     </div>
                   </div>
@@ -166,10 +166,10 @@
                 <a href="student_account.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-account-box text-primary icon-lg"></i>
+                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Student Account</h3>
+                        <h3 class="font-weight-medium text-center mb-0">CCJE</h3>
                       </div>
                     </div>
                   </div>
@@ -183,10 +183,10 @@
                 <a href="manage_student.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-folder-multiple text-primary icon-lg"></i>
+                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Manage Request</h3>
+                        <h3 class="font-weight-medium text-center mb-0">CTE</h3>
                       </div>
                     </div>
                   </div>
@@ -200,10 +200,10 @@
                 <a href="chart.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
+                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 ml-3">Enrolees Charts</h3>
+                        <h3 class="font-weight-medium text-center mb-0 ml-3">IAE</h3>
                       </div>
                     </div>
                   </div>
@@ -220,7 +220,7 @@
                       <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 text-center">Consoledated Report</h3>
+                        <h3 class="font-weight-medium text-center mb-0 text-center">CCS</h3>
                       </div>
                     </div>
                   </div>
@@ -234,11 +234,11 @@
                 <a href="">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-check-all text-primary icon-lg"></i>
+                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <br>
-                        <h3 class="font-weight-medium mb-0 text-center ml-3">Cluster Program</h3>
+                        <h3 class="font-weight-medium mb-0 text-center ml-3">CA</h3>
                       </div>
                     </div>
                   </div>
@@ -252,10 +252,28 @@
                 <a href="year_menu.php?category=Qualifying Exam">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-transcribe text-primary icon-lg"></i>
+                    <i class="mdi mdi-note-text text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Qualifying Exams</h3>
+                        <h3 class="font-weight-medium text-center mb-0">CAS</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <br>
+                        <h3 class="font-weight-medium mb-0 text-center ml-3">CHMT</h3>
                       </div>
                     </div>
                   </div>
