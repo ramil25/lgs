@@ -149,7 +149,7 @@
                 <a  href="view_cluster.php?title=CBMA&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                      <i class="mdi  mdi-briefcase text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">CBMA</h3>
@@ -166,7 +166,7 @@
                 <a  href="view_cluster.php?title=CCJE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                      <i class="mdi mdi-shield text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">CCJE</h3>
@@ -183,7 +183,7 @@
                 <a  href="view_cluster.php?title=CTE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                     <i class="mdi mdi-book-open text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">CTE</h3>
@@ -200,7 +200,7 @@
                 <a  href="view_cluster.php?title=IAE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                     <i class="mdi mdi-city text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0 ml-3">IAE</h3>
@@ -217,7 +217,7 @@
                <a  href="view_cluster.php?title=CCS&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                      <i class="mdi mdi-laptop text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0 text-center">CCS</h3>
@@ -234,7 +234,7 @@
                <a  href="view_cluster.php?title=CA&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                     <i class="mdi mdi-leaf text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <br>
@@ -252,7 +252,7 @@
                 <a  href="view_cluster.php?title=CAS&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                    <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                    <i class="mdi mdi-eye text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">CAS</h3>
@@ -269,7 +269,7 @@
                <a  href="view_cluster.php?title=CHMT&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
+                     <i class="mdi mdi-silverware text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <br>
