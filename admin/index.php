@@ -231,7 +231,7 @@
 
              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="">
+                <a href="year_menu.php?category=CLUSTER">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-check-all text-primary icon-lg"></i>
