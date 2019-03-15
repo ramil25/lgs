@@ -116,7 +116,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -146,7 +146,7 @@
                  </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="student_admission.php">
+                <a  href="view_cluster.php?title=CBMA&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -163,7 +163,7 @@
 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="student_account.php">
+                <a  href="view_cluster.php?title=CCJE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -180,7 +180,7 @@
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="manage_student.php">
+                <a  href="view_cluster.php?title=CTE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -197,7 +197,7 @@
 
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="chart.php">
+                <a  href="view_cluster.php?title=IAE&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -214,7 +214,7 @@
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="">
+               <a  href="view_cluster.php?title=CCS&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -231,7 +231,7 @@
 
              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="">
+               <a  href="view_cluster.php?title=CA&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -249,7 +249,7 @@
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="year_menu.php?category=Qualifying Exam">
+                <a  href="view_cluster.php?title=CAS&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                     <i class="mdi mdi-note-text text-primary icon-lg"></i>
@@ -266,7 +266,7 @@
 
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="">
+               <a  href="view_cluster.php?title=CHMT&&year=2019">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
