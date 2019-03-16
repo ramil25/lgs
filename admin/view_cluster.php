@@ -1,5 +1,6 @@
 <?php
 require '../db.php';
+              
 $year=$_GET['year'];
 $title=$_GET['title'];
 $c1='';
@@ -246,9 +247,20 @@ $res =mysqli_query($conn,$sql);
             ?></p></td>
            <td><p style="color: black; font-size: 20px;"><?php echo $row['remarks'];
             ?></p></td>
-            <td><button class="btn btn-success">Delete</button></td>
+            <td>
+              <form method="post">
+<input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
+                <button type="submit" class="btn btn-success" name="del">Delete</button></form></td>
         </tr>
-      <?php } ?>
+      <?php } 
+      if(isset($_POST['del']))
+              {
+                $hid= $_POST['hid'];
+                $dsql ="DELETE FROM students where student_id=".$hid;
+                $result =mysqli_query($conn,$dsql);
+              }
+      ?>
+            
                </table>
              </div>
             </div>
@@ -273,6 +285,7 @@ $res =mysqli_query($conn,$sql);
     <!-- page-body-wrapper ends -->
   </div>
   <?php
+  
 }
 ?>
   <!-- container-scroller -->
