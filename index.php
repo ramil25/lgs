@@ -23,7 +23,7 @@ if($conn)
 			}
 			else if($row['user_level']==2)
 			{
-				header("location: student/");
+				header("location: students/");
 			}
 	}
 	else if (!$row)
