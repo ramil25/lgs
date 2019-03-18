@@ -55,7 +55,7 @@
                             <li><a href="#">message</a>
                                 <ul class="sub-menu">
                                     <li><a href="create_message.php">Create Message</a></li>
-                                    <li><a href="mailbox.php">View Mailbox</a></li>
+                                    <li><a href="">View Mailbox</a></li>
                                 </ul>
                             </li>
                             <li class="menu-btn">
@@ -74,14 +74,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <center><h1 style="margin-top: 30px"> Create Message: </h1><center>
-                    <form action="req_moral.php" style="margin-top: 50px">
-                     <div class="form-group">
-                      <label for="comment">Comment:</label>
-                      <textarea class="form-control" rows="5" id="comment"></textarea><br><br>
-                      <center><button type="submit" class="btn btn-lg btn-success">Submit</button></center>
-                    </div>
-              </form>    
+                    <center><h1 style="margin-top: 30px">MAILBOX: </h1><center>
+                 <table  class="table table-light table-responsive text-center" style="background-color: #e3e5e8; opacity: 1;">
+                    <tr>
+                        <td style="font-weight:bold;color:#000000;">From:</td>
+                    </tr>
+                    <tr>
+                        <td><a href="view_mailbox.php?"><p>*clickable link*</p></a></td>
+                    </tr>
             </div>
         </div>
     <!-- Feature Area End -->
