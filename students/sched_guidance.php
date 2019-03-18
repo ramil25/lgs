@@ -55,7 +55,7 @@
                             <li><a href="#">message</a>
                                 <ul class="sub-menu">
                                     <li><a href="create_message.php">Create Message</a></li>
-                                    <li><a href="">View Mailbox</a></li>
+                                    <li><a href="view_mailbox.php">View Mailbox</a></li>
                                 </ul>
                             </li>
                             <li class="menu-btn">
