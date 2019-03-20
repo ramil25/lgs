@@ -104,7 +104,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" ">
+            <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
             </a>

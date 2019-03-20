@@ -1,11 +1,3 @@
-<?php
-require '../db.php';
-if($conn)
-{
-$title= $_GET['title'];
-$sql ="SELECT * from students";
-$res =mysqli_query($conn,$sql);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +5,7 @@ $res =mysqli_query($conn,$sql);
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Add Staff Account</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -26,7 +18,8 @@ $res =mysqli_query($conn,$sql);
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
 </head>
-
+<style type="text/css">
+</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -67,7 +60,7 @@ $res =mysqli_query($conn,$sql);
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -110,12 +103,12 @@ $res =mysqli_query($conn,$sql);
                 </li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
+             <li class="nav-item">
             <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
             </a>
+          </li>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart.php">
@@ -152,42 +145,92 @@ $res =mysqli_query($conn,$sql);
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-               <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+          <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2"><?php echo $title; ?></h1>
+                    <h1 class="text-center page-header p-2">ADD STAFF</h1>
                   </div>
                  </div>
+            </div>
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+                  <div class="col-lg-6 mx-auto">
+                      <div class="auto-form-wrapper">
 
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  <div class="card card-statistics">
-                 <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
-                  <?php 
-          while($row=mysqli_fetch_assoc($res))
-      { ?>
-        <tr>
-          <td><a style="color: black; font-size: 20px;" href=<?php
-
-          if($title=="VIEW ALL")
-          {
-           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['full_name'];
-           }
-          else
-          {
-            echo "update_student.php?std_id=".$row['student_id']; ?>><?php echo $row['full_name'];
-          }
-            ?></a></td>
-        </tr>
-      <?php } ?>
-               </table>
+              <form method="post">
+                <!--FNAME-->
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
                   </div>
-                 </div>
+                </div>
 
 
+                  <!--MNAME-->
+                  <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Middle Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="middlename" placeholder="Middle Name" required class="form-control" />
+                  </div>
+                </div>
 
-             </div> 
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Last Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="lastname" placeholder="Last Name" required class="form-control" />
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Gender</label>
+                  <div class="col-sm-8">
+                  <select class="form-control" name="gender" required>
+                    <option disabled>Choose Gender</option>
+                   <option value="Male">Male</option>
+                   <option value="Female">Female</option>
+                  </select>
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Username</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="usn" placeholder="Type your username" required class="form-control" />
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Password</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="pwd" placeholder="Type your password" required class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Position</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="position" placeholder="Your Position" required class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                  <div class="form-check form-check-flat mt-0">
+           
+                  </div>
+                </div>
+              </form>
+            </div>
+                </div>
            </div>
-         <?php } ?>
+           </div>
+            </div>
+          </div>
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -199,7 +242,6 @@ $res =mysqli_query($conn,$sql);
             </span>
           </div>
         </footer>
-      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -207,6 +249,7 @@ $res =mysqli_query($conn,$sql);
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>

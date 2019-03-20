@@ -104,10 +104,10 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=" ">
+            <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
-            </a>
+           	</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart.php">
@@ -186,7 +186,7 @@
 
              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="">
+                <a href="add_staff.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-account-plus text-primary icon-lg"></i>
