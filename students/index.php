@@ -1,97 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <!-- Required Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Page Title -->
-    <title>Student</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../images/lspu.png" type="image/x-icon">
+	<title>Students</title>
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="../assets/css/animate-3.7.0.css">
-    <link rel="stylesheet" href="../assets/css/font-awesome-4.7.0.min.css">
-    <link rel="stylesheet" href="../assets/fonts/flat-icon/flaticon.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-4.1.3.min.css">
-    <link rel="stylesheet" href="../assets/css/owl-carousel.min.css">
-    <link rel="stylesheet" href="../assets/css/nice-select.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+	<link rel="shortcut icon" href="../images/lspu.png">
+	<link rel="stylesheet" href="../css/students.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
 </head>
-<body>
-    <!-- Preloader Starts -->
-    <div class="preloader">
-        <div class="spinner"></div>
-    </div>
-    <!-- Preloader End -->
 
-    <!-- Header Area Starts -->
-	<header class="header-area main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="logo-area">
-                        <a href="index.php"><img src="../images/lspu.jpg" alt="logo" style="width: 150px; height: auto;"></a>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="custom-navbar">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>  
-                    <div class="main-menu">
-                        <ul style="float: center">
-                           <li class="active"><a href="index.php">home</a></li>
-                            <li><a href="#">transaction</a>
-                                <ul class="sub-menu">
-                                    <li><a href="req_moral.php">Request Good Moral</a></li>
-                                    <li><a href="sched_guidance.php">Schedule for Guidance</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">message</a>
-                                <ul class="sub-menu">
-                                    <li><a href="create_message.php">Create Message</a></li>
-                                    <li><a href="mailbox.php">View Mailbox</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-btn">
-                                <a href="../index.php" class="login">log out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- Header Area End -->
+<body bgcolor="#eaf0f2">
+
+<header class="header-two-bars">
+
+	<div class="header-first-bar">
+
+		<div class="header-limiter">
+
+			<a href="index.php">
+			<img src="../images/lspulogo.png" class="img-fluid" alt="Home" style="margin-left:10px;float:left;width: 120px; height: auto;"></a>
+
+			<nav>
+				<a href="#" class="selected" style="margin-right: 30px;">Home</a>
+				<a href="#" style="margin-right: 30px;">Newsfeeds</a>
+				<a href="#" style="margin-right: 30px;">Results</a>
+				<a href="#" style="margin-right: 30px;">About Us</a>
+			</nav>
+
+			<a href="#" class="btn logout-button">Login</a>
+
+		</div>
+
+	</div>
+
+</header>
+
+<!-- The content of your page would go here. -->
 
 
-    <!-- Feature Area Starts -->
-    <section class="feature-area section-padding2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature Area End -->
-
-    
+<div class="menu" style="background-color: #eaf0f2;">
+	<h2> Dear LSPU student </h2>
+	<p> Are you looking for someone <br>
+		...you can trust and talk with? <br>
+		...who can listen to your problem? <br>
+		...whom you can confide your secrets? <br>
+		...whom you can discuss your plans and goals in life? <br><br>
+		or <br><br>
+		you're looing for a friend who can help you become what you really want to be yourself.<br>
+		Well, just drop by the Guidance Office anytime you need oour service during our councelling hours from Monday to Friday. <br>
+		The world is drifting ....</p>
 
 
-    <!-- Javascript -->
-    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="../assets/js/vendor/bootstrap-4.1.3.min.js"></script>
-    <script src="../assets/js/vendor/wow.min.js"></script>
-    <script src="../assets/js/vendor/owl-carousel.min.js"></script>
-    <script src="../assets/js/vendor/jquery.nice-select.min.js"></script>
-    <script src="../assets/js/vendor/ion.rangeSlider.js"></script>
-    <script src="../assets/js/main.js"></script>
+</div>
+
 </body>
+
 </html>
