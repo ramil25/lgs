@@ -1,6 +1,32 @@
+<?php
+  $success = '';
+  require '../db.php';
+    if (isset($_POST['add']))
+    {
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $fname = $_POST['fullname'];
+      $mname = $_POST['middlename'];
+      $lname = $_POST['lastname'];
+      $gender = $_POST['gender'];
+      $pos = $_POST['position'];
+      $camp = $_POST['camp'];
+      $sql = 'INSERT INTO users(user_name,user_password,first_name,middle_name,last_name,gender,position,campus,user_level) values("'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'",1)';
+      $query = mysqli_query($conn,$sql);
+      if ($query)
+      {
+        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Added Successfully
+        </p>';
+      }
+      else if (!$query)
+      {
+        $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
+        </p>';
+      }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -32,12 +58,9 @@
           <img src="../images/lspu.png" alt="logo" />
         </a>
       </div>
-
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
-
         <ul class="navbar-nav navbar-nav-right">
-          
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -156,17 +179,27 @@
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-
-              <form method="post">
+              <form action="" method="POST">
                 <!--FNAME-->
+                <?php echo $success; ?>
+                <div class="form-group row">
+                <label class="label-dark col-sm-4 col-form-label">Username</label>
+                 <div class="col-sm-8">
+                    <input type="text" name="username" placeholder="Type your username" required class="form-control" />
+                 </div>
+               </div>
+                <div class="form-group row">
+                <label class="label-dark col-sm-4 col-form-label">Password</label>
+                 <div class="col-sm-8">
+                    <input type="password" name="password"  placeholder="Type your password" required class="form-control" />
+                 </div>
+               </div>
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">First Name</label>
                   <div class="col-sm-8">
                      <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
                   </div>
                 </div>
-
-
                   <!--MNAME-->
                   <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Middle Name</label>
@@ -174,15 +207,12 @@
                      <input type="text" name="middlename" placeholder="Middle Name" required class="form-control" />
                   </div>
                 </div>
-
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Last Name</label>
                   <div class="col-sm-8">
                      <input type="text" name="lastname" placeholder="Last Name" required class="form-control" />
                   </div>
                 </div>
-
-
                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
@@ -193,35 +223,20 @@
                   </select>
                   </div>
                 </div>
-
-                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Username</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="usn" placeholder="Type your username" required class="form-control" />
-                  </div>
-                </div>
-
-                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Password</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="pwd" placeholder="Type your password" required class="form-control" />
-                  </div>
-                </div>
-
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Position</label>
                   <div class="col-sm-8">
                      <input type="text" name="position" placeholder="Your Position" required class="form-control" />
                   </div>
                 </div>
-
+                   <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Campus</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="camp" placeholder="Your Campus" required class="form-control" />
+                  </div>
+                </div>
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
-                </div>
-                <div class="form-group d-flex justify-content-between">
-                  <div class="form-check form-check-flat mt-0">
-           
-                  </div>
                 </div>
               </form>
             </div>
