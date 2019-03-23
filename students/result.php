@@ -29,13 +29,13 @@
 			<img src="../images/lspulogo.png" class="img-fluid" alt="Home" style="margin-left:10px;float:left;width: 120px; height: auto;"></a>
 
 			<nav>
-				<a href="index.php" style="margin-right: 30px;">Home</a>
-				<a href="newsfeed.php" style="margin-right: 30px;">Newsfeeds</a>
+				<a href="index.php" style="margin-right: 30px;">Newsfeeds</a>
 				<a href="results.php" class="selected" style="margin-right: 30px;">Results</a>
+				<a href="req_moral.php" style="margin-right: 30px;">Request Good Moral</a>
 				<a href="aboutus.php" style="margin-right: 30px;">About Us</a>
 			</nav>
 
-			<a href="#" class="btn logout-button">Login</a>
+			<a href="logout.php" class="btn logout-button">Logout</a>
 
 		</div>
 
