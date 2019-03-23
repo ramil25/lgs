@@ -30,9 +30,9 @@
 
 			<nav>
 				<a href="index.php" style="margin-right: 30px;">Home</a>
-				<a href="#" style="margin-right: 30px;">Newsfeeds</a>
+				<a href="newsfeed.php" style="margin-right: 30px;">Newsfeeds</a>
 				<a href="results.php" class="selected" style="margin-right: 30px;">Results</a>
-				<a href="#" style="margin-right: 30px;">About Us</a>
+				<a href="aboutus.php" style="margin-right: 30px;">About Us</a>
 			</nav>
 
 			<a href="#" class="btn logout-button">Login</a>
