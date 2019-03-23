@@ -17,11 +17,13 @@ if($conn)
 	}
 	else if($row)
 	{
-			if($row['user_level']==1)
+			session_start();
+			$_SESSION["user_level"] = $row['user_level'];
+			if($_SESSION["user_level"]==1)
 			{
 				header("location: admin/");
 			}
-			else if($row['user_level']==2)
+			else if($_SESSION["user_level"]==2)
 			{
 				header("location: students/");
 			}
@@ -95,7 +97,7 @@ if($conn)
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
-           
+
                   </div>
                   <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
                 </div>
