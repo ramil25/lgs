@@ -6,8 +6,8 @@ if($conn)
 {
 	if(isset($_POST['login']))
 	{
-		$un =$_POST['un'];
-		$ps =$_POST['ps'];
+	$un =$_POST['un'];
+	$ps =$_POST['ps'];
 	$sql="SELECT * FROM users WHERE user_name='".$un."' and user_password='".$ps."'";
 	$result =mysqli_query($conn,$sql);
 	$row=mysqli_fetch_assoc($result);
@@ -19,12 +19,15 @@ if($conn)
 	{
 			session_start();
 			$_SESSION["user_level"] = $row['user_level'];
+			$_SESSION["user_name"] = $un;
 			if($_SESSION["user_level"]==1)
 			{
+				$_SESSION["user_name"] = $un;
 				header("location: admin/");
 			}
 			else if($_SESSION["user_level"]==2)
 			{
+				$_SESSION["user_name"] = $un;
 				header("location: students/");
 			}
 	}
