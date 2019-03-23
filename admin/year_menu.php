@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION["user_level"])) {
 $ym =$_GET['category'];
 $link1 ="";
 $link2 ="";
@@ -54,7 +56,7 @@ $link1 ="cluster.php?year=2019";
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -152,7 +154,7 @@ $link1 ="cluster.php?year=2019";
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -164,7 +166,7 @@ $link1 ="cluster.php?year=2019";
         <div class="content-wrapper">
           <div class="row">
  <!-- partial -->
-            
+
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
                   <a href="<?php echo $link1; ?>">
@@ -180,9 +182,9 @@ $link1 ="cluster.php?year=2019";
               </div>
             </div>
 
-            
+
           </div>
-          
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -219,3 +221,18 @@ $link1 ="cluster.php?year=2019";
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

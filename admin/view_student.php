@@ -1,5 +1,7 @@
 <?php
+session_start();
 require '../db.php';
+if (isset($_SESSION["user_level"])) {
 if($conn)
 {
 $title= $_GET['title'];
@@ -44,7 +46,7 @@ $res =mysqli_query($conn,$sql);
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -142,7 +144,7 @@ $res =mysqli_query($conn,$sql);
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -162,7 +164,7 @@ $res =mysqli_query($conn,$sql);
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
                  <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
-                  <?php 
+                  <?php
           while($row=mysqli_fetch_assoc($res))
       { ?>
         <tr>
@@ -185,7 +187,7 @@ $res =mysqli_query($conn,$sql);
 
 
 
-             </div> 
+             </div>
            </div>
          <?php } ?>
         <!-- content-wrapper ends -->
@@ -223,3 +225,18 @@ $res =mysqli_query($conn,$sql);
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

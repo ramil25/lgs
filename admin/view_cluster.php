@@ -1,6 +1,6 @@
 <?php
 require '../db.php';
-              
+if (isset($_SESSION["user_level"])) {
 $year=$_GET['year'];
 $title=$_GET['title'];
 $c1='';
@@ -114,7 +114,7 @@ $res =mysqli_query($conn,$sql);
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -212,7 +212,7 @@ $res =mysqli_query($conn,$sql);
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -239,7 +239,7 @@ $res =mysqli_query($conn,$sql);
               <td>GWA</td>
               <td>Remarks</td>
           </tr>
-                  <?php 
+                  <?php
           while($row=mysqli_fetch_assoc($res))
       { ?>
         <tr>
@@ -258,7 +258,7 @@ $res =mysqli_query($conn,$sql);
 <input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
                 <button type="submit" class="btn btn-success" name="del">Delete</button></form></td>
         </tr>
-      <?php } 
+      <?php }
       if(isset($_POST['del']))
               {
                 $hid= $_POST['hid'];
@@ -266,11 +266,11 @@ $res =mysqli_query($conn,$sql);
                 $result =mysqli_query($conn,$dsql);
               }
       ?>
-            
+
                </table>
              </div>
             </div>
-             </div> 
+             </div>
            </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -291,7 +291,7 @@ $res =mysqli_query($conn,$sql);
     <!-- page-body-wrapper ends -->
   </div>
   <?php
-  
+
 }
 ?>
   <!-- container-scroller -->
@@ -311,3 +311,18 @@ $res =mysqli_query($conn,$sql);
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

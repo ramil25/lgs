@@ -1,4 +1,5 @@
 <?php
+session_start();
   $success = '';
   require '../db.php';
     if (isset($_POST['add']))
@@ -24,6 +25,7 @@
         </p>';
       }
     }
+    if (isset($_SESSION["user_level"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,7 +94,7 @@
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Dem</p>
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -158,7 +160,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -281,3 +283,18 @@
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

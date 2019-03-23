@@ -2,9 +2,6 @@
 session_start();
 require '../db.php';
 if (isset($_SESSION["user_level"])) {
-  $sql = "SELECT user_name FROM users WHERE user_level = '".$_SESSION['user_level']."' ";
-  $quer = mysqli_query($conn,$sql);
-  $fetch = mysqli_fetch_assoc($quer);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +72,7 @@ if (isset($_SESSION["user_level"])) {
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $fetch['user_name']; ?></p>
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>

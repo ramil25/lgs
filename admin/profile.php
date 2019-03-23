@@ -1,3 +1,8 @@
+<?php
+session_start();
+require '../db.php';
+if (isset($_SESSION["user_level"])) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +41,7 @@
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -68,7 +73,7 @@
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Dem</p>
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -128,7 +133,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -170,9 +175,9 @@
               </div>
             </div>
 
-            
+
           </div>
-          
+
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
@@ -209,3 +214,18 @@
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

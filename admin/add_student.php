@@ -1,4 +1,5 @@
-<?php  
+<?php
+session_start();
 $title=$_GET['title'];
 if(isset($_POST['add']))
 {
@@ -26,8 +27,8 @@ if(isset($_POST['add']))
     </script>";
   }
 }
+if (isset($_SESSION["user_level"])) {
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +68,7 @@ if(isset($_POST['add']))
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -99,7 +100,7 @@ if(isset($_POST['add']))
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Dem</p>
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -165,7 +166,7 @@ if(isset($_POST['add']))
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">
+            <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
@@ -297,7 +298,7 @@ if(isset($_POST['add']))
             <option value="April">April</option>
              <option value="May">May</option>
           </select>
-                  
+
        <select name="day">
          <option value="1">1</option>
          <option value="2">2</option>
@@ -346,7 +347,7 @@ if(isset($_POST['add']))
             <option value="2029">2029</option>
              <option value="2030">2030</option>
           </select>
-         
+
                   </div>
                 </div>
 
@@ -362,7 +363,7 @@ if(isset($_POST['add']))
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
-           
+
                   </div>
                 </div>
               </form>
@@ -408,3 +409,18 @@ if(isset($_POST['add']))
 </body>
 
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>
