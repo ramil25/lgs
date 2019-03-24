@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user_level"])) {
+  $success = '';
   $std = $_GET['std'];
   if (empty($std)) {
     header("location:create_account.php");
@@ -8,13 +9,38 @@ if (isset($_SESSION["user_level"])) {
 if(isset($_POST['add']))
 {
   require '../db.php';
-   $fn = $_POST['fullname'];
+   $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
    $course = $_POST['course'];
    $username = $_POST['username'];
+   $password = $_POST['password'];
    $repeat = $_POST['repeat-password'];
-   $fn = $_POST['fullname'];
-    $sql = 'INSERT INTO users(user_name,user_password,first_name,middle_name,last_name,gender,position,campus,user_level) values("'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'",1)';
+   $mobile = $_POST['mobile'];
+   $email = $_POST['email'];
+   $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'")';
+   $query = mysqli_query($conn,$sql);
+    if ($password !== $repeat)
+    {
+      $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Password do not match
+      </p>';
+    }
+    else if (strlen($password) < 10)
+    {
+      $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Password is too weak
+      </p>';
+    }
+    else if (!$query)
+    {
+      $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
+      </p>';
+    }
+    else if ($query)
+    {
+        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+        </p>';
+    }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -176,12 +202,12 @@ if(isset($_POST['add']))
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-
-              <form action="" method="post" enctype="multipart/form-data">
+                      <?php echo $success; ?>
+              <form action="" method="post">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="name" placeholder="Full Name" required class="form-control" value="<?php echo $std; ?>"  disabled/>
+                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" value="<?php echo $std; ?>" readonly />
                   </div>
                 </div>
 
@@ -208,14 +234,14 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="text" name="password" placeholder="Grade" required class="form-control"/>
+                   <input type="password" name="password" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">
-                    <input type="text" name="repeat-password" placeholder="Grade" required class="form-control"/>
+                    <input type="password" name="repeat-password" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
@@ -229,7 +255,7 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
-                    <input type="text" name="email" placeholder="Course" required class="form-control">
+                    <input type="email" name="email" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 

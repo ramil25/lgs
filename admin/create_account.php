@@ -155,6 +155,11 @@ session_start();
         <div class="content-wrapper">
           <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+											<div class="card card-statistics">
+												<h1 class="text-center page-header p-2">SELECT STUDENT TO CREATE ACCOUNT</h1>
+											</div>
+											
+
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">
           <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
