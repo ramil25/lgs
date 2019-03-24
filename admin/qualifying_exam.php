@@ -157,7 +157,7 @@ session_start();
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="">
+                  <a href="view_qualifying.php?year=2019&title=Qualifying Exam" target="_blank">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
