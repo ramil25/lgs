@@ -5,7 +5,6 @@ if (isset($_SESSION["user_level"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -116,7 +115,7 @@ if (isset($_SESSION["user_level"])) {
           <li class="nav-item">
             <a class="nav-link" href="chart.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Enrolees Chart</span>
+              <span class="menu-title">Enrollees Chart</span>
             </a>
           </li>
           <li class="nav-item">
@@ -230,7 +229,7 @@ if (isset($_SESSION["user_level"])) {
                       <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 ml-3">Enrolees Charts</h3>
+                        <h3 class="font-weight-medium text-center mb-0 ml-3">Enrollees Charts</h3>
                       </div>
                     </div>
                   </div>

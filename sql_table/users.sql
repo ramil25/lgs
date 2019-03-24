@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2019 at 11:57 AM
+-- Generation Time: Mar 24, 2019 at 07:15 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -32,21 +32,29 @@ CREATE TABLE `users` (
   `user_id` int(255) NOT NULL,
   `user_name` varchar(30) NOT NULL,
   `user_password` longtext NOT NULL,
+  `email` varchar(50) NOT NULL,
   `first_name` tinytext NOT NULL,
   `middle_name` tinytext NOT NULL,
   `last_name` tinytext NOT NULL,
   `gender` varchar(6) NOT NULL,
   `position` varchar(20) NOT NULL,
   `campus` varchar(50) NOT NULL,
-  `user_level` varchar(10) NOT NULL
+  `user_level` int(1) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `School Attended` varchar(50) NOT NULL,
+  `Strand / Course` int(50) NOT NULL,
+  `GWA` varchar(250) NOT NULL,
+  `Math` int(2) NOT NULL,
+  `English` int(2) NOT NULL,
+  `Science` int(2) NOT NULL,
+  `1st Choice` varchar(100) NOT NULL,
+  `2nd Choice` varchar(100) NOT NULL,
+  `3rd Choice` varchar(100) NOT NULL,
+  `Raw Score` int(9) NOT NULL,
+  `Remarks:` varchar(250) NOT NULL,
+  `Date` date NOT NULL,
+  `user_image` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `first_name`, `middle_name`, `last_name`, `gender`, `position`, `campus`, `user_level`) VALUES
-(1, 'test', 'adminadmin', '', '', '', '', '', '', '1');
 
 --
 -- Indexes for dumped tables
@@ -66,7 +74,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
