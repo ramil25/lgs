@@ -1,34 +1,22 @@
 <?php
 session_start();
-$title=$_GET['title'];
+if (isset($_SESSION["user_level"])) {
+  $std = $_GET['std'];
+  if (empty($std)) {
+    header("location:create_account.php");
+  }
 if(isset($_POST['add']))
 {
   require '../db.php';
-  $fn =$_POST['fullname'];
-  $gender =$_POST['gender'];
-  $lsa =$_POST['school_last_attended'];
-  $sc =$_POST['strand_course'];
-  $gwa=$_POST['grade_GWA'];
-  $math =$_POST['grade_Math'];
-  $eng=$_POST['grade_English'];
-  $scie=$_POST['grade_Science'];
-  $fchoice =$_POST['fchoice'];
-  $schoice =$_POST['schoice'];
-  $tchoice =$_POST['tchoice'];
-  $rs =$_POST['raw_score'];
-  $rem =$_POST['remarks'];
-  $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
-  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,raw_score,remarks,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$rs."','".$rem."','".$date."','')";
-  $res= mysqli_query($conn,$addsql);
-  if($res)
-  {
-    echo "<script>alert('Student added successfully');
-    location.href='student_admission.php';
-    </script>";
-  }
-}
-if (isset($_SESSION["user_level"])) {
+   $fn = $_POST['fullname'];
+   $stdno = $_POST['studentnumber'];
+   $course = $_POST['course'];
+   $username = $_POST['username'];
+   $repeat = $_POST['repeat-password'];
+   $fn = $_POST['fullname'];
+    $sql = 'INSERT INTO users(user_name,user_password,first_name,middle_name,last_name,gender,position,campus,user_level) values("'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'",1)';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +65,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="../index.php">
+              <a class="dropdown-item mt-2" href="logout.php">
                 Logout
             </a>
             </div>
@@ -97,6 +85,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
+                  <!-- user-img -->
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
@@ -179,7 +168,7 @@ if (isset($_SESSION["user_level"])) {
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">ADD STUDENT</h1>
+                    <h1 class="text-center page-header p-2">CREATE STUDENT ACCOUNT</h1>
                   </div>
                  </div>
             </div>
@@ -188,175 +177,63 @@ if (isset($_SESSION["user_level"])) {
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
 
-              <form method="post">
+              <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Gender</label>
-                  <div class="col-sm-8">
-                  <select class="form-control" name="gender" required>
-                   <option>Gender</option>
-                   <option value="Male">Male</option>
-                   <option value="Female">Female</option>
-                  </select>
+                     <input type="text" name="name" placeholder="Full Name" required class="form-control" value="<?php echo $std; ?>"  disabled/>
                   </div>
                 </div>
 
+
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">School Attended</label>
+                  <label class="label-dark col-sm-4 col-form-label">Student Number</label>
                   <div class="col-sm-8">
-                     <input type="text" name="school_last_attended" placeholder="School Name" required class="form-control" />
+                     <input type="text" name="studentnumber" placeholder="Student Number" required class="form-control" />
                   </div>
                 </div> <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Strand / Course</label>
+                  <label class="label-dark col-sm-4 col-form-label">Course/Year</label>
                   <div class="col-sm-8">
-                    <input type="text" name="strand_course" placeholder="Enter Student Strand" required class="form-control" />
+                    <input type="text" name="course" placeholder="Your Course/Year" required class="form-control" />
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">GWA</label>
+                  <label class="label-dark col-sm-4 col-form-label">Student Username</label>
                   <div class="col-sm-8">
-                   <input type="text" name="grade_GWA" placeholder="Grade" required class="form-control"/>
+                   <input type="text" name="username" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Math</label>
+                  <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="text" name="grade_Math" placeholder="Grade" required class="form-control"/>
+                   <input type="text" name="password" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">English</label>
+                  <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">
-                    <input type="text" name="grade_English" placeholder="Grade" required class="form-control"/>
+                    <input type="text" name="repeat-password" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Science</label>
+                  <label class="label-dark col-sm-4 col-form-label">Mobile</label>
                   <div class="col-sm-8">
-                  <input type="text" name="grade_Science" placeholder="Grade" required class="form-control"/>
+                  <input type="text" name="mobile" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">1st Choice</label>
+                  <label class="label-dark col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
-                    <input type="text" name="fchoice" placeholder="Course" required class="form-control">
+                    <input type="text" name="email" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">2nd Choice</label>
-                  <div class="col-sm-8">
-                    <input type="text" name="schoice" placeholder="Course" required class="form-control">
-                  </div>
-                </div>
 
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">3rd Choice</label>
-                  <div class="col-sm-8">
-                    <input type="text" name="tchoice" placeholder="Course" required class="form-control">
-                  </div>
-                </div>
-
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Raw Score:</label>
-                  <div class="col-sm-8">
-                    <input type="text" name="raw_score" placeholder="Input Score" required class="form-control">
-                  </div>
-                </div>
-
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Remarks:</label>
-                  <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control">
-                  </div>
-                </div>
-
-                   <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Date:</label>
-                  <div class="col-sm-8 form-control">
-                   <select name="month">
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-             <option value="May">May</option>
-          </select>
-
-       <select name="day">
-         <option value="1">1</option>
-         <option value="2">2</option>
-         <option value="3">3</option>
-         <option value="4">4</option>
-         <option value="5">5</option>
-         <option value="6">6</option>
-         <option value="7">7</option>
-         <option value="8">8</option>
-         <option value="9">9</option>
-         <option value="10">10</option>
-         <option value="11">11</option>
-         <option value="12">12</option>
-         <option value="13">13</option>
-         <option value="14">14</option>
-         <option value="15">15</option>
-         <option value="16">16</option>
-         <option value="17">17</option>
-         <option value="18">18</option>
-         <option value="19">19</option>
-         <option value="20">20</option>
-         <option value="21">21</option>
-         <option value="22">22</option>
-         <option value="23">23</option>
-         <option value="24">24</option>
-         <option value="25">25</option>
-         <option value="26">26</option>
-         <option value="27">27</option>
-         <option value="28">28</option>
-         <option value="29">29</option>
-         <option value="30">30</option>
-         <option value="31">31</option>
-       </select>
-
-       <select name="year">
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <option value="2025">2025</option>
-            <option value="2026">2026</option>
-            <option value="2027">2027</option>
-            <option value="2028">2028</option>
-            <option value="2029">2029</option>
-             <option value="2030">2030</option>
-          </select>
-
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Upload File:</label>
-                  <div class="col-sm-8">
-                    <input type="file" name="photo_link" style="text-indent: 0px">
-                  </div>
-                </div>
 
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>

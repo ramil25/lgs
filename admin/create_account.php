@@ -2,6 +2,8 @@
 session_start();
 	 require '../db.php';
 	 if (isset($_SESSION["user_level"])) {
+		 $sql ="SELECT * from students";
+		 $res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -195,52 +197,22 @@ session_start();
 
   }
   ?>
-
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="create_account.php">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Create Account</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
-
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi  mdi-sync text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Update Account</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
-
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">View All</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
-
+	<table  class="table table-light table-responsive text-center">
+<tr>
+<td>USER</td>
+</tr>
+<tr>
+	<?php
+	while($row=mysqli_fetch_assoc($res))
+	{
+echo '
+<tr>
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std='.$row["full_name"].'">'.$row["full_name"].'
+	</a></p></td>
+</tr>
+</table>';
+}
+?>
           </div>
 
         </div>
