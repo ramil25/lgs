@@ -1,3 +1,26 @@
+<?php
+session_start();
+if(isset($_POST['add']))
+{
+  require '../db.php';
+  $comment =$_POST['comment'];
+  $reciever =$_POST['reciever'];
+  $addsql ="INSERT INTO message(comment,sender,reciever) VALUES ('".$comment."','','".$reciever."')";
+  $res= mysqli_query($conn,$addsql);
+  if($res)
+  {
+    echo "<script>alert('Request Sent!');
+    location.href='req_moral.php';
+    </script>";
+  }
+  else 
+  {
+  	echo "<script>alert('Error');
+    location.href='req_moral.php';
+    </script>";
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +29,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<title>Request Good Moral</title>
 
 	<link rel="shortcut icon" href="../images/lspu.png">
@@ -53,11 +78,21 @@
 				<div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <center><h1 style="margin-top: 30px"> Request Goodmoral: </h1><center>
-                    <form action="req_moral.php" style="margin-top: 50px">
-                     <div class="form-group">
-                      <label for="comment">Comment:</label>
-                      <textarea class="form-control" rows="5" id="comment"></textarea><br><br>
+                	<form action="req_moral.php" style="margin-top: 20px">
+                    <div class="form-group">
+
+                    <h1 style="margin-top: 30px"> Request Goodmoral: </h1><center>
+                    
+                    <label for="rec1" style="margin-top: 20px;">Select Reciever:</label>
+
+                    <select class="form-control" id="reciever">
+				        <option>Admin</option>
+				        <option>Guidance Councelor</option>
+				        <option>School Director</option>
+				        <option>Admission Office</option>
+				    </select><br>
+
+                      <textarea class="form-control" rows="8" id="comment" placeholder="Comment..."></textarea><br><br>
                       <center><button type="submit" class="btn btn-lg btn-success">Submit</button></center>
                     </div>
               </form>    
