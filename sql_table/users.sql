@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 07:15 AM
+-- Generation Time: Mar 24, 2019 at 12:10 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -33,6 +33,7 @@ CREATE TABLE `users` (
   `user_name` varchar(30) NOT NULL,
   `user_password` longtext NOT NULL,
   `email` varchar(50) NOT NULL,
+  `full_name` varchar(30) NOT NULL,
   `first_name` tinytext NOT NULL,
   `middle_name` tinytext NOT NULL,
   `last_name` tinytext NOT NULL,
@@ -40,20 +41,9 @@ CREATE TABLE `users` (
   `position` varchar(20) NOT NULL,
   `campus` varchar(50) NOT NULL,
   `user_level` int(1) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `School Attended` varchar(50) NOT NULL,
-  `Strand / Course` int(50) NOT NULL,
-  `GWA` varchar(250) NOT NULL,
-  `Math` int(2) NOT NULL,
-  `English` int(2) NOT NULL,
-  `Science` int(2) NOT NULL,
-  `1st Choice` varchar(100) NOT NULL,
-  `2nd Choice` varchar(100) NOT NULL,
-  `3rd Choice` varchar(100) NOT NULL,
-  `Raw Score` int(9) NOT NULL,
-  `Remarks:` varchar(250) NOT NULL,
-  `Date` date NOT NULL,
-  `user_image` varchar(250) NOT NULL
+  `student_number` varchar(100) NOT NULL,
+  `course` varchar(100) NOT NULL,
+  `mobile` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -74,7 +64,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
