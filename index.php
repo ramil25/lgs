@@ -35,7 +35,7 @@
 				<a href="aboutus.php" style="margin-right: 30px;">About Us</a>
 			</nav>
 
-			<a href="logout.php" class="btn logout-button">Login</a>
+			<a href="login.php" class="btn logout-button">Login</a>
 
 		</div>
 
