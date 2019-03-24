@@ -183,41 +183,42 @@ session_start();
 
             $fname = $row['full_name'];
             $std_id = $row['student_id'];
-
-            echo '<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+?>
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
                   <a href="">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <h3 class="float-right ml-5 mt-2"><a href="student_profile.php?std_id='.$std_id.'">'.$fname.'</a></h3>
+                      <h3 class="float-right ml-5 mt-2"><a href="student_profile.php?std_id=<?php echo $std_id; ?>"><?php echo $fname; ?></a></h3>
                     </div>
                   </div>
                 </div>
                 </a>
               </div>
-            </div>';
+            </div>
+            <?php
       }
     }
 
   }
   ?>
-	<table  class="table table-light table-responsive text-center">
+	<table  class="table table-striped table-light text-center">
 <tr>
-<td>USER</td>
+<th>USER</th>
 </tr>
-<tr>
 	<?php
 	while($row=mysqli_fetch_assoc($res))
 	{
-echo '
+    ?>
 <tr>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std='.$row["full_name"].'">'.$row["full_name"].'
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
 	</a></p></td>
 </tr>
-</table>';
+<?php
 }
 ?>
+</table>
           </div>
 
         </div>
