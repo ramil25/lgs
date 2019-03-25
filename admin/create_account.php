@@ -4,7 +4,9 @@ session_start();
    $title =$_GET['title'];
 	 if (isset($_SESSION["user_level"])) {
 		 $sql ="SELECT * from students";
-		 $res =mysqli_query($conn,$sql);
+     $res =mysqli_query($conn,$sql);
+     $query ="SELECT * from users where user_level=2";
+     $ress =mysqli_query($conn,$query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,7 +159,24 @@ session_start();
           <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
 											<div class="card card-statistics">
+                      <?php
+                      if($title=='Add')
+                      {
+                        ?>
 												<h1 class="text-center page-header p-2">SELECT STUDENT TO CREATE ACCOUNT</h1>
+                      <?php } ?>
+                      <?php
+                      if($title=='Update')
+                      {
+                        ?>
+												<h1 class="text-center page-header p-2">SELECT STUDENT TO UPDATE ACCOUNT</h1>
+                      <?php } ?>
+                      <?php
+                      if($title=='View')
+                      {
+                        ?>
+												<h1 class="text-center page-header p-2">SELECT STUDENT TO VIEW ACCOUNT</h1>
+                      <?php } ?>
 											</div>
 
 
@@ -178,8 +197,12 @@ session_start();
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
 
+    $sq = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR strand_course LIKE '%$search%'";
+    $results = mysqli_query($conn,$sq);
+    $checkResults = mysqli_num_rows($results);
+
     echo "  About ".$checkResult." result(s)!";
-    if ($checkResult > 0) {
+    if ($checkResult > 0 ||  $checkResults > 0 ) {
       while ($row = mysqli_fetch_assoc($result)) {
 
             $fname = $row['full_name'];
@@ -197,19 +220,24 @@ session_start();
                         ?>
                       <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
   </a></h3>
-                    <?php } ?>
+                    <?php } }
+                    ?>
 
                      <?php 
+                     while ($rows = mysqli_fetch_assoc($results)) {
+
+                      $fname = $row['full_name'];
+                      $std_id = $row['student_id'];
                       if($title=='Update')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std_id=<?php echo $row['student_id']; ?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
+                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std_id=<?php echo $rows['user_id']; ?>&std=<?php echo $rows['full_name']; ?>"><?php echo $rows['full_name']; ?></a></h3>
                       <?php } ?>
                      <?php 
                       if($title=='View')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "view_all_account.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
+                      <h3 class="float-right ml-5 mt-2"><a href = "view_all_account.php?std=<?php echo $rows['full_name'];?>"><?php echo $fname; ?></a></h3>
                     <?php } ?>
                     </div>
                   </div>
@@ -238,13 +266,15 @@ session_start();
     ?>
 	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
 	</a></p></td>
-<?php } ?>
+<?php }} ?>
 
 <?php
+while($row=mysqli_fetch_assoc($ress))
+{
   if($title=='Update')
   {
     ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['user_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
   </a></p></td>
 <?php } ?>
 

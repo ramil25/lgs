@@ -1,15 +1,14 @@
 <?php
+  require '../db.php';
 session_start();
+$std_id = $_GET['std_id'];
+$success = '';
 if (isset($_SESSION["user_level"])) {
-  $success = '';
-  $std_id = $_GET['std_id'];
-  $std =$_GET['std'];
   if (empty($std_id)) {
     header("location:create_account.php");
   }
-if(isset($_POST['add']))
+  if(isset($_POST['add']))
 {
-  require '../db.php';
    $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
    $course = $_POST['course'];
@@ -42,6 +41,14 @@ if(isset($_POST['add']))
     }
 
 }
+  if(isset($_GET['std_id']))
+  {
+    $std_id = $_GET['std_id'];
+    $std =$_GET['std'];
+    $query ="SELECT * from users where user_level=2";
+    $ress =mysqli_query($conn,$query);
+    $row=mysqli_fetch_assoc($ress);
+?>
 ?>
 
 <!DOCTYPE html>
@@ -216,47 +223,47 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Student Number</label>
                   <div class="col-sm-8">
-                     <input type="text" name="studentnumber" placeholder="Student Number" required class="form-control" />
+                     <input type="text" value="<?php echo $row['student_number']; ?>" name="studentnumber" placeholder="Student Number" required class="form-control" readonly />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Course/Year</label>
                   <div class="col-sm-8">
-                    <input type="text" name="course" placeholder="Your Course/Year" required class="form-control" />
+                    <input type="text" name="course" value="<?php echo $row['course']; ?>" placeholder="Your Course/Year" required class="form-control" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Student Username</label>
                   <div class="col-sm-8">
-                   <input type="text" name="username" placeholder="Grade" required class="form-control"/>
+                   <input type="text" name="username" value="<?php echo $row['user_name']; ?>" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="password" name="password" placeholder="Grade" required class="form-control"/>
+                   <input type="password" value="<?php echo $row['user_password']; ?>" name="password" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">
-                    <input type="password" name="repeat-password" placeholder="Grade" required class="form-control"/>
+                    <input type="password" name="repeat-password" placeholder="Confirm" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Mobile</label>
                   <div class="col-sm-8">
-                  <input type="text" name="mobile" placeholder="Grade" required class="form-control"/>
+                  <input type="text" value="<?php echo $row['mobile']; ?>" name="mobile" placeholder="Grade" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
-                    <input type="email" name="email" placeholder="Course" required class="form-control">
+                    <input type="email" value="<?php echo $row['email']; ?>" name="email" placeholder="Course" required class="form-control">
                   </div>
                 </div>
 
@@ -315,6 +322,7 @@ if(isset($_POST['add']))
 </html>
 <?php
 }
+}
 else {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -327,4 +335,5 @@ else {
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
 }
+
 ?>
