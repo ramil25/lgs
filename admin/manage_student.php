@@ -121,7 +121,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
               <span class="menu-title">Consoledated Report</span>
             </a>

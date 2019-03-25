@@ -125,7 +125,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
               <span class="menu-title">Consoledated Report</span>
             </a>
@@ -158,7 +158,7 @@ session_start();
 											<div class="card card-statistics">
 												<h1 class="text-center page-header p-2">SELECT STUDENT TO CREATE ACCOUNT</h1>
 											</div>
-											
+
 
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">

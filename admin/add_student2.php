@@ -1,4 +1,4 @@
-<?php  
+<?php
 $title=$_GET['title'];
 if(isset($_POST['add']))
 {
@@ -67,7 +67,7 @@ if(isset($_POST['add']))
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-          
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -147,7 +147,7 @@ if(isset($_POST['add']))
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
               <span class="menu-title">Consoledated Report</span>
             </a>
@@ -297,7 +297,7 @@ if(isset($_POST['add']))
             <option value="April">April</option>
              <option value="May">May</option>
           </select>
-                  
+
        <select name="day">
          <option value="1">1</option>
          <option value="2">2</option>
@@ -346,7 +346,7 @@ if(isset($_POST['add']))
             <option value="2029">2029</option>
              <option value="2030">2030</option>
           </select>
-         
+
                   </div>
                 </div>
 
@@ -362,7 +362,7 @@ if(isset($_POST['add']))
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
-           
+
                   </div>
                 </div>
               </form>

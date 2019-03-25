@@ -1,80 +1,15 @@
 <?php
 session_start();
-require '../db.php';
 if (isset($_SESSION["user_level"])) {
-$year=$_GET['year'];
-$title=$_GET['title'];
-$c1='';
-$c2='';
-$c3='';
-if(isset($_GET['title']))
+  $success = '';
+/*if(isset($_POST['add']))
 {
-  if($title=="CA")
-  {
-    $c1='BSA';
-    $c2='BAT';
-    $c3='BSAgEd';
-    $c4='BSAB';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CCS")
-  {
-    $c1='BSIT';
-    $c2='BSCS';
-    $c3='BSIS';
-    $c4='ACT';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CHMT")
-  {
-    $c1='DHRM';
-    $c2='BSHRM';
-    $c3='BS Tourism';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CCJE")
-  {
-    $c1='BSCrim';
-    $c2='';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="IAE")
-  {
-    $c1='BSAgEng';
-    $c2='';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CTE")
-  {
-    $c1='BSEd';
-    $c2='BEED';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CBMA")
-  {
-    $c1='BSBA';
-    $c2='BSAccountancy';
-    $c3='BSOA';
-    $c4='ACS';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-  else if($title=="CAS")
-  {
-    $c1='BSP';
-    $c2='BS Food Tech';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
-  }
-$res =mysqli_query($conn,$sql);
-
+  require '../db.php';
+   $fname = $_POST['fullname'];
+   $date = $_POST['studentnumber'];
+   $case = $_POST['course'];
+   $progress = $_POST['username'];
+} */
 ?>
 
 <!DOCTYPE html>
@@ -84,7 +19,7 @@ $res =mysqli_query($conn,$sql);
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Cluster</title>
+  <title>Consoledated Report</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -97,7 +32,8 @@ $res =mysqli_query($conn,$sql);
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
 </head>
-
+<style type="text/css">
+</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -124,7 +60,7 @@ $res =mysqli_query($conn,$sql);
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="../index.php">
+              <a class="dropdown-item mt-2" href="logout.php">
                 Logout
             </a>
             </div>
@@ -138,16 +74,17 @@ $res =mysqli_query($conn,$sql);
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
+                  <!-- user-img -->
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name">Dem</p>
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -223,56 +160,64 @@ $res =mysqli_query($conn,$sql);
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-               <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  <div class="card">
-                    <h1 class="text-center page-header p-2"><?php echo $title; ?></h1>
+          <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header p-2">UPDATE REPORT</h1>
                   </div>
                  </div>
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-              <button class="btn btn-success" onclick="location.href='cluster.php'">Back</button>
-                <div class="card-body row no-gutters align-items-center">
-              <table  class="table table-light table-responsive text-center">
-          <tr>
-            <td>NAME</td>
-            <td>COURSE
-              <td>RAW SCORE</td></td>
-              <td>GWA</td>
-              <td>Remarks</td>
-          </tr>
-                  <?php
-          while($row=mysqli_fetch_assoc($res))
-      { ?>
-        <tr>
-          <td><p style="color: black; font-size: 20px;"><?php echo $row['full_name'];
-            ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['fchoice'];
-            ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['raw_score'];
-            ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['grade_GWA'];
-            ?></p></td>
-           <td><p style="color: black; font-size: 20px;"><?php echo $row['remarks'];
-            ?></p></td>
-            <td>
-              <form method="post">
-<input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
-                <button type="submit" class="btn btn-success" name="del">Delete</button></form></td>
-        </tr>
-      <?php }
-      if(isset($_POST['del']))
-              {
-                $hid= $_POST['hid'];
-                $dsql ="DELETE FROM students where student_id=".$hid;
-                $result =mysqli_query($conn,$dsql);
-              }
-      ?>
-
-               </table>
-             </div>
             </div>
-             </div>
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+                  <div class="col-lg-6 mx-auto">
+                      <div class="auto-form-wrapper">
+
+              <form action="" method="post">
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" required />
+                  </div>
+                </div>
+
+
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Date</label>
+                  <div class="col-sm-8">
+                     <input type="date" name="date" placeholder="Date" required class="form-control" />
+                  </div>
+                </div> <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Case</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="Case" placeholder="Case..." required class="form-control" />
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Progress</label>
+                  <div class="col-sm-8">
+                   <input type="text" name="Progress" placeholder="Progress..." required class="form-control"/>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                  <div class="form-check form-check-flat mt-0">
+
+                  </div>
+                </div>
+              </form>
+            </div>
+                </div>
            </div>
+           </div>
+            </div>
+          </div>
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -284,18 +229,14 @@ $res =mysqli_query($conn,$sql);
             </span>
           </div>
         </footer>
-      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-  <?php
-
-}
-?>
   <!-- container-scroller -->
+
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>

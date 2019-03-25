@@ -121,7 +121,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
               <span class="menu-title">Consoledated Report</span>
             </a>
@@ -151,13 +151,7 @@ if (isset($_SESSION["user_level"])) {
         <div class="content-wrapper">
           <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                      <form method="POST" class="card card-sm">
-        <div class="card-body row no-gutters align-items-center">
-          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
-           <button type="submit" name="submit-search" class="col-auto">
-           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
-           </div>
-          </form>
+                  
             </div>
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
