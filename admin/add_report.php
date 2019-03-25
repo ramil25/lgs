@@ -174,29 +174,29 @@ if (isset($_SESSION["user_level"])) {
 
               <form action="" method="post">
                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                 <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" required />
+                     <input type="text" name="fullname" placeholder="Counselee..." class="form-control" required />
                   </div>
                 </div>
 
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Date</label>
+                  <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="date" name="date" placeholder="Date" required class="form-control" />
+                     <input type="text" name="date" placeholder="Case..." required class="form-control" />
                   </div>
                 </div> <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Case</label>
+                  <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="text" name="Case" placeholder="Case..." required class="form-control" />
+                    <input type="date" name="Case" placeholder="Date..." required class="form-control" />
                   </div>
                 </div>
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Progress</label>
+                  <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="Progress" placeholder="Progress..." required class="form-control"/>
+                   <input type="text" name="Progress" placeholder="Remarks..." required class="form-control"/>
                   </div>
                 </div>
 

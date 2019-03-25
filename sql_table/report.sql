@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2019 at 03:06 AM
+-- Generation Time: Mar 25, 2019 at 03:11 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -25,25 +25,15 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `report`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(255) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `user_password` longtext NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `full_name` varchar(30) NOT NULL,
-  `first_name` tinytext NOT NULL,
-  `middle_name` tinytext NOT NULL,
-  `last_name` tinytext NOT NULL,
-  `gender` varchar(6) NOT NULL,
-  `position` varchar(20) NOT NULL,
-  `campus` varchar(50) NOT NULL,
-  `user_level` int(1) NOT NULL,
-  `student_number` varchar(100) NOT NULL,
-  `course` varchar(100) NOT NULL,
-  `mobile` int(11) NOT NULL
+CREATE TABLE `report` (
+  `report_id` int(11) NOT NULL,
+  `report_counselee` varchar(255) NOT NULL,
+  `report_case` varchar(255) NOT NULL,
+  `report_date` date NOT NULL,
+  `report_remarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,20 +41,20 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `report`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `report`
+  ADD PRIMARY KEY (`report_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `report`
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `report`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
