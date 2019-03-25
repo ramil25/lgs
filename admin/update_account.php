@@ -18,7 +18,7 @@ if(isset($_POST['add']))
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'")';
+   $sql = 'INSERT users(user_name,user_password,email,full_name,user_level,student_number,course,mobile) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'")';
    $query = mysqli_query($conn,$sql);
     if ($password !== $repeat)
     {
@@ -195,7 +195,7 @@ if(isset($_POST['add']))
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">CREATE STUDENT ACCOUNT</h1>
+                    <h1 class="text-center page-header p-2">UPDATE STUDENT ACCOUNT</h1>
                   </div>
                  </div>
             </div>
@@ -263,7 +263,7 @@ if(isset($_POST['add']))
 
 
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Update</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">

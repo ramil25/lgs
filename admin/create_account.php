@@ -195,16 +195,16 @@ session_start();
                       if($title=='Add')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
+                      <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
+  </a></h3>
                     <?php } ?>
 
                      <?php 
                       if($title=='Update')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
-                    <?php } ?>
-
+                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std_id=<?php echo $row['student_id']; ?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
+                      <?php } ?>
                      <?php 
                       if($title=='View')
                       {
@@ -236,7 +236,7 @@ session_start();
   if($title=='Add')
   {
     ?>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
 	</a></p></td>
 <?php } ?>
 
@@ -244,7 +244,7 @@ session_start();
   if($title=='Update')
   {
     ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
   </a></p></td>
 <?php } ?>
 
