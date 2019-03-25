@@ -2,14 +2,26 @@
 session_start();
 if (isset($_SESSION["user_level"])) {
   $success = '';
-/*if(isset($_POST['add']))
+if(isset($_POST['add']))
 {
-  require '../db.php';
-   $fname = $_POST['fullname'];
-   $date = $_POST['studentnumber'];
-   $case = $_POST['course'];
-   $progress = $_POST['username'];
-} */
+   require '../db.php';
+   $counselee = $_POST['counselee'];
+   $case = $_POST['case'];
+   $date = $_POST['date'];
+   $remarks = $_POST['remarks'];
+   $sql = 'INSERT INTO report(report_counselee,report_case,report_date,report_remarks) values("'.$counselee.'","'.$case.'","'.$date.'","'.$remarks.'")';
+   $query = mysqli_query($conn,$sql);
+   if (!$query)
+   {
+     $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
+     </p>';
+   }
+   else if ($query)
+   {
+     $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Report Added Successfully
+     </p>';
+   }
+}
 ?>
 
 <!DOCTYPE html>
@@ -171,12 +183,12 @@ if (isset($_SESSION["user_level"])) {
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-
+                        <?php echo $success; ?>
               <form action="" method="post">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Counselee..." class="form-control" required />
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" required />
                   </div>
                 </div>
 
@@ -184,19 +196,19 @@ if (isset($_SESSION["user_level"])) {
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="text" name="date" placeholder="Case..." required class="form-control" />
+                     <input type="text" name="case" placeholder="Case..." required class="form-control" />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="date" name="Case" placeholder="Date..." required class="form-control" />
+                    <input type="date" name="date" placeholder="Date..." required class="form-control" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="Progress" placeholder="Remarks..." required class="form-control"/>
+                   <input type="text" name="remarks" placeholder="Remarks..." required class="form-control"/>
                   </div>
                 </div>
 

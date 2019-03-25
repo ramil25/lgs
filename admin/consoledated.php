@@ -151,7 +151,7 @@ if (isset($_SESSION["user_level"])) {
         <div class="content-wrapper">
           <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  
+
             </div>
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
@@ -171,7 +171,7 @@ if (isset($_SESSION["user_level"])) {
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="update_report.php">
+                  <a href="#">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">

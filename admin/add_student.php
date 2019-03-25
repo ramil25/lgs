@@ -2,9 +2,8 @@
 session_start();
 if (isset($_SESSION["user_level"])) {
   $success = '';
-  $std_id = $_GET['std_id'];
-  $std =$_GET['std'];
-  if (empty($std_id)) {
+  $std = $_GET['std'];
+  if (empty($std)) {
     header("location:create_account.php");
   }
 if(isset($_POST['add']))
