@@ -5,11 +5,12 @@ if (isset($_SESSION["user_level"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Consoledated Report</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -40,6 +41,7 @@ if (isset($_SESSION["user_level"])) {
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -48,7 +50,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="logout.php">
+              <a class="dropdown-item mt-2" href="../index.php">
                 Logout
             </a>
             </div>
@@ -62,7 +64,7 @@ if (isset($_SESSION["user_level"])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -110,22 +112,22 @@ if (isset($_SESSION["user_level"])) {
             <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
-           	</a>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Enrollees Chart</span>
+              <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
+            <a class="nav-link" href="#">
               <i class="menu-icon mdi mdi-folder-outline"></i>
               <span class="menu-title">Consoledated Report</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cluster.php">
+            <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -147,162 +149,76 @@ if (isset($_SESSION["user_level"])) {
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-               <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">ADMIN PANEL</h1>
-                  </div>
-                 </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="student_admission.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-account text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Student Admission</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-              </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="student_account.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-account-box text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Student Account</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
-
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="add_staff.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-account-plus text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Create Staff Account</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="manage_student.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-folder-multiple text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Manage Request</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-                </div>
-
-               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="chart.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 ml-3">Enrollees Charts</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                     </a>
-              </div>
-            </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="consoledated.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 text-center">Consoledated Report</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="year_menu.php?category=CLUSTER">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-check-all text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <br>
-                        <h3 class="font-weight-medium mb-0 text-center ml-3">Cluster Program</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="year_menu.php?category=Qualifying Exam">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-transcribe text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Qualifying Exams</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-             </div>
+          <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                      <form method="POST" class="card card-sm">
+        <div class="card-body row no-gutters align-items-center">
+          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
+           <button type="submit" name="submit-search" class="col-auto">
+           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
            </div>
+          </form>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="add_report.php">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Add Report</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+
+             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="update_report.php">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi  mdi-sync text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">Update Report</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+
+             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
+              <div class="card card-statistics">
+                  <a href="#">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
+                      <h1 class="float-right ml-5 mt-2">View Report</h1>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
+              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
         </footer>
-      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -310,6 +226,7 @@ if (isset($_SESSION["user_level"])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -324,6 +241,7 @@ if (isset($_SESSION["user_level"])) {
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
+
 </html>
 <?php
 }
