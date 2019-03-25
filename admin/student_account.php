@@ -198,7 +198,7 @@ session_start();
 
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="create_account.php">
+                  <a href="create_account.php?title=Add">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
@@ -213,7 +213,7 @@ session_start();
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="">
+                  <a href="create_account.php?title=Update">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
@@ -228,7 +228,7 @@ session_start();
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="">
+                  <a href="create_account.php?title=View">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">

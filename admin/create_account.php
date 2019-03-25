@@ -1,6 +1,7 @@
 <?php
 session_start();
 	 require '../db.php';
+   $title =$_GET['title'];
 	 if (isset($_SESSION["user_level"])) {
 		 $sql ="SELECT * from students";
 		 $res =mysqli_query($conn,$sql);
@@ -190,7 +191,26 @@ session_start();
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <h3 class="float-right ml-5 mt-2"><a href="student_profile.php?std_id=<?php echo $std_id; ?>"><?php echo $fname; ?></a></h3>
+                      <?php 
+                      if($title=='Add')
+                      {
+                        ?>
+                      <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
+                    <?php } ?>
+
+                     <?php 
+                      if($title=='Update')
+                      {
+                        ?>
+                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
+                    <?php } ?>
+
+                     <?php 
+                      if($title=='View')
+                      {
+                        ?>
+                      <h3 class="float-right ml-5 mt-2"><a href = "view_all_account.php?std=<?php echo $row['full_name'];?>"><?php echo $fname; ?></a></h3>
+                    <?php } ?>
                     </div>
                   </div>
                 </div>
@@ -212,8 +232,29 @@ session_start();
 	{
     ?>
 <tr>
+  <?php
+  if($title=='Add')
+  {
+    ?>
 	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
 	</a></p></td>
+<?php } ?>
+
+<?php
+  if($title=='Update')
+  {
+    ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
+  </a></p></td>
+<?php } ?>
+
+<?php
+  if($title=='View')
+  {
+    ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "view_all_account.php?std=<?php echo $row['full_name'];?>"><?php echo $row['full_name']; ?>
+  </a></p></td>
+<?php } ?>
 </tr>
 <?php
 }
