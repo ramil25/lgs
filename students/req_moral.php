@@ -1,24 +1,21 @@
 <?php
-session_start();
-if(isset($_POST['add']))
+$host = "localhost";
+$db = "databank";
+$user = "root";
+$pass = "";
+
+$conn = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
+if (isset($_POST['submit']))
 {
-  require '../db.php';
-  $comment =$_POST['comment'];
-  $reciever =$_POST['reciever'];
-  $addsql ="INSERT INTO message(comment,sender,reciever) VALUES ('".$comment."','','".$reciever."')";
-  $res= mysqli_query($conn,$addsql);
-  if($res)
-  {
-    echo "<script>alert('Request Sent!');
+	$reciever =$_POST['reciever'];
+	$comment =$_POST['comment'];
+	$sql= $conn -> prepare("INSERT INTO message (comment,reciever) VALUES (:reciever,:comment");
+	$conn -> beginTransaction();
+	$sql -> execute(array(':reciever'=>$reciever));
+	echo "<script>alert('Request Sent!');
     location.href='req_moral.php';
     </script>";
-  }
-  else 
-  {
-  	echo "<script>alert('Error');
-    location.href='req_moral.php';
-    </script>";
-  }
+    $conn -> commit();
 }
 ?>
 <!DOCTYPE html>
@@ -78,22 +75,22 @@ if(isset($_POST['add']))
 				<div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                	<form action="req_moral.php" style="margin-top: 20px">
+                	<form method="post" action="req_moral.php" style="margin-top: 20px">
                     <div class="form-group">
 
-                    <h1 style="margin-top: 30px"> Request Goodmoral: </h1><center>
+                    <h1 style="margin-top: 30px"> Request Goodmoral </h1><center>
                     
                     <label for="rec1" style="margin-top: 20px;">Select Reciever:</label>
 
-                    <select class="form-control" id="reciever">
+                    <select class="form-control" name="reciever">
 				        <option>Admin</option>
 				        <option>Guidance Councelor</option>
 				        <option>School Director</option>
 				        <option>Admission Office</option>
 				    </select><br>
 
-                      <textarea class="form-control" rows="8" id="comment" placeholder="Comment..."></textarea><br><br>
-                      <center><button type="submit" class="btn btn-lg btn-success">Submit</button></center>
+                      <textarea class="form-control" rows="8" name="comment" placeholder="Comment..."></textarea><br><br>
+                      <center><input type="submit" class="btn btn-lg btn-success" name="submit"></center>
                     </div>
               </form>    
             </div>

@@ -1,6 +1,26 @@
 <?php
 session_start();
-if (isset($_SESSION["user_level"])) {
+require '../db.php';
+  if (isset($_POST['submit']))
+  {
+  $annc = $_POST['announc'];
+  $sql = 'INSERT INTO announcement(announcement) VALUES ("'.$annc.'")';
+  $query = mysqli_query($conn,$sql);
+      if ($query)
+      {
+        echo "<script>alert('Announcement Succesfully Added!');
+        location.href='announcement.php';
+        </script>";
+      }
+      else if (!$query)
+      {
+        echo "<script>alert('Something went Wrong!');
+        location.href='announcement.php';
+        </script>";
+      }
+  }
+  if (isset($_SESSION["user_level"])) {
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +29,7 @@ if (isset($_SESSION["user_level"])) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Cluster</title>
+  <title>Announcement</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -138,12 +158,6 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="announcement.php">
-              <i class="menu-icon mdi mdi-newspaper"></i>
-              <span class="menu-title">Announcements</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
@@ -156,149 +170,16 @@ if (isset($_SESSION["user_level"])) {
         <div class="content-wrapper">
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">CLUSTER</h1>
-                  </div>
-                 </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CBMA&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi  mdi-briefcase text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">CBMA</h3>
-                      </div>
+                  <h1 class="text-center" style="margin-top: 20px;"> Create an Announcement </h1><br>
+                  <form method="post" action="announcement.php">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="20" name="announc" placeholder="Announcement.."></textarea><br>
+                         <center><input type="submit" class="btn btn-lg btn-success" name="submit"></center>
                     </div>
-                  </div>
-                </div>
-            </a>
+                 </form>
             </div>
-              </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CCJE&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-shield text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">CCJE</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CTE&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                     <i class="mdi mdi-book-open text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">CTE</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-                </div>
-
-               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a  href="view_cluster.php?title=IAE&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                     <i class="mdi mdi-city text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 ml-3">IAE</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                     </a>
-              </div>
-            </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CCS&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-laptop text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 text-center">CCS</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CA&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                     <i class="mdi mdi-leaf text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <br>
-                        <h3 class="font-weight-medium mb-0 text-center ml-3">CA</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CAS&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                    <i class="mdi mdi-eye text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">CAS</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CHMT&&year=2019">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                     <i class="mdi mdi-silverware text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <br>
-                        <h3 class="font-weight-medium mb-0 text-center ml-3">CHMT</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
-             </div>
-           </div>
+        </div>
+               
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

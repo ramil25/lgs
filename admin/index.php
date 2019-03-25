@@ -86,6 +86,7 @@ if (isset($_SESSION["user_level"])) {
               <span class="menu-title">Home</span>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-account"></i>
@@ -282,6 +283,23 @@ if (isset($_SESSION["user_level"])) {
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">Qualifying Exams</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="announcement.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-transcribe text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-center mb-0">Announcements</h3>
                       </div>
                     </div>
                   </div>
