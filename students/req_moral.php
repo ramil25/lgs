@@ -1,23 +1,28 @@
 <?php
-$host = "localhost";
-$db = "databank";
-$user = "root";
-$pass = "";
+session_start();
+require '../db.php';
+  if (isset($_POST['submit']))
+  {
+  $rcv = $_POST['reciever'];
+  $cmmt = $_POST['comment'];
 
-$conn = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
-if (isset($_POST['submit']))
-{
-	$reciever =$_POST['reciever'];
-	$comment =$_POST['comment'];
-	$sql= $conn -> prepare("INSERT INTO message (comment,reciever) VALUES (:reciever,:comment");
-	$conn -> beginTransaction();
-	$sql -> execute(array(':reciever'=>$reciever));
-	echo "<script>alert('Request Sent!');
-    location.href='req_moral.php';
-    </script>";
-    $conn -> commit();
-}
-?>
+  $sql = 'INSERT INTO message(comment,sender) VALUES ("'.$cmmt.'","'.$rcv.'")';
+  $query = mysqli_query($conn,$sql);
+      if ($query)
+      {
+        echo "<script>alert('Request Sent!');
+        location.href='req_moral.php';
+        </script>";
+      }
+      else if (!$query)
+      {
+        echo "<script>alert('Something went Wrong!');
+        location.href='req_moral.php';
+        </script>";
+      }
+  }
+ ?>
+
 <!DOCTYPE html>
 <html>
 
