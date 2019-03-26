@@ -7,7 +7,7 @@ if (isset($_SESSION["user_level"])) {
   if (empty($std_id)) {
     header("location:create_account.php");
   }
-  if(isset($_POST['add']))
+  if(isset($_POST['update-account']))
 {
    $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
@@ -17,7 +17,7 @@ if (isset($_SESSION["user_level"])) {
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = 'INSERT users(user_name,user_password,email,full_name,user_level,student_number,course,mobile) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'")';
+   $sql = "UPDATE users SET course='".$course."',user_name='".$username."',user_password='".$password."',mobile='".$mobile."',email='".$email."' WHERE user_id=".$std_id;
    $query = mysqli_query($conn,$sql);
     if ($password !== $repeat)
     {
@@ -36,7 +36,7 @@ if (isset($_SESSION["user_level"])) {
     }
     else if ($query)
     {
-        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Updated Successfully
         </p>';
     }
 
@@ -45,7 +45,7 @@ if (isset($_SESSION["user_level"])) {
   {
     $std_id = $_GET['std_id'];
     $std =$_GET['std'];
-    $query ="SELECT * from users where user_level=2";
+    $query ="SELECT * from users where user_level=2 and user_id=".$std_id;
     $ress =mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($ress);
 ?>
@@ -60,6 +60,7 @@ if (isset($_SESSION["user_level"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Student Admission</title>
   <!-- plugins:css -->
+  <link rel="icon" href="../images/lspu.png" />
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
@@ -215,7 +216,7 @@ if (isset($_SESSION["user_level"])) {
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" value="<?php echo $std; ?>" readonly />
+                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" value="<?php echo $row['full_name']; ?>" readonly />
                   </div>
                 </div>
 
@@ -270,7 +271,7 @@ if (isset($_SESSION["user_level"])) {
 
 
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Update</button>
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="update-account">Update</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
