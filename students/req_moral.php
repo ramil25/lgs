@@ -58,7 +58,7 @@ require '../db.php';
 
 			<nav>
 				<a href="index.php" style="margin-right: 30px;">Newsfeeds</a>
-				<a href="results.php"  style="margin-right: 30px;">Results</a>
+				<a href="result.php"  style="margin-right: 30px;">Results</a>
 				<a href="req_moral.php" class="selected" 	style="margin-right: 30px;">Request Good Moral</a>
 				<a href="aboutus.php" style="margin-right: 30px;">About Us</a>
 			</nav>
