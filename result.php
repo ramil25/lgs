@@ -1,3 +1,8 @@
+<?php
+require 'db.php';
+$sql ="SELECT * FROM students";
+$res =mysqli_query($conn,$sql);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +15,7 @@
 	<title>Results</title>
 
 	<link rel="shortcut icon" href="images/lspu.png">
+	<link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="css/students.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
@@ -48,10 +54,27 @@
 <div class="menu" style="background-color: #eaf0f2;">
 	<div class="container">
 		<div class="row">
+			<div class="col-11">
+				<input class="form-control" type="search" name="search" placeholder="Search...">
+			</div>
+			<div class="col-1">
+			<button type="submit" name="submit-search" class=" ml-0 form-control">
+           <i class="mdi mdi-magnify icon-sm"></i></button>
+			</div>
+
 			<div class="col-12">
-				<center>
-				<input class="form-control" type="text" name="search" placeholder="Search..." style="width: 800px;"></center>
-				
+				<<table class="table table-hover table-striped text-left">
+					<tr>
+						<th><h3>Names of Examiners</h3></th>
+					</tr>
+					<?php
+          while($row=mysqli_fetch_assoc($res))
+	  { ?>
+	  <tr>
+	<td style="font-size: 20px;">  <a class="text-dark" href=""> <?php echo $row['full_name']; ?></a></td>
+	  </tr>
+	  <?php } ?>
+				</table>
 			</div>
 			
 		</div>
