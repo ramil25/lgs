@@ -6,7 +6,7 @@ require '../db.php';
   $rcv = $_POST['reciever'];
   $cmmt = $_POST['comment'];
 
-  $sql = 'INSERT INTO message(comment,sender) VALUES ("'.$cmmt.'","'.$rcv.'")';
+  $sql = 'INSERT INTO message(comment,reciever) VALUES ("'.$cmmt.'","'.$rcv.'")';
   $query = mysqli_query($conn,$sql);
       if ($query)
       {
@@ -21,6 +21,7 @@ require '../db.php';
         </script>";
       }
   }
+
  ?>
 
 <!DOCTYPE html>
@@ -88,10 +89,22 @@ require '../db.php';
                     <label for="rec1" style="margin-top: 20px;">Select Reciever:</label>
 
                     <select class="form-control" name="reciever">
-				        <option>Admin</option>
-				        <option>Guidance Councelor</option>
-				        <option>School Director</option>
-				        <option>Admission Office</option>
+                    	<option value="pick">Select Reciever</option>
+				        <?php
+				        session_start();
+						require '../db.php';
+
+                        $sql =  mysqli_query($conn,"SELECT user_name From users WHERE user_level='1'");
+                        $row = mysqli_num_rows($sql);
+
+
+                            while ($row = mysqli_fetch_array($sql))
+                            {
+                                echo "<option value='". $row['user_name'] ."'>" .$row['user_name'] ."</option>" ;
+                            }
+                            echo "</select>" ;
+
+                        ?>
 				    </select><br>
 
                       <textarea class="form-control" rows="8" name="comment" placeholder="Comment..."></textarea><br><br>
