@@ -94,13 +94,14 @@ require '../db.php';
 				        session_start();
 						require '../db.php';
 
-                        $sql =  mysqli_query($conn,"SELECT user_name From users WHERE user_level='1'");
+                        $sql =  mysqli_query($conn,"SELECT * From users WHERE user_level='1'");
                         $row = mysqli_num_rows($sql);
 
 
                             while ($row = mysqli_fetch_array($sql))
-                            {
-                                echo "<option value='". $row['user_name'] ."'>" .$row['user_name'] ."</option>" ;
+                            { ?>
+                              <option value="<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></option>
+                              <?php 
                             }
                             echo "</select>" ;
 
