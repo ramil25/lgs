@@ -1,6 +1,6 @@
 <?php
 require '../db.php';
-$sql ="SELECT * FROM students";
+$sql ="SELECT * FROM students WHERE remarks='Qualified'";
 $res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
@@ -56,25 +56,62 @@ $res =mysqli_query($conn,$sql);
 	<div class="container">
 		<div class="row">
 			<div class="col-11">
-				<input class="form-control" type="search" name="search" placeholder="Search...">
+				<form method="get">
+				<input class="form-control" type="text" name="search" placeholder="Search..." value="">
 			</div>
 			<div class="col-1">
 			<button type="submit" name="submit-search" class=" ml-0 form-control">
            <i class="mdi mdi-magnify icon-sm"></i></button>
+       </form>
 			</div>
 
 			<div class="col-12">
-				<<table class="table table-hover table-striped text-left">
+				<table class="table table-hover table-striped text-left">
+					<?php 
+					if(isset($_GET['submit-search']))
+					{
+					$s =$_GET['search'];
+					$query ="SELECT * FROM students WHERE full_name LIKE '".$s."%' AND remarks='Qualified'";
+					$ress =mysqli_query($conn,$query);
+					if($ress)
+					{ ?>
+						<tr>
+						<th><h3>Names of Examiners</h3></th>
+						<th><h3>Course</h3></th>
+						<th><h3>Results</h3></th>
+					</tr>
+					<?php
+          while($rows=mysqli_fetch_assoc($ress))
+	  { ?>
+	  <tr>
+	<td style="font-size: 20px;"><?php echo $rows['full_name']; ?></td>
+
+	<td style="font-size: 20px;"> <?php echo $rows['fchoice']; ?></td>
+
+	<td style="font-size: 20px;">  <?php echo $rows['remarks']; ?></td>
+	  </tr>
+	  <?php }
+					}
+				}
+				else
+				{
+					?>
 					<tr>
 						<th><h3>Names of Examiners</h3></th>
+						<th><h3>Course</h3></th>
+						<th><h3>Results</h3></th>
 					</tr>
 					<?php
           while($row=mysqli_fetch_assoc($res))
 	  { ?>
 	  <tr>
-	<td style="font-size: 20px;">  <a class="text-dark" href=""> <?php echo $row['full_name']; ?></a></td>
+	<td style="font-size: 20px;"><?php echo $row['full_name']; ?></td>
+
+	<td style="font-size: 20px;"> <?php echo $row['fchoice']; ?></td>
+
+	<td style="font-size: 20px;">  <?php echo $row['remarks']; ?></td>
 	  </tr>
-	  <?php } ?>
+	  <?php }  }?>
 				</table>
 			</div>
 			

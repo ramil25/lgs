@@ -1,6 +1,6 @@
 <?php
 require 'db.php';
-$sql ="SELECT * FROM students";
+$sql ="SELECT * FROM students WHERE remarks='Qualified'";
 $res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ $res =mysqli_query($conn,$sql);
 					if(isset($_GET['submit-search']))
 					{
 					$s =$_GET['search'];
-					$query ="SELECT * FROM students WHERE full_name LIKE '".$s."%'";
+					$query ="SELECT * FROM students WHERE full_name LIKE '".$s."%' AND remarks='Qualified'";
 					$ress =mysqli_query($conn,$query);
 					if($ress)
 					{ ?>
