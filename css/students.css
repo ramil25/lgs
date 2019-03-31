@@ -382,3 +382,20 @@ body{
     margin-left:0;
   }
 }
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #558c7e;
+  text-align: center;
+
+}
+
+th {
+  background-color: #558c7e;
+  color: white;
+  line-height: 26pt;
+  margin-top: 50px;
+
+}
