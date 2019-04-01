@@ -170,9 +170,9 @@ $res =mysqli_query($conn,$sql);
         <tr>
           <td><a style="color: black; font-size: 20px;" href=<?php
 
-          if($title=="VIEWREPORT")
+          if($title=="VIEW")
           {
-           echo "student_profile.php?rpt_id=".$row['student_id']; ?>><?php echo $row['full_name'];
+           echo "view_report_profile.php?rpt_id=".$row['report_id']; ?>><?php echo $row['report_counselee'];
            }
           else
           {

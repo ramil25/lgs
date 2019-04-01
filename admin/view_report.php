@@ -170,7 +170,7 @@ $res =mysqli_query($conn,$sql);
         <tr>
           <td><a style="color: black; font-size: 20px;" href=<?php
 
-          if($rpt=="VIEWREPORT")
+          if($rpt=="VIEW")
           {
            echo "view_report_profile.php?rpt_id=".$row['report_id']; ?>><?php echo $row['report_counselee'];
            }

@@ -8,7 +8,7 @@ if (isset($_SESSION["user_level"])) {
   $result =mysqli_query($conn,$sql);
   $fetch  =mysqli_fetch_assoc($result);
 
-  if(isset($_POST['update']))
+  /*if(isset($_POST['update']))
   {
     $coun =$_POST['counselee'];
     $case =$_POST['case'];
@@ -23,7 +23,7 @@ if (isset($_SESSION["user_level"])) {
         location.href='consoledated.php';
         </script>";
       }
-  }
+  }*/
 ?>
 
 <!DOCTYPE html>
@@ -177,7 +177,7 @@ if (isset($_SESSION["user_level"])) {
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">UPDATE REPORT</h1>
+                    <h1 class="text-center page-header p-2">VIEW REPORT</h1>
                   </div>
                  </div>
             </div>
@@ -189,30 +189,31 @@ if (isset($_SESSION["user_level"])) {
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" required value="<?php echo $fetch['report_counselee']; ?>" />
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" readonly value="<?php echo $fetch['report_counselee']; ?>" />
                   </div>
                 </div>
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="text" name="case" placeholder="Case..." required class="form-control" value="<?php echo $fetch['report_case']; ?>" />
+                     <input type="text" name="case" placeholder="Case..." readonly class="form-control" value="<?php echo $fetch['report_case']; ?>" />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="date" name="date" placeholder="Date..." required class="form-control" value="<?php echo $fetch['report_date']; ?>" />
+                    <input type="date" name="date" placeholder="Date..." readonly class="form-control" value="<?php echo $fetch['report_date']; ?>" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks..." required class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+                   <input type="text" name="remarks" placeholder="Remarks..." readonly class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
                   </div>
                 </div>
-                <div class="form-group text-center">
+                <!--  <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="update" >Update</button>
                 </div>
+                -->
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
                   </div>
