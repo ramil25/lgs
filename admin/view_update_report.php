@@ -2,6 +2,11 @@
 session_start();
 require '../db.php';
 if (isset($_SESSION["user_level"])) {
+if($conn)
+{
+$title = $_GET['rpt_id'];
+$sql ="SELECT * from report";
+$res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +15,7 @@ if (isset($_SESSION["user_level"])) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Consoledated Report</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -73,7 +78,7 @@ if (isset($_SESSION["user_level"])) {
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
+                  <p class="profile-name">Dem</p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -149,70 +154,54 @@ if (isset($_SESSION["user_level"])) {
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-
-            </div>
-
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="add_report.php">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-multiple-plus text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Add Report</h1>
-                    </div>
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header p-2"><?php echo $title; ?></h1>
                   </div>
-                </div>
-                </a>
-              </div>
-            </div>
+                 </div>
 
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="view_update_report.php?rpt_id=SELECT REPORT TO UPDATE">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi  mdi-sync text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Update Report</h1>
-                    </div>
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                 <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
+                  <?php
+          while($row=mysqli_fetch_assoc($res))
+      { ?>
+        <tr>
+          <td><a style="color: black; font-size: 20px;" href=<?php
+
+          if($title=="VIEW-REPORT")
+          {
+           echo "student_profile.php?rpt_id=".$row['student_id']; ?>><?php echo $row['full_name'];
+           }
+          else
+          {
+            echo "update_report.php?rpt_id=".$row['report_id']; ?>><?php echo $row['report_counselee'];
+          }
+            ?></a></td>
+        </tr>
+      <?php } ?>
+               </table>
                   </div>
-                </div>
-                </a>
-              </div>
-            </div>
+                 </div>
 
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="#">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">View Report</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
 
-          </div>
 
-        </div>
+             </div>
+           </div>
+         <?php } ?>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -220,7 +209,6 @@ if (isset($_SESSION["user_level"])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>

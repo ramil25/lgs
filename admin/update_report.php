@@ -1,15 +1,29 @@
 <?php
 session_start();
+require '../db.php';
 if (isset($_SESSION["user_level"])) {
   $success = '';
-/*if(isset($_POST['add']))
-{
-  require '../db.php';
-   $fname = $_POST['fullname'];
-   $date = $_POST['studentnumber'];
-   $case = $_POST['course'];
-   $progress = $_POST['username'];
-} */
+  $report = $_GET['rpt_id'];
+  $sql ="SELECT * FROM report WHERE report_id=".$report;
+  $result =mysqli_query($conn,$sql);
+  $fetch  =mysqli_fetch_assoc($result);
+
+  if(isset($_POST['update']))
+  {
+    $coun =$_POST['counselee'];
+    $case =$_POST['case'];
+    $date =$_POST['date'];
+    $rem =$_POST['remarks'];
+
+    $updatesql ="UPDATE report set report_counselee='".$coun."',report_case='".$case."',report_date='".$date."',report_remarks='".$rem."' WHERE report_id=".$report;
+     $res= mysqli_query($conn,$updatesql);
+      if($res)
+      {
+        echo "<script>alert('Updated successfully');
+        location.href='consoledated.php';
+        </script>";
+      }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -171,43 +185,36 @@ if (isset($_SESSION["user_level"])) {
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-
               <form action="" method="post">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Counselee..." class="form-control" required />
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" required value="<?php echo $fetch['report_counselee']; ?>" />
                   </div>
                 </div>
-
-
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="text" name="date" placeholder="Case..." required class="form-control" />
+                     <input type="text" name="case" placeholder="Case..." required class="form-control" value="<?php echo $fetch['report_case']; ?>" />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="date" name="Case" placeholder="Date..." required class="form-control" />
+                    <input type="date" name="date" placeholder="Date..." required class="form-control" value="<?php echo $fetch['report_date']; ?>" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="Progress" placeholder="Remarks..." required class="form-control"/>
+                   <input type="text" name="remarks" placeholder="Remarks..." required class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
                   </div>
                 </div>
-
-
-
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="update" >Update</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
-
                   </div>
                 </div>
               </form>
