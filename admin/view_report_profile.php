@@ -1,13 +1,31 @@
 <?php
 session_start();
-	 require '../db.php';
-   $title =$_GET['title'];
-	 if (isset($_SESSION["user_level"])) {
-		 $sql ="SELECT * from students";
-     $res =mysqli_query($conn,$sql);
-     $query ="SELECT * from users where user_level=2";
-     $ress =mysqli_query($conn,$query);
+require '../db.php';
+if (isset($_SESSION["user_level"])) {
+  $success = '';
+  $report = $_GET['rpt_id'];
+  $sql ="SELECT * FROM report WHERE report_id=".$report;
+  $result =mysqli_query($conn,$sql);
+  $fetch  =mysqli_fetch_assoc($result);
+
+  if(isset($_POST['update']))
+  {
+    $coun =$_POST['counselee'];
+    $case =$_POST['case'];
+    $date =$_POST['date'];
+    $rem =$_POST['remarks'];
+
+    $updatesql ="UPDATE report set report_counselee='".$coun."',report_case='".$case."',report_date='".$date."',report_remarks='".$rem."' WHERE report_id=".$report;
+     $res= mysqli_query($conn,$updatesql);
+      if($res)
+      {
+        echo "<script>alert('Updated successfully');
+        location.href='consoledated.php';
+        </script>";
+      }
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +33,7 @@ session_start();
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student Admission</title>
+  <title>Consoledated Report</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -28,7 +46,8 @@ session_start();
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
 </head>
-
+<style type="text/css">
+</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -55,7 +74,7 @@ session_start();
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="../index.php">
+              <a class="dropdown-item mt-2" href="logout.php">
                 Logout
             </a>
             </div>
@@ -69,12 +88,13 @@ session_start();
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
+                  <!-- user-img -->
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
@@ -113,14 +133,12 @@ session_start();
               </ul>
             </div>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
             </a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="chart.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
@@ -157,148 +175,62 @@ session_start();
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-											<div class="card card-statistics">
-                      <?php
-                      if($title=='Add')
-                      {
-                        ?>
-												<h1 class="text-center page-header p-2">SELECT STUDENT TO CREATE ACCOUNT</h1>
-                      <?php } ?>
-                      <?php
-                      if($title=='Update')
-                      {
-                        ?>
-												<h1 class="text-center page-header p-2">SELECT STUDENT TO UPDATE ACCOUNT</h1>
-                      <?php } ?>
-                      <?php
-                      if($title=='View')
-                      {
-                        ?>
-												<h1 class="text-center page-header p-2">SELECT STUDENT TO VIEW ACCOUNT DETAILS</h1>
-                      <?php } ?>
-											</div>
-
-
-                      <form method="POST" class="card card-sm">
-        <div class="card-body row no-gutters align-items-center">
-          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
-           <button type="submit" name="submit-search" class="col-auto">
-           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
-           </div>
-          </form>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header p-2">UPDATE REPORT</h1>
+                  </div>
+                 </div>
             </div>
-          <?php
-
-    require '../db.php';
-    if(isset($_POST['submit-search'])) {
-    $search = $_POST["search"];
-    $sql = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
-    $result = mysqli_query($conn,$sql);
-    $checkResult = mysqli_num_rows($result);
-
-    $sq = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
-    $results = mysqli_query($conn,$sq);
-    $checkResults = mysqli_num_rows($results);
-
-    echo "  About ".$checkResult." result(s)!";
-    if ($checkResult > 0 ||  $checkResults > 0 ) {
-      while ($row = mysqli_fetch_assoc($result)) {
-
-            $fname = $row['full_name'];
-						echo '<center>'.$fname.'</center>';
-?>
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <?php
-                      if($title=='Add')
-                      {
-                        ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
-  </a></h3>
-                    <?php } }
-                    ?>
-
-                     <?php
-                     while ($rows = mysqli_fetch_assoc($results)) {
-
-                      $fname = $row['full_name'];
-                      $std_id = $row['student_id'];
-                      if($title=='Update')
-                      {
-                        ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std_id=<?php echo $rows['user_id']; ?>&std=<?php echo $rows['full_name']; ?>"><?php echo $rows['full_name']; ?></a></h3>
-                      <?php } ?>
-                     <?php
-                      if($title=='View')
-                      {
-                        ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "view_account.php?std_id=<?php echo $rows['user_id'];?>"><?php echo $fname; ?></a></h3>
-                    <?php } ?>
-                    </div>
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+                  <div class="col-lg-6 mx-auto">
+                      <div class="auto-form-wrapper">
+              <form action="" method="post">
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" required value="<?php echo $fetch['report_counselee']; ?>" />
                   </div>
                 </div>
-                </a>
-              </div>
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="case" placeholder="Case..." required class="form-control" value="<?php echo $fetch['report_case']; ?>" />
+                  </div>
+                </div> <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Date</label>
+                  <div class="col-sm-8">
+                    <input type="date" name="date" placeholder="Date..." required class="form-control" value="<?php echo $fetch['report_date']; ?>" />
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Remarks</label>
+                  <div class="col-sm-8">
+                   <input type="text" name="remarks" placeholder="Remarks..." required class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+                  </div>
+                </div>
+                <div class="form-group text-center">
+                  <button type="submit" class="btn btn-success submit-btn w-50" name="update" >Update</button>
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                  <div class="form-check form-check-flat mt-0">
+                  </div>
+                </div>
+              </form>
             </div>
-            <?php
-      }
-    }
-
-  }
-  ?>
-	<table  class="table table-striped table-light text-center">
-<tr>
-<th>USER</th>
-</tr>
-	<?php
-	while($row=mysqli_fetch_assoc($res))
-	{
-    ?>
-<tr>
-  <?php
-  if($title=='Add')
-  {
-    ?>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
-	</a></p></td>
-<?php }} ?>
-
-<?php
-while($row=mysqli_fetch_assoc($ress))
-{
-  if($title=='Update')
-  {
-    ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['user_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
-  </a></p></td>
-<?php } ?>
-
-<?php
-  if($title=='View')
-  {
-    ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "view_account.php?std_id=<?php echo $row['user_id'];?>"><?php echo $row['full_name']; ?>
-  </a></p></td>
-<?php } ?>
-</tr>
-<?php
-}
-?>
-</table>
+                </div>
+           </div>
+           </div>
+            </div>
           </div>
-
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>

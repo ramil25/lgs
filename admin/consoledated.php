@@ -186,7 +186,7 @@ if (isset($_SESSION["user_level"])) {
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="#">
+                  <a href="view_report.php?rpt_id=VIEW REPORT">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
