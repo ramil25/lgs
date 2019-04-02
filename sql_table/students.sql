@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2019 at 07:33 AM
+-- Generation Time: Apr 02, 2019 at 03:08 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -43,6 +43,7 @@ CREATE TABLE `students` (
   `tchoice` varchar(30) NOT NULL,
   `raw_score` float NOT NULL,
   `remarks` varchar(30) NOT NULL,
+  `colleges` varchar(10) NOT NULL,
   `date_ad` varchar(10) NOT NULL,
   `photo_link` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -51,8 +52,10 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attended`, `strand_course`, `grade_GWA`, `grade_Math`, `grade_English`, `grade_Science`, `fchoice`, `schoice`, `tchoice`, `raw_score`, `remarks`, `date_ad`, `photo_link`) VALUES
-(1, 'Dem Soriano', 'Male', 'Laguna Sta Polytechnic University', 'ICT', 89, 88, 75, 80, 'BSIT', 'BSCS', 'BA', 88.9, 'Qualified', '02/22/2019', '');
+INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attended`, `strand_course`, `grade_GWA`, `grade_Math`, `grade_English`, `grade_Science`, `fchoice`, `schoice`, `tchoice`, `raw_score`, `remarks`, `colleges`, `date_ad`, `photo_link`) VALUES
+(1, 'Dem Soriano', 'Male', 'Laguna Sta Polytechnic University', 'ICT', 89, 88, 75, 80, 'BSIT', 'BSCS', 'BA', 88.9, 'Qualified', 'CCS', '02/22/2019', ''),
+(2, 'Aby Ser', 'Female', 'LSPU', 'GAS', 80, 99, 84, 78, 'BSA', 'BSCS', 'BSIT', 89, 'Qualified', 'CA', 'June/1/201', ''),
+(3, 'James Cabantog', 'Male', 'STI', 'ABM', 80, 93, 84, 88, 'BSAB', 'BSA', 'BSBA', 90, 'Qualified', 'CBMA', 'June/1/201', '');
 
 --
 -- Indexes for dumped tables
@@ -72,7 +75,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
