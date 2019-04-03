@@ -23,7 +23,7 @@ if(isset($_GET['title']))
     $c2='BSCS';
     $c3='BSIS';
     $c4='ACT';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CHMT")
   {
@@ -246,7 +246,7 @@ $res =mysqli_query($conn,$sql);
         <tr>
           <td><p style="color: black; font-size: 20px;"><?php echo $row['full_name'];
             ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['fchoice'];
+            <td><p style="color: black; font-size: 20px;"><?php echo $row['fcourse'];
             ?></p></td>
             <td><p style="color: black; font-size: 20px;"><?php echo $row['raw_score'];
             ?></p></td>
