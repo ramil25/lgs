@@ -15,7 +15,7 @@ if(isset($_GET['title']))
     $c2='BAT';
     $c3='BSAgEd';
     $c4='BSAB';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CCS")
   {

@@ -19,17 +19,64 @@ if(isset($_POST['add']))
   $rs =$_POST['raw_score'];
   $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
 
-    if(($fchoice=='BSA' && $gwa>=87) || ($fchoice=='BSAB' && $gwa>=83)|| ($fchoice=='BAT' && $gwa>=79) || ($fchoice=='BSFOODTECH' && $gwa>=83))
+    if($fchoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
       $rem ='Qualified';
     }
-    else if(($schoice=='BSA' && $gwa>=87) || ($schoice=='BSAB' && $gwa>=83)|| ($schoice=='BAT' && $gwa>=79) || ($schoice=='BSFOODTECH' && $gwa>=83))
+    else if($fchoice=='BSAB' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
     }
-    else if(($tchoice=='BSA' && $gwa>=87) || ($tchoice=='BSAB' && $gwa>=83)|| ($tchoice=='BAT' && $gwa>=79) || ($tchoice=='BSFOODTECH' && $gwa>=83))
+    else if($fchoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($fchoice=='BSFOODTECH' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+
+    else if($schoice=='BSA' && $gwa>=87)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($schoice=='BSAB' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($schoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($schoice=='BSFOODTECH' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+
+    else if($tchoice=='BSA' && $gwa>=87)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($tchoice=='BSAB' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($tchoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+    }
+    else if($tchoice=='BSFOODTECH' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
