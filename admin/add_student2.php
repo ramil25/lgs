@@ -2,6 +2,7 @@
 $title=$_GET['title'];
   $coll='';
   $rem ='';
+  $course ='';
 if(isset($_POST['add']))
 {
   require '../db.php';
@@ -23,69 +24,81 @@ if(isset($_POST['add']))
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSA';
     }
     else if($fchoice=='BSAB' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSAB';
     }
     else if($fchoice=='BAT' && $gwa>=79)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BAT';
     }
     else if($fchoice=='BSFOODTECH' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSFOODTECH';
     }
 
     else if($schoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSA';
     }
     else if($schoice=='BSAB' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSAB';
     }
     else if($schoice=='BAT' && $gwa>=79)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BAT';
     }
     else if($schoice=='BSFOODTECH' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSFOODTECH';
     }
 
     else if($tchoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSA';
     }
     else if($tchoice=='BSAB' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSAB';
     }
     else if($tchoice=='BAT' && $gwa>=79)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BAT';
     }
     else if($tchoice=='BSFOODTECH' && $gwa>=83)
     {
       $coll='CA';
       $rem ='Qualified';
+      $course='BSFOODTECH';
     }
     else{
       $coll ='none';
       $rem='Unqualified';
     } 
-  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,raw_score,remarks,colleges,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$rs."','".$rem."','".$coll."','".$date."','')";
+  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {

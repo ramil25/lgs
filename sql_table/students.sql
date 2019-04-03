@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2019 at 03:08 PM
+-- Generation Time: Apr 03, 2019 at 03:23 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -41,6 +41,7 @@ CREATE TABLE `students` (
   `fchoice` varchar(30) NOT NULL,
   `schoice` varchar(30) NOT NULL,
   `tchoice` varchar(30) NOT NULL,
+  `fcourse` varchar(20) NOT NULL,
   `raw_score` float NOT NULL,
   `remarks` varchar(30) NOT NULL,
   `colleges` varchar(10) NOT NULL,
@@ -52,10 +53,16 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attended`, `strand_course`, `grade_GWA`, `grade_Math`, `grade_English`, `grade_Science`, `fchoice`, `schoice`, `tchoice`, `raw_score`, `remarks`, `colleges`, `date_ad`, `photo_link`) VALUES
-(1, 'Dem Soriano', 'Male', 'Laguna Sta Polytechnic University', 'ICT', 89, 88, 75, 80, 'BSIT', 'BSCS', 'BA', 88.9, 'Qualified', 'CCS', '02/22/2019', ''),
-(2, 'Aby Ser', 'Female', 'LSPU', 'GAS', 80, 99, 84, 78, 'BSA', 'BSCS', 'BSIT', 89, 'Qualified', 'CA', 'June/1/201', ''),
-(3, 'James Cabantog', 'Male', 'STI', 'ABM', 80, 93, 84, 88, 'BSAB', 'BSA', 'BSBA', 90, 'Qualified', 'CBMA', 'June/1/201', '');
+INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attended`, `strand_course`, `grade_GWA`, `grade_Math`, `grade_English`, `grade_Science`, `fchoice`, `schoice`, `tchoice`, `fcourse`, `raw_score`, `remarks`, `colleges`, `date_ad`, `photo_link`) VALUES
+(3, 'James Cabantog', 'Male', 'STI', 'ABM', 80, 93, 84, 88, 'BSAB', 'BSA', 'BSBA', 'BSAB', 90, 'Qualified', 'CBMA', 'June/1/201', ''),
+(7, 'Joy Arroyo', 'Female', 'LSPU', 'ABM', 75, 90, 84, 85, 'BSA', 'BAT', 'BSAB', 'BSA', 75, 'Unqualified', 'none', 'June/1/201', ''),
+(8, 'Alan Calinagan', 'Male', 'STI', 'GAS', 80, 90, 84, 88, 'BSIT', 'BS Accountancy', 'BSIS', 'BSIT', 90, 'Unqualified', 'none', 'June/1/201', ''),
+(9, 'Ray Manalo', 'Male', 'LSPU', 'ABM', 84, 99, 88, 88, 'ACT', 'BS Accountancy', 'BSAB', 'ACT', 90, 'Qualified', 'CA', 'June/1/201', ''),
+(10, 'Garry Rivera', 'Male', 'LSPU', 'ICT', 80, 90, 84, 88, 'ACT', 'BAT', 'BSAB', 'ACT', 12, 'Unqualified', 'none', 'June/1/201', ''),
+(11, 'Larry Quiano', 'Male', 'STI', 'GAS', 80, 90, 89, 85, 'ACT', 'BSA', 'BAT', 'BSA', 90, 'Unqualified', 'none', 'June/1/201', ''),
+(12, 'Susan Laos', 'Female', 'LSPU', 'GAS', 80, 90, 84, 88, 'BSIT', 'BAT', 'BSIS', 'BSIT', 90, 'Qualified', 'CA', 'June/1/201', ''),
+(13, 'Jenny Marquez', 'Female', 'LSPU', 'ABM', 84, 90, 84, 88, 'BSA', 'BS Accountancy', 'BAT', 'BSA', 90, 'Qualified', 'CA', 'June/1/201', ''),
+(14, 'Aby Ser', 'Female', 'LSPU', 'GAS', 79, 90, 84, 88, 'ACT', 'BAT', 'BSBA', 'BAT', 75, 'Qualified', 'CA', 'June/1/201', '');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +82,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
