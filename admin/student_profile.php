@@ -246,6 +246,13 @@ if($conn)
                 </div>
 
                  <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Qualified Course</label>
+                  <div class="col-sm-8">
+                    <input type="text" name="tchoice" placeholder="Course" readonly class="form-control-plaintext" value="<?php echo $fetch['fcourse']; ?>" >
+                  </div>
+                </div>
+
+                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Raw Score:</label>
                   <div class="col-sm-8">
                     <input type="text" name="raw_score" placeholder="Input Score" readonly class="form-control-plaintext" value="<?php echo $fetch['raw_score']; ?>" >
