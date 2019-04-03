@@ -20,6 +20,7 @@ if(isset($_POST['add']))
   $rs =$_POST['raw_score'];
   $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
 
+  //first choice
     if($fchoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
@@ -44,7 +45,31 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
-
+    else if($fchoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($fchoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($fchoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($fchoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    //second choice
     else if($schoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
@@ -69,7 +94,32 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
+    else if($schoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($schoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($schoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($schoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
 
+    //third choice
     else if($tchoice=='BSA' && $gwa>=87)
     {
       $coll='CA';
@@ -94,7 +144,32 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
+    else if($tchoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($tchoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($tchoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($tchoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
     else{
+      $course='none';
       $coll ='none';
       $rem='Unqualified';
     } 
