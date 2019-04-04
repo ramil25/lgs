@@ -11,18 +11,10 @@ if(isset($_GET['title']))
 {
   if($title=="CA")
   {
-    $c1='BSA';
-    $c2='BAT';
-    $c3='BSAgEd';
-    $c4='BSAB';
     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CCS")
   {
-    $c1='BSIT';
-    $c2='BSCS';
-    $c3='BSIS';
-    $c4='ACT';
      $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CHMT")
@@ -35,11 +27,7 @@ if(isset($_GET['title']))
   }
   else if($title=="CCJE")
   {
-    $c1='BSCrim';
-    $c2='';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="IAE")
   {
@@ -67,11 +55,7 @@ if(isset($_GET['title']))
   }
   else if($title=="CAS")
   {
-    $c1='BSP';
-    $c2='BS Food Tech';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
 $res =mysqli_query($conn,$sql);
 
