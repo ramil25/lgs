@@ -69,6 +69,19 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='ACT';
     }
+    else if($fchoice=='BS Psychology' || $fchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($fchoice=='BS CRIMINOLOGY' || $fchoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+
     //second choice
     else if($schoice=='BSA' && $gwa>=87)
     {
@@ -117,6 +130,18 @@ if(isset($_POST['add']))
       $coll='CCS';
       $rem ='Qualified';
       $course='ACT';
+    }
+    else if($schoice=='BS Psychology' || $schoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($schoice=='BS CRIMINOLOGY' || $schoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
     }
 
     //third choice
@@ -167,6 +192,18 @@ if(isset($_POST['add']))
       $coll='CCS';
       $rem ='Qualified';
       $course='ACT';
+    }
+    else if($tchoice=='BS Psychology' || $tchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($tchoice=='BS CRIMINOLOGY' || $tchoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
     }
     else{
       $course='none';
