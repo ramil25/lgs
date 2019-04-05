@@ -19,11 +19,7 @@ if(isset($_GET['title']))
   }
   else if($title=="CHMT")
   {
-    $c1='DHRM';
-    $c2='BSHRM';
-    $c3='BS Tourism';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CCJE")
   {
@@ -31,27 +27,15 @@ if(isset($_GET['title']))
   }
   else if($title=="IAE")
   {
-    $c1='BSAgEng';
-    $c2='';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CTE")
   {
-    $c1='BSEd';
-    $c2='BEED';
-    $c3='';
-    $c4='';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CBMA")
   {
-    $c1='BSBA';
-    $c2='BSAccountancy';
-    $c3='BSOA';
-    $c4='ACS';
-    $sql ="SELECT * from students WHERE (fchoice='".$c1."' OR fchoice='".$c2."' OR fchoice='".$c3."' OR fchoice='".$c4."') AND (remarks='Qualified' OR remarks='qualified')";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
   }
   else if($title=="CAS")
   {
