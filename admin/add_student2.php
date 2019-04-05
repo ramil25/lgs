@@ -81,6 +81,36 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BS Criminology';
     }
+     else if($fchoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($fchoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($fchoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($fchoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($fchoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
 
     //second choice
     else if($schoice=='BSA' && $gwa>=87)
@@ -143,6 +173,36 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BS Criminology';
     }
+    else if($schoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($schoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($schoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($schoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($schoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
 
     //third choice
     else if($tchoice=='BSA' && $gwa>=87)
@@ -204,6 +264,36 @@ if(isset($_POST['add']))
       $coll='CCJE';
       $rem ='Qualified';
       $course='BS Criminology';
+    }
+    else if($tchoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($tchoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($tchoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($tchoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($tchoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
     }
     else{
       $course='none';
