@@ -144,6 +144,12 @@ $res =mysqli_query($conn,$sql);
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="announcement.php">
+              <i class="menu-icon mdi mdi-newspaper"></i>
+              <span class="menu-title">Announcements</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
