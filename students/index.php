@@ -48,8 +48,8 @@
 </header>
 
 <!-- The content of your page would go here. -->
-	<div style="background-color: #e9ebee;">	
-		<div id="demo" class="carousel slide" data-ride="carousel"><br>
+<div style="background-color: #e9ebee">
+	<div id="demo" class="carousel slide" data-ride="carousel"><br>
 
   <!-- Indicators -->
   <ul class="carousel-indicators">
@@ -80,52 +80,55 @@
     <span class="carousel-control-next-icon"></span>
   </a>
 </div>
-</center>
-	</div>
-	</div>
+</center><br>
 
-	<div class="container-fluid">
-	<div class="row">
-	<div class="col-sm-12 col-md-12 col-lg-12 ">
-	<div class="menu" style="background-color: #e9ebee;">
-	<center>
-	<table class="table">
-		<thead class="thead-dark table-hover">
-		
-		<tr>
-			<th style="text-align: center;">Announcements</th>
-		</tr>
-	</thead>
-	</center>
-<?php
-	session_start();
-	require '../db.php';
+<div style="background-color: #e9ebee">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card" style="background-color: #e9ebee">
+              <div class="card card-statistics"> 
+              <div class="card-header">
+			   <h5> Announcements </h5>
+			  </div>              
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-center">
+                      <?php
+						session_start();
+						require '../db.php';
 
-	$sql = "SELECT * FROM announcement";
-	$result = $conn -> query($sql);
-	if ($result -> num_rows > 0) {
-		while ($row = $result -> fetch_assoc()) {
-			echo "<tr><td>".$row["announcement"]."<br></td></tr>"; 
-		}
-		echo "</table>";
-	}
-	else {
-		echo "<tr><td><i>No Announcements</tr></td></i>";
-	}
-    ?>		
+						$sql = "SELECT * FROM announcement ORDER BY announcement_id DESC";
+						$result = $conn -> query($sql);
+						if ($result -> num_rows > 0) {
+							while ($row = $result -> fetch_assoc()) {
+					    ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+    	<br>
 
-	</div>	
-	</div>
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card" style="background-color: #e9ebee">
+              <div class="card card-statistics">               
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-center">
+                     <?php
+								echo "<p>".$row["announcement"]."</p>"; 
+							}
+						}
+						else {
+							echo "<h5><i>No Announcements</i></h5>";
+						}
+					    ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+    	</div><br>
 
 
-
-	</div>
-	</div>
-
-	</div>
-	</div>
-
-	
+</div>
 </body>
 
 </html>

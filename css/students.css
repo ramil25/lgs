@@ -402,6 +402,18 @@ th {
 
 }
 
-.tr-space {
-  margin-top: 20px;
+td {
+  font-size: 1.5vw;
+  background-color: #ffffff;
+  line-height: 50pt;
+  padding-bottom: 50px;
+}
+
+h5 {
+  text-align: center;
+}
+
+p {
+  font-size: 1.2vw;
+  text-align: center; 
 }
