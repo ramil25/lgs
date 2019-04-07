@@ -134,7 +134,7 @@ require '../db.php';
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chart.php">
+            <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
@@ -185,7 +185,7 @@ require '../db.php';
                  </form>
             </div>
         </div>
-               
+
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

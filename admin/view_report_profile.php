@@ -140,7 +140,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chart.php">
+            <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>

@@ -353,7 +353,7 @@ if(isset($_POST['add']))
       $course='none';
       $coll ='none';
       $rem='Unqualified';
-    } 
+    }
   $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
   $res= mysqli_query($conn,$addsql);
   if($res)
@@ -478,7 +478,7 @@ if(isset($_POST['add']))
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chart.php">
+            <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>

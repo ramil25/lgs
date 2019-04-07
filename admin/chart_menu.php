@@ -2,38 +2,14 @@
 session_start();
 require '../db.php';
 if (isset($_SESSION["user_level"])) {
-  $success = '';
-  $report = $_GET['rpt_id'];
-  $sql ="SELECT * FROM report WHERE report_id=".$report;
-  $result =mysqli_query($conn,$sql);
-  $fetch  =mysqli_fetch_assoc($result);
-
-  if(isset($_POST['update']))
-  {
-    $coun =$_POST['counselee'];
-    $case =$_POST['case'];
-    $date =$_POST['date'];
-    $rem =$_POST['remarks'];
-
-    $updatesql ="UPDATE report set report_counselee='".$coun."',report_case='".$case."',report_date='".$date."',report_remarks='".$rem."' WHERE report_id=".$report;
-     $res= mysqli_query($conn,$updatesql);
-      if($res)
-      {
-        echo "<script>alert('Updated successfully');
-        location.href='consoledated.php';
-        </script>";
-      }
-  }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Consoledated Report</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -46,8 +22,7 @@ if (isset($_SESSION["user_level"])) {
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
 </head>
-<style type="text/css">
-</style>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -65,7 +40,6 @@ if (isset($_SESSION["user_level"])) {
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -88,13 +62,12 @@ if (isset($_SESSION["user_level"])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-       <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <!-- user-img -->
                   <img src="../images/default.png" alt="profile image">
                 </div>
                 <div class="text-wrapper">
@@ -113,6 +86,7 @@ if (isset($_SESSION["user_level"])) {
               <span class="menu-title">Home</span>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-account"></i>
@@ -137,12 +111,12 @@ if (isset($_SESSION["user_level"])) {
             <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
-            </a>
+           	</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Enrolees Chart</span>
+              <span class="menu-title">Enrollees Chart</span>
             </a>
           </li>
           <li class="nav-item">
@@ -152,7 +126,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="year_menu.php?category=CLUSTER">
+            <a class="nav-link" href="cluster.php">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -180,57 +154,66 @@ if (isset($_SESSION["user_level"])) {
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">UPDATE REPORT</h1>
+                    <h1 class="text-center page-header p-2">CHART MENU</h1>
                   </div>
                  </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="#">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                    <i class="mdi mdi-map-marker-multiple text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-center mb-0">Per Town enrollees</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
             </div>
-            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-        <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
-                      <div class="auto-form-wrapper">
-              <form action="" method="post">
-                <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" required value="<?php echo $fetch['report_counselee']; ?>" />
-                  </div>
-                </div>
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="case" placeholder="Case..." required class="form-control" value="<?php echo $fetch['report_case']; ?>" />
-                  </div>
-                </div> <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Date</label>
-                  <div class="col-sm-8">
-                    <input type="date" name="date" placeholder="Date..." required class="form-control" value="<?php echo $fetch['report_date']; ?>" />
-                  </div>
-                </div>
+              </div>
 
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Remarks</label>
-                  <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks..." required class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="#">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-city text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-center mb-0">Per department enrollees</h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="update" >Update</button>
-                </div>
-                <div class="form-group d-flex justify-content-between">
-                  <div class="form-check form-check-flat mt-0">
+            </a>
+            </div>
+             </div>
+
+             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="#">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-account-box text-primary icon-lg"></i>
+                    <div class="float-center">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-center mb-0">Per qualifier</h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </form>
+            </a>
             </div>
-                </div>
+             </div>
+
+
+             </div>
            </div>
-           </div>
-            </div>
-          </div>
-        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -242,6 +225,7 @@ if (isset($_SESSION["user_level"])) {
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -249,7 +233,6 @@ if (isset($_SESSION["user_level"])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -264,7 +247,6 @@ if (isset($_SESSION["user_level"])) {
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-
 </html>
 <?php
 }

@@ -114,7 +114,7 @@ if (isset($_SESSION["user_level"])) {
            	</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="chart.php">
+            <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrollees Chart</span>
             </a>
@@ -230,7 +230,7 @@ if (isset($_SESSION["user_level"])) {
 
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a href="chart.php">
+                <a href="chart_menu.php">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-chart-bar text-primary icon-lg"></i>
