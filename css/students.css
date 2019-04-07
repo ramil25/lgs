@@ -387,15 +387,21 @@ body{
 table {
   border-collapse: collapse;
   width: 100%;
-  color: #558c7e;
+  color: #ffffff;
   text-align: center;
 
 }
 
 th {
-  background-color: #558c7e;
+  background-color: #ffffff;
   color: white;
   line-height: 26pt;
   margin-top: 50px;
+   min-height: 25px;
+   height: 25px;
 
+}
+
+.tr-space {
+  margin-top: 20px;
 }
