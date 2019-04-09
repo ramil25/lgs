@@ -1,39 +1,34 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsfeed</title>
+    <link rel="stylesheet" href="../css/students.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="shortcut icon" href="../images/lspu.png">
+    <link rel="stylesheet" href="../css/responsee.css">
+    <link rel="stylesheet" href="../assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="../assets/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Newsfeed</title>
-
-	<link rel="shortcut icon" href="images/lspu.png">
-	<link rel="stylesheet" href="css/students.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/responsee.css">
-  <link rel="stylesheet" href="../css/components.css">
-  <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-  <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/template-style.css">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="assets/js/jquery-1.8.3.min.js"></script>
-  <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>    
-  <script type="text/javascript" src="assets/js/validation.js"></script> 
-
-</head>
-
+    <!-- CUSTOM STYLE -->
+    <link rel="stylesheet" href="../css/template-style.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="../assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-ui.min.js"></script>    
+    <script type="text/javascript" src="../assets/js/validation.js"></script> 
+  </head>  
+  
   <body class="size-1140">
-    <!-- PREMIUM FEATURES BUTTON -->
-    <a target="_blank" class="hide-s" href="template/prospera-premium-responsive-business-template/" style="position:fixed;top:120px;right:-14px;z-index:10;"><img src="img/premium-features.png" alt=""></a>
+  	<!-- PREMIUM FEATURES BUTTON -->
+  	<a target="_blank" class="hide-s" href="../template/prospera-premium-responsive-business-template/" style="position:fixed;top:120px;right:-14px;z-index:10;"><img src="../img/premium-features.png" alt=""></a>
     <!-- HEADER -->
     <header role="banner">    
       <!-- Top Bar -->
@@ -51,7 +46,7 @@
       <nav class="background-white background-primary-hightlight">
         <div class="line" >
           <div class="s-12 l-2">
-            <a href="index.html" class="logo"><img src="images/lspulogo.png" alt="" style="margin-left:10px;float:left;width: 130px; height: auto;"></a>
+            <a href="index.html" class="logo"><img src="../images/lspulogo.png" alt="" style="margin-left:10px;float:left;width: 130px; height: auto;"></a>
           </div>
           <div class="top-nav s-12 l-10">
             <p class="nav-text"></p>
@@ -75,17 +70,17 @@
           <div class="carousel-fade-transition owl-carousel carousel-main carousel-nav-white carousel-wide-arrows">
             <div class="item">
               <div class="s-12 center">
-                <img src="images/carousel/slide1.jpg" alt="">               
+                <img src="../images/carousel/slide1.jpg" alt="">               
               </div>
             </div>
             <div class="item">
               <div class="s-12 center">
-                <img src="images/carousel/slide2.jpg" alt="">
+                <img src="../images/carousel/slide2.jpg" alt="">
               </div>
             </div>
              <div class="item">
               <div class="s-12 center">
-                <img src="images/carousel/slide3.jpg" alt="">
+                <img src="../images/carousel/slide3.jpg" alt="">
               </div>
             </div>
           </div>  
@@ -103,7 +98,7 @@
                   <div class="clearfix">
                     <div class="float-center">
                       <?php
-            require 'db.php';
+            require '../db.php';
 
             $sql = "SELECT * FROM announcement ORDER BY announcement_id DESC";
             $result = $conn -> query($sql);
@@ -143,9 +138,8 @@
     
     <!-- FOOTER -->
     
-    <script type="text/javascript" src="js/responsee.js"></script>
-    <script type="text/javascript" src="assets/owl-carousel/owl.carousel.js"></script>
-    <script type="text/javascript" src="js/template-scripts.js"></script>   
-</body>
-
+    <script type="text/javascript" src="../js/responsee.js"></script>
+    <script type="text/javascript" src="../assets/owl-carousel/owl.carousel.js"></script>
+    <script type="text/javascript" src="../js/template-scripts.js"></script>   
+   </body>
 </html>
