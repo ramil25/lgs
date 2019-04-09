@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="css/students.css">
 	<link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/responsee.css">
-  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
   <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -58,9 +58,8 @@
             <ul class="right chevron">
               <li><a href="index.php">Newsfeed</a></li>
               <li><a href="result.php">Results</a></li>
-              <li><a href="req_moral.php">Request Good Moral</a></li>
               <li><a href="aboutus.php">About Us</a></li>
-              <li><a href="logout.php">Logout</a></li>
+              <li><a href="login.php">Login</a></li>
             </ul>
           </div>
         </div>
