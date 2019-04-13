@@ -354,7 +354,7 @@ if(isset($_POST['add']))
       $coll ='none';
       $rem='Unqualified';
     }
-  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES ('".$fn."','".$gender."','".$lsa."','".$sc."',".$gwa.",".$math.",".$eng.",".$scie.",'".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
+  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$fn."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
