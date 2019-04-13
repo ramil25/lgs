@@ -598,14 +598,14 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">2nd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="schoice" placeholder="Course" required class="form-control">
+                    <input type="text" name="schoice" placeholder="Course" class="form-control">
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">3rd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="tchoice" placeholder="Course" required class="form-control">
+                    <input type="text" name="tchoice" placeholder="Course" class="form-control">
                   </div>
                 </div>
 
@@ -683,13 +683,6 @@ if(isset($_POST['add']))
              <option value="2030">2030</option>
           </select>
 
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Upload File:</label>
-                  <div class="col-sm-8">
-                    <input type="file" name="photo_link" style="text-indent: 0px">
                   </div>
                 </div>
 

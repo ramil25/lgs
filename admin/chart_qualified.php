@@ -171,7 +171,6 @@ if (isset($_SESSION["user_level"])) {
                   </div>
                  </div>
 
-  
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script type="text/javascript">
                       google.charts.load('current', {'packages':['corechart']});
@@ -194,9 +193,9 @@ if (isset($_SESSION["user_level"])) {
                         chart.draw(data);
                       }
                     </script>
-
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    
+                  
                 </div>
               </div>
             </div>
