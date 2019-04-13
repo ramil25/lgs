@@ -2,12 +2,12 @@
 session_start();
 if (isset($_SESSION["user_level"])) {
   require '../db.php';
-  $cbma = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CBMA' ";
-  $ccje = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CCJE' ";
-  $qualified = mysqli_query($conn,$cbma);
+  $male = "SELECT COUNT(*) AS total FROM students WHERE gender = 'Male' ";
+  $female = "SELECT COUNT(*) AS total FROM students WHERE gender = 'Female' ";
+  $qualified = mysqli_query($conn,$male);
   $qfetch  =mysqli_fetch_assoc($qualified);
   $q_rows = $qfetch['total'];
-  $unqualified = mysqli_query($conn,$ccje);
+  $unqualified = mysqli_query($conn,$female);
   $unfetch  =mysqli_fetch_assoc($unqualified);
   $un_rows = $unfetch['total'];
 ?>
@@ -116,6 +116,7 @@ if (isset($_SESSION["user_level"])) {
               </ul>
             </div>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
@@ -161,7 +162,7 @@ if (isset($_SESSION["user_level"])) {
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">Qualified and Unqualified Chart</h1>
+                    <h1 class="text-center page-header p-2">Gender Enrollees Chart</h1>
                   </div>
                  </div>
 
@@ -173,18 +174,18 @@ if (isset($_SESSION["user_level"])) {
                       function drawChart() {
 
                         var data = google.visualization.arrayToDataTable([
-                          ['Chart', 'Qualified and Unqualified'],
-                          ['Qualified',<?php echo $q_rows; ?>],
-                          ['Unqualified',<?php echo $un_rows; ?>]
+                          ['Chart', 'Gender'],
+                          ['Male',<?php echo $q_rows; ?>],
+                          ['Female',<?php echo $un_rows; ?>]
                         ]);
 
                         var options = {
-                          title: 'My Daily Activities'
+                          title: 'Male and Female Enrollees'
                         };
 
                         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                        chart.draw(data);
+                        chart.draw(data,options);
                       }
                     </script>
                     <div id="piechart" style="width: 900px; height: 500px;"></div>
