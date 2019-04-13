@@ -100,7 +100,7 @@ $res =mysqli_query($conn,$sql);
           <?php
           while($rows=mysqli_fetch_assoc($ress))
     { ?>
-    <tr>
+    <tr onclick="yq()">
   <td style="font-size: 20px;"><?php echo $rows['full_name']; ?></td>
 
   <td style="font-size: 20px;"> <?php echo $rows['fcourse']; ?></td>
@@ -121,7 +121,7 @@ $res =mysqli_query($conn,$sql);
           <?php
           while($row=mysqli_fetch_assoc($res))
     { ?>
-    <tr>
+    <tr onclick="yq()">
   <td style="font-size: 20px;"><?php echo $row['full_name']; ?></td>
 
   <td style="font-size: 20px;"> <?php echo $row['fcourse']; ?></td>
@@ -144,6 +144,10 @@ $res =mysqli_query($conn,$sql);
     
     <script type="text/javascript" src="../js/responsee.js"></script>
     <script type="text/javascript" src="../assets/owl-carousel/owl.carousel.js"></script>
-    <script type="text/javascript" src="../js/template-scripts.js"></script>   
+    <script type="text/javascript" src="../js/template-scripts.js"></script>
+
+    <script>
+      let yq= ()=>alert("You're qualified, Please proceed to the guidance office to claim your interview form.");
+    </script> 
    </body>
 </html>
