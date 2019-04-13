@@ -52,7 +52,7 @@ $res =mysqli_query($conn,$sql);
       <nav class="background-white background-primary-hightlight">
         <div class="line" >
           <div class="s-12 l-2">
-            <a href="index.html" class="logo"><img src="../images/lspulogo.png" alt="" style="margin-left:10px;float:left;width: 130px; height: auto;"></a>
+            <a href="index.php" class="logo"><img src="../images/lspulogo.png" alt="" style="margin-left:10px;float:left;width: 130px; height: auto;"></a>
           </div>
           <div class="top-nav s-12 l-10">
             <p class="nav-text"></p>

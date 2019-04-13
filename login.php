@@ -20,11 +20,16 @@ if($conn)
 			session_start();
 			$_SESSION["user_level"] = $row['user_level'];
 			$_SESSION["user_name"] = $un;
-			if($_SESSION["user_level"]==1)
+			if($_SESSION["user_level"]==0)
 			{
 				$_SESSION["user_name"] = $un;
 				header("location: admin/");
 			}
+      else if($_SESSION["user_level"]==1)
+      {
+        $_SESSION["user_name"] = $un;
+        header("location: staff/");
+      }
 			else if($_SESSION["user_level"]==2)
 			{
 				$_SESSION["user_name"] = $un;
