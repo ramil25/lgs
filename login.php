@@ -28,7 +28,7 @@ if($conn)
 			else if($_SESSION["user_level"]==2)
 			{
 				$_SESSION["user_name"] = $un;
-				header("location: students/");
+				header("location: student/");
 			}
 	}
 	else if (!$row)

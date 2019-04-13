@@ -103,7 +103,7 @@ $res =mysqli_query($conn,$sql);
     <tr>
   <td style="font-size: 20px;"><?php echo $rows['full_name']; ?></td>
 
-  <td style="font-size: 20px;"> <?php echo $rows['fchoice']; ?></td>
+  <td style="font-size: 20px;"> <?php echo $rows['fcourse']; ?></td>
 
   <td style="font-size: 20px;">  <?php echo $rows['remarks']; ?></td>
     </tr>
@@ -124,7 +124,7 @@ $res =mysqli_query($conn,$sql);
     <tr>
   <td style="font-size: 20px;"><?php echo $row['full_name']; ?></td>
 
-  <td style="font-size: 20px;"> <?php echo $row['fchoice']; ?></td>
+  <td style="font-size: 20px;"> <?php echo $row['fcourse']; ?></td>
 
   <td style="font-size: 20px;">  <?php echo $row['remarks']; ?></td>
     </tr>
