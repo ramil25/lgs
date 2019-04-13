@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2019 at 03:06 AM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Apr 13, 2019 at 05:58 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,6 +47,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `email`, `full_name`, `first_name`, `middle_name`, `last_name`, `gender`, `position`, `campus`, `user_level`, `student_number`, `course`, `mobile`) VALUES
+(17, 'user', 'password12345', 'hh@gmail.com', 'Dem Soriano', 'Dem', 'Lalonio', 'Serrano', 'Male', '', '', 2, 'M-12-1-17222', 'BSIT/1st', 2147483647),
+(18, 'admin', 'admin', 'gg@gmail.com', 'Hanz Yow', 'Hanz', 'Law', 'Yow', 'Male', 'Admin', 'Sta. Cruz', 0, '', '', 0),
+(19, 'aby', '1122334455', 'gg@gmail.com', 'Aby Ser', '', '', '', 'Female', '', '', 2, 'M-12-1-17223', 'BSIT/1st', 2147483647),
+(20, 'Madam', '1234567890', 'ss@gg', 'Hanz Yow', 'Hanz', 'Yow', 'Yow', 'Male', 'Guidance', 'Sta. Cruz', 1, '', '', 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -64,7 +74,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
