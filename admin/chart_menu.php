@@ -165,7 +165,7 @@ if (isset($_SESSION["user_level"])) {
                 <a href="#">
                 <div class="card-body">
                   <div class="clearfix text-center">
-                    <i class="mdi mdi-map-marker-multiple text-primary icon-lg"></i>
+                    <i class="mdi mdi-account-multiple text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">Male and Female Enrolees Chart</h3>
