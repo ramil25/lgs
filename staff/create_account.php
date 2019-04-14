@@ -193,6 +193,18 @@ session_start();
     require '../db.php';
     if(isset($_POST['submit-search'])) {
     $search = $_POST["search"];
+    if($title=='Add')
+    {
+    $sql = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $result = mysqli_query($conn,$sql);
+    $checkResult = mysqli_num_rows($result);
+
+    $sq = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $results = mysqli_query($conn,$sq);
+    $checkResults = mysqli_num_rows($results);
+    }
+    else if($title=='Update' || $title=='View')
+    {
     $sql = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
@@ -200,26 +212,25 @@ session_start();
     $sq = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
     $results = mysqli_query($conn,$sq);
     $checkResults = mysqli_num_rows($results);
-
+    }
     echo "  About ".$checkResult." result(s)!";
     if ($checkResult > 0 ||  $checkResults > 0 ) {
       while ($row = mysqli_fetch_assoc($result)) {
 
             $fname = $row['full_name'];
-						echo '<center>'.$fname.'</center>';
 ?>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
                   <a href="">
                 <div class="card-body">
                   <div class="clearfix">
-                    <div class="float-left">
                       <?php
                       if($title=='Add')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></a></h3>
-  </a></h3>
+                        <div style="float: left;">
+                      <h3 class="ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $fname; ?></a></h3>
+                    </div>
                     <?php } }
                     ?>
 
@@ -239,7 +250,6 @@ session_start();
                         ?>
                       <h3 class="float-right ml-5 mt-2"><a href = "view_account.php?std_id=<?php echo $rows['user_id'];?>"><?php echo $fname; ?></a></h3>
                     <?php } ?>
-                    </div>
                   </div>
                 </div>
                 </a>
@@ -264,7 +274,7 @@ session_start();
   if($title=='Add')
   {
     ?>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $row['full_name']; ?>
 	</a></p></td>
 <?php }} ?>
 

@@ -209,7 +209,7 @@ if (isset($_SESSION["user_level"])) {
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
-                   <input type="text" value="<?php echo $row['gender']; ?>" name="password" placeholder="Gender" required class="form-control-plaintext" readonly/>
+                   <input type="text" value="<?php echo $row['gender']; ?>" placeholder="Gender" required class="form-control-plaintext" readonly/>
                   </div>
                 </div>
 

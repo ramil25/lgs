@@ -3,6 +3,7 @@ session_start();
 if (isset($_SESSION["user_level"])) {
   $success = '';
   $std = $_GET['std'];
+    $gender =$_GET['gender'];
   if (empty($std)) {
     header("location:create_account.php");
   }
@@ -17,7 +18,7 @@ if(isset($_POST['add']))
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'")';
+   $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'")';
    $query = mysqli_query($conn,$sql);
     if ($password !== $repeat)
     {
@@ -149,12 +150,6 @@ if(isset($_POST['add']))
                 </li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">

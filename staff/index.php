@@ -189,23 +189,6 @@ if (isset($_SESSION["user_level"])) {
             </div>
              </div>
 
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="add_staff.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-account-plus text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Create Staff Account</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
-
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="manage_student.php">
