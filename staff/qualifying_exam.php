@@ -4,6 +4,9 @@ session_start();
 
 	 require '../db.php';
 	 if (isset($_SESSION["user_level"])) {
+    $sql ="SELECT count(*),date_ad from students group by date_ad";
+    $res =mysqli_query($conn,$sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,6 +113,12 @@ session_start();
             </div>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
@@ -154,22 +163,26 @@ session_start();
         <div class="content-wrapper">
           <div class="row">
  <!-- partial -->
-
+               <?php
+                      while($row=mysqli_fetch_assoc($res))
+                      {
+                        ?>
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="view_qualifying.php?year=2019&title=Qualifying Exam" target="_blank">
+                  <a href="view_qualifying.php?dateadd=<?php echo $row['date_ad']; ?>&title=Qualifying Exam" target="_blank">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-timetable text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">June 1, <?php echo $year; ?></h1>
+                      <h1 class="float-right ml-5 mt-2"><?php echo $row['date_ad']; ?></h1>
+                  
                     </div>
                   </div>
                 </div>
                 </a>
               </div>
             </div>
-
+              <?php } ?>
 
           </div>
 

@@ -2,11 +2,11 @@
 session_start();
 require '../db.php';
 if (isset($_SESSION["user_level"])) {
-$year=$_GET['year'];
+$year=$_GET['dateadd'];
 $title=$_GET['title'];
 if(isset($_GET['title']))
 {
-  $sql ="SELECT * FROM students";
+  $sql ="SELECT * FROM students where date_ad='".$year."'";
 $res =mysqli_query($conn,$sql);
 
 ?>
@@ -39,7 +39,7 @@ $res =mysqli_query($conn,$sql);
                     <h1 class="text-center page-header p-2"><?php echo $title; ?></h1>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="text-right">June 1, 2019</h2>
+                    <h2 class="text-right"><?php echo $year; ?></h2>
               <table  class="table table-responsive table-striped text-center">
           <tr>
           <thead class="table-dark">
