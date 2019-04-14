@@ -9,7 +9,8 @@ if(isset($_POST['add']))
    $case = $_POST['case'];
    $date = $_POST['date'];
    $remarks = $_POST['remarks'];
-   $sql = 'INSERT INTO report(report_counselee,report_case,report_date,report_remarks) values("'.$counselee.'","'.$case.'","'.$date.'","'.$remarks.'")';
+   $report =$_POST['report'];
+   $sql = 'INSERT INTO report(report_counselee,report_case,report_date,report_remarks,reports) values("'.$counselee.'","'.$case.'","'.$date.'","'.$remarks.'","'.$report.'")';
    $query = mysqli_query($conn,$sql);
    if (!$query)
    {
@@ -132,6 +133,12 @@ if(isset($_POST['add']))
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
@@ -181,7 +188,7 @@ if(isset($_POST['add']))
             </div>
             <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
+                  <div class="col-lg-10 mx-auto">
                       <div class="auto-form-wrapper">
                         <?php echo $success; ?>
               <form action="" method="post">
@@ -209,6 +216,13 @@ if(isset($_POST['add']))
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
                    <input type="text" name="remarks" placeholder="Remarks..." required class="form-control"/>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Reports</label>
+                  <div class="col-sm-8">
+                 <textarea style="height: 500px;" class="form-control" name="report" placeholder="Write down events" required></textarea>
                   </div>
                 </div>
 

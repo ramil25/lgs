@@ -107,7 +107,6 @@ if($conn)
                   <div class="form-check form-check-flat mt-0">
 
                   </div>
-                  <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
                 </div>
               </form>
             </div>

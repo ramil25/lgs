@@ -189,31 +189,38 @@ if (isset($_SESSION["user_level"])) {
             </div>
             <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
+                  <div class="col-lg-10 mx-auto">
                       <div class="auto-form-wrapper">
               <form action="" method="post">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" readonly value="<?php echo $fetch['report_counselee']; ?>" />
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control-plaintext" readonly value="<?php echo $fetch['report_counselee']; ?>" />
                   </div>
                 </div>
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="text" name="case" placeholder="Case..." readonly class="form-control" value="<?php echo $fetch['report_case']; ?>" />
+                     <input type="text" name="case" placeholder="Case..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_case']; ?>" />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="date" name="date" placeholder="Date..." readonly class="form-control" value="<?php echo $fetch['report_date']; ?>" />
+                    <input type="date" name="date" placeholder="Date..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_date']; ?>" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks..." readonly class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+                   <input type="text" name="remarks" placeholder="Remarks..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_remarks']; ?>" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Reports</label>
+                  <div class="col-sm-8">
+                 <textarea style="height: 500px;" class="form-control-plaintext" name="report" placeholder="Write down events" readonly><?php echo $fetch['reports']; ?></textarea>
                   </div>
                 </div>
                 <!--  <div class="form-group text-center">

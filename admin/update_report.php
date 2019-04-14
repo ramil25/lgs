@@ -189,7 +189,7 @@ if (isset($_SESSION["user_level"])) {
             </div>
             <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
+                  <div class="col-lg-10 mx-auto">
                       <div class="auto-form-wrapper">
               <form action="" method="post">
                 <div class="form-group row">
@@ -214,6 +214,12 @@ if (isset($_SESSION["user_level"])) {
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
                    <input type="text" name="remarks" placeholder="Remarks..." required class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Reports</label>
+                  <div class="col-sm-8">
+                 <textarea style="height: 500px;" class="form-control" name="report" placeholder="Write down events" required><?php echo $fetch['reports'];  ?></textarea>
                   </div>
                 </div>
                 <div class="form-group text-center">

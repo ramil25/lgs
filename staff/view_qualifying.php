@@ -4,6 +4,7 @@ require '../db.php';
 if (isset($_SESSION["user_level"])) {
 $year=$_GET['dateadd'];
 $title=$_GET['title'];
+$rn =0;
 if(isset($_GET['title']))
 {
   $sql ="SELECT * FROM students where date_ad='".$year."'";
@@ -43,6 +44,7 @@ $res =mysqli_query($conn,$sql);
               <table  class="table table-responsive table-striped text-center">
           <tr>
           <thead class="table-dark">
+            <th>RN</th>
             <th>NAME</th>
             <th>Strand</th>
             <th>Gender</th>
@@ -60,8 +62,11 @@ $res =mysqli_query($conn,$sql);
           </thead>
                   <?php
           while($row=mysqli_fetch_assoc($res))
-      { ?>
+      {
+      $rn++;
+       ?>
         <tr>
+          <td><?php echo $rn; ?></td>
           <td><?php echo $row['full_name'];
             ?></td>
             <td><?php echo $row['strand_course'];
