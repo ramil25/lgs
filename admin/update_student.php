@@ -186,7 +186,7 @@ if($conn)
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
                   <select class="form-control" name="gender" required value="<?php echo $fetch['gender']; ?>" >
-                   <option>Gender</option>
+                   <option><?php echo $fetch['gender'] ?></option>
                    <option value="Male">Male</option>
                    <option value="Female">Female</option>
                   </select>
@@ -236,21 +236,81 @@ if($conn)
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">1st Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="fchoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['fchoice']; ?>" >
+                    <select name="fchoice" class="form-control" required>
+                       <option value="<?php echo $fetch['fchoice'] ?>"><?php echo $fetch['fchoice'] ?></option>
+                      <option value="BSACCO">BSACCO</option>
+                      <option value="BSBA">BSBA</option>
+                      <option value="BSOA">BSOA</option>
+                       <option value="BSCriminology">BSCriminology</option>
+                        <option value="BSEd">BSEd</option>
+                         <option value="BEED">BEED</option>
+                         <option value="BSAgEng">BSAgEng</option>
+                          <option value="BSCS">BSCS</option>
+                           <option value="BSIT">BSIT</option>
+                            <option value="BSIS">BSIS</option>
+                             <option value="ACT">ACT</option>
+                              <option value="BSA">BSA</option>
+                               <option value="BAT">BAT</option>
+                                <option value="BSAB">BSAB</option>
+                                 <option value="BSFOODTECH">BSFOODTECH</option>
+                      <option value="BS Psychology">BS Psychology</option>  
+                       <option value="BSHM">BSHM</option>
+                        <option value="BSTM">BSTM</option>
+                    </select>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">2nd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="schoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['schoice']; ?>">
+                    <select name="schoice" class="form-control" required>
+                       <option value="<?php echo $fetch['schoice'] ?>"><?php echo $fetch['schoice'] ?></option>
+                      <option value="BSACCO">BSACCO</option>
+                      <option value="BSBA">BSBA</option>
+                      <option value="BSOA">BSOA</option>
+                       <option value="BSCriminology">BSCriminology</option>
+                        <option value="BSEd">BSEd</option>
+                         <option value="BEED">BEED</option>
+                         <option value="BSAgEng">BSAgEng</option>
+                          <option value="BSCS">BSCS</option>
+                           <option value="BSIT">BSIT</option>
+                            <option value="BSIS">BSIS</option>
+                             <option value="ACT">ACT</option>
+                              <option value="BSA">BSA</option>
+                               <option value="BAT">BAT</option>
+                                <option value="BSAB">BSAB</option>
+                                 <option value="BSFOODTECH">BSFOODTECH</option>
+                      <option value="BS Psychology">BS Psychology</option>  
+                       <option value="BSHM">BSHM</option>
+                        <option value="BSTM">BSTM</option>
+                    </select>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">3rd Choice</label>
                   <div class="col-sm-8">
-                    <input type="text" name="tchoice" placeholder="Course" required class="form-control" value="<?php echo $fetch['tchoice']; ?>" >
+                   <select name="tchoice" class="form-control" required>
+                       <option value="<?php echo $fetch['tchoice'] ?>"><?php echo $fetch['tchoice'] ?></option>
+                      <option value="BSACCO">BSACCO</option>
+                      <option value="BSBA">BSBA</option>
+                      <option value="BSOA">BSOA</option>
+                       <option value="BSCriminology">BSCriminology</option>
+                        <option value="BSEd">BSEd</option>
+                         <option value="BEED">BEED</option>
+                         <option value="BSAgEng">BSAgEng</option>
+                          <option value="BSCS">BSCS</option>
+                           <option value="BSIT">BSIT</option>
+                            <option value="BSIS">BSIS</option>
+                             <option value="ACT">ACT</option>
+                              <option value="BSA">BSA</option>
+                               <option value="BAT">BAT</option>
+                                <option value="BSAB">BSAB</option>
+                                 <option value="BSFOODTECH">BSFOODTECH</option>
+                      <option value="BS Psychology">BS Psychology</option>  
+                       <option value="BSHM">BSHM</option>
+                        <option value="BSTM">BSTM</option>
+                    </select>
                   </div>
                 </div>
 
