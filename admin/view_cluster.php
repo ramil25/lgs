@@ -205,6 +205,7 @@ $res =mysqli_query($conn,$sql);
                  </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
               <button class="btn btn-success" onclick="location.href='cluster.php'">Back</button>
+               <a class="btn btn-primary text-light" href="print_cluster.php?title=<?php echo $title; ?>&year=<?php echo $year; ?>" target="_blank">Print</a>
                 <div class="card-body row no-gutters align-items-center">
               <table  class="table table-light table-responsive text-center">
           <tr>
