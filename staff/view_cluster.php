@@ -150,7 +150,12 @@ $res =mysqli_query($conn,$sql);
               </ul>
             </div>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
@@ -203,6 +208,7 @@ $res =mysqli_query($conn,$sql);
                 <div class="card-body row no-gutters align-items-center">
               <table  class="table table-light table-responsive text-center">
           <tr>
+            <td>RN</td>
             <td>NAME</td>
             <td>COURSE
               <td>RAW SCORE</td></td>
@@ -210,18 +216,23 @@ $res =mysqli_query($conn,$sql);
               <td>Remarks</td>
           </tr>
                   <?php
+                  $num=0;
           while($row=mysqli_fetch_assoc($res))
-      { ?>
+      { 
+        $num++;
+        ?>
         <tr>
-          <td><p style="color: black; font-size: 20px;"><?php echo $row['full_name'];
+            <td><p style="color: black; font-size: 16px;"><?php echo $num;
             ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['fcourse'];
+          <td><p style="color: black; font-size: 16px;"><?php echo $row['full_name'];
             ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['raw_score'];
+            <td><p style="color: black; font-size: 16px;"><?php echo $row['fcourse'];
             ?></p></td>
-            <td><p style="color: black; font-size: 20px;"><?php echo $row['grade_GWA'];
+            <td><p style="color: black; font-size: 16px;"><?php echo $row['raw_score'];
             ?></p></td>
-           <td><p style="color: black; font-size: 20px;"><?php echo $row['remarks'];
+            <td><p style="color: black; font-size: 16px;"><?php echo $row['grade_GWA'];
+            ?></p></td>
+           <td><p style="color: black; font-size: 16px;"><?php echo $row['remarks'];
             ?></p></td>
             <td>
               <form method="post">

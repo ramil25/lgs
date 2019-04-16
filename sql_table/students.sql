@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2019 at 01:08 PM
+-- Generation Time: Apr 16, 2019 at 01:44 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -57,13 +57,10 @@ INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attend
 (3, 'James Cabantog', 'Male', 'STI', 'ABM', 80, 93, 84, 88, 'BSAB', 'BSA', 'BSBA', 'BSAB', 90, 'Qualified', 'CA', 'July/01/2019', ''),
 (7, 'Joy Arroyo', 'Female', 'LSPU', 'ABM', 75, 90, 84, 85, 'BSA', 'BAT', 'BSAB', 'none', 75, 'Unqualified', 'none', 'June/01/2019', ''),
 (8, 'Alan Calinagan', 'Male', 'STI', 'GAS', 80, 90, 84, 88, 'BSIT', 'BS Accountancy', 'BSIS', 'none', 90, 'Unqualified', 'none', 'June/01/2019', ''),
-(9, 'Ray Manalo', 'Male', 'LSPU', 'ABM', 84, 99, 88, 88, 'ACT', 'BS Accountancy', 'BSAB', 'ACT', 90, 'Qualified', 'CCS', 'July/01/2019', ''),
 (10, 'Garry Rivera', 'Male', 'LSPU', 'ICT', 80, 90, 84, 88, 'ACT', 'BAT', 'BSAB', 'none', 12, 'Unqualified', 'none', 'June/01/2019', ''),
 (11, 'Larry Quiano', 'Male', 'STI', 'GAS', 80, 90, 89, 85, 'ACT', 'BSA', 'BAT', 'none', 90, 'Unqualified', 'none', 'June/22/2019', ''),
-(12, 'Susan Laos', 'Female', 'LSPU', 'GAS', 80, 90, 84, 88, 'BSIT', 'BAT', 'BSIS', 'BSIT', 90, 'Qualified', 'CCS', 'June/01/2019', ''),
 (13, 'Jenny Marquez', 'Female', 'LSPU', 'ABM', 84, 90, 84, 88, 'BSA', 'BS Accountancy', 'BAT', 'BSA', 90, 'Qualified', 'CA', 'June/01/2019', ''),
 (14, 'Aby Ser', 'Female', 'LSPU', 'GAS', 79, 90, 84, 88, 'ACT', 'BAT', 'BSBA', 'BAT', 75, 'Qualified', 'CA', 'June/01/2019', ''),
-(15, 'Dem Sorianno', 'Male', 'LSPU', 'ICT', 80, 99, 84, 88, 'BSIT', 'BSBA', 'BSA', 'BSIT', 90, 'Qualified', 'CCS', 'June/01/2019', ''),
 (16, 'Kerry Weng', 'Male', 'SLSU', 'GAS', 87, 90, 84, 88, 'BS Psychology', 'BSBA', 'BSA', 'BS Psychology', 90, 'Qualified', 'CAS', 'June/01/2019', ''),
 (17, 'James Romero', 'Male', 'CAVSU', 'GAS', 88, 90, 88, 88, 'BS PSYCHOLOGY', 'BSBA', 'BSA', 'BS Psychology', 90, 'Qualified', 'CAS', 'June/01/2019', ''),
 (18, 'Jenifer Paras', 'Female', 'SNHS', 'ABM', 80, 90, 90, 78, 'BS Criminology', 'BAT', 'BSA', 'BS Criminology', 89, 'Qualified', 'CCJE', 'June/01/2019', ''),
@@ -78,11 +75,13 @@ INSERT INTO `students` (`student_id`, `full_name`, `gender`, `school_last_attend
 (30, 'Grethel Shaine Banocnoc', 'Female', 'AMA', 'ICT', 95, 90, 84, 97, 'BSAgEng', 'BSBA', 'BSA', 'BSAgEng', 90, 'Qualified', 'IAE', 'June/01/2019', ''),
 (31, 'Ellah Brondia Urma', 'Female', 'LSPU', 'GAS', 88, 90, 88, 88, 'BSA', 'BSAgEng', 'BSA', 'BSA', 90, 'Qualified', 'CA', 'June/01/2019', ''),
 (32, 'Jane Manalo', 'Female', 'SHS', 'ABM', 90, 99, 99, 99, 'BSBA', '', '', 'BSBA', 90, 'Qualified', 'CBMA', 'June/01/2019', ''),
-(33, 'Al Kerry', 'Male', 'SHS', 'ABM', 90, 99, 99, 99, 'BSIT', '', '', 'BSIT', 90, 'Qualified', 'CCS', 'June/01/2019', ''),
 (34, 'Gel Buan', 'Male', 'SHS', 'ICT', 90, 89, 88, 78, 'BSIT', '', '', 'BSIT', 90, 'Qualified', 'CCS', 'June/01/2019', ''),
 (35, 'Harry Potter', 'Male', 'LSPU', 'ICT', 90, 99, 99, 99, 'BSTM', 'BSAB', 'BSHM', 'BSTM', 90, 'Qualified', 'CHMT', 'June/01/2019', ''),
 (36, 'Amer Kahulugan', 'Male', 'LSPU', 'GAS', 88, 90, 84, 88, 'BEED', 'BSACCO', 'BAT', 'BEED', 89, 'Qualified', 'CTE', 'October/1/2019', ''),
-(37, 'Homer Lapitan', 'Male', 'STI', 'GAS', 80, 90, 84, 88, 'BSEd', 'BSACCO', 'BSTM', 'BSEd', 89, 'Qualified', 'CTE', 'August/1/2019', '');
+(37, 'Homer Lapitan', 'Male', 'STI', 'GAS', 80, 90, 84, 88, 'BSEd', 'BSACCO', 'BSTM', 'BSEd', 89, 'Qualified', 'CTE', 'August/1/2019', ''),
+(38, 'alnahyan', 'Male', 'LSPU', 'ICT', 84, 90, 88, 85, 'BSCS', 'BSIT', 'BSHM', 'BSCS', 90, 'Qualified', 'CCS', 'June/1/2019', ''),
+(39, 'Hannah', 'Female', 'STI', 'GAS', 80, 90, 84, 88, 'BSCS', 'BSA', 'BSIT', 'BSIT', 90, 'Qualified', 'CCS', 'June/1/2019', ''),
+(40, 'Dan Jerick Sison', 'Male', 'SLSU', 'ABM', 80, 90, 84, 88, 'BSTM', 'BS Psychology', 'BAT', 'BSTM', 89, 'Qualified', 'CHMT', 'June/1/2019', '');
 
 --
 -- Indexes for dumped tables
@@ -102,7 +101,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `student_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
