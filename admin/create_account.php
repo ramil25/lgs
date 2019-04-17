@@ -182,7 +182,7 @@ session_start();
 
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">
-          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
+          <input type="text" name="search" class="col" placeholder="Search..." name="search"/>
            <button type="submit" name="submit-search" class="col-auto">
            <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
            </div>
@@ -220,8 +220,6 @@ session_start();
             $fname = $row['full_name'];
 ?>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
                 <div class="card-body">
                   <div class="clearfix">
                       <?php
@@ -242,18 +240,26 @@ session_start();
                       if($title=='Update')
                       {
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "update_account.php?std_id=<?php echo $rows['user_id']; ?>&std=<?php echo $rows['full_name']; ?>"><?php echo $rows['full_name']; ?></a></h3>
+                      <h3 class="text-left mt-2"><a href = "update_account.php?std_id=<?php echo $rows['user_id']; ?>&std=<?php echo $rows['full_name']; ?>"><?php echo $rows['full_name']; ?></a></h3>
                       <?php } ?>
                      <?php
                       if($title=='View')
                       {
+
                         ?>
-                      <h3 class="float-right ml-5 mt-2"><a href = "view_account.php?std_id=<?php echo $rows['user_id'];?>"><?php echo $fname; ?></a></h3>
+                        <table  class="table table-striped table-light text-left">
+                      <tr>
+                        <td>
+                      <h3 class="float-right ml-5 mt-2"><a href = "view_account.php?std_id=<?php echo $rows['user_id']; ?>&std=<?php echo $rows['full_name']; ?>"><?php echo $rows['full_name']; ?></a></h3>
+                    </td>
+                    <td>
+                      <button class="btn btn-danger">Delete</button>
+                    </td>
                     <?php } ?>
+                       </tr>
+                </table>
                   </div>
                 </div>
-                </a>
-              </div>
             </div>
             <?php
       }
@@ -261,11 +267,24 @@ session_start();
 
   }
   ?>
-	<table  class="table table-striped table-light text-center">
-<tr>
+	<table  class="table table-striped table-light text-left">
+	<?php
+  if($title=="Add" || $title=='Update')
+  { ?>
+        <tr>
 <th>USER</th>
 </tr>
-	<?php
+<?php 
+}
+else if($title=="View")
+{
+?>
+    <tr>
+<th>USER</th>
+<th>Action</th>
+</tr>
+<?php  
+}
 	while($row=mysqli_fetch_assoc($res))
 	{
     ?>
@@ -294,12 +313,24 @@ while($row=mysqli_fetch_assoc($ress))
     ?>
   <td><p style="color: black; font-size: 20px;"><a href = "view_account.php?std_id=<?php echo $row['user_id'];?>"><?php echo $row['full_name']; ?>
   </a></p></td>
+  <td>
+              <form method="post">
+              <input type="hidden" name="hid" value="<?php echo $row['user_id']; ?>">
+                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
 <?php } ?>
 </tr>
 <?php
 }
 ?>
 </table>
+<?php 
+      if(isset($_POST['del']))
+              {
+                $hid= $_POST['hid'];
+                $dsql ="DELETE FROM users where user_id=".$hid;
+                $result =mysqli_query($conn,$dsql);
+              }
+              ?>
           </div>
 
         </div>

@@ -238,7 +238,7 @@ $res =mysqli_query($conn,$sql);
             <td>
               <form method="post">
 <input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
-                <button type="submit" class="btn btn-success" name="del">Delete</button></form></td>
+                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
         </tr>
       <?php }
       if(isset($_POST['del']))

@@ -18,9 +18,7 @@ if(isset($_POST['add']))
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'")';
-   $query = mysqli_query($conn,$sql);
-    if ($password !== $repeat)
+  if ($password !== $repeat)
     {
       $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Password do not match
       </p>';
@@ -30,7 +28,11 @@ if(isset($_POST['add']))
       $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Password is too weak
       </p>';
     }
-    else if (!$query)
+    else
+    {
+      $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'")';
+   $query = mysqli_query($conn,$sql);
+   if (!$query)
     {
       $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
       </p>';
@@ -40,6 +42,8 @@ if(isset($_POST['add']))
         $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
         </p>';
     }
+    }
+    
 
 }
 ?>
@@ -228,35 +232,35 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Student Username</label>
                   <div class="col-sm-8">
-                   <input type="text" name="username" placeholder="Grade" required class="form-control"/>
+                   <input type="text" name="username" placeholder="Choose your username" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="password" name="password" placeholder="Grade" required class="form-control"/>
+                   <input type="password" name="password" placeholder="Protect your account" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">
-                    <input type="password" name="repeat-password" placeholder="Grade" required class="form-control"/>
+                    <input type="password" name="repeat-password" placeholder="Verified password" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Mobile</label>
                   <div class="col-sm-8">
-                  <input type="text" name="mobile" placeholder="Grade" required class="form-control"/>
+                  <input type="text" name="mobile" placeholder="ex: 09092558726" required class="form-control"/>
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
-                    <input type="email" name="email" placeholder="Course" required class="form-control">
+                    <input type="email" name="email" placeholder="ex: sample@gmail.com" required class="form-control">
                   </div>
                 </div>
 
