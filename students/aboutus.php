@@ -1,6 +1,7 @@
 <?php
 session_start();
-require 'db.php';
+require '../db.php';
+if (isset($_SESSION["user_level"])) {
     $success = '';
 ?>
 <!DOCTYPE html>
@@ -11,18 +12,18 @@ require 'db.php';
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>About Us</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
-  <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-  <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+  <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="../assets/owl-carousel/owl.carousel.css">
+  <link rel="stylesheet" href="../assets/owl-carousel/owl.theme.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/lspu.png" />
+  <link rel="shortcut icon" href="../images/lspu.png" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -34,10 +35,10 @@ require 'db.php';
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="index.php">
-          <img src="images/lspu.jpg" alt="logo" />
+          <img src="../images/lspu.jpg" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
-          <img src="images/lspu.png" alt="logo" />
+          <img src="../images/lspu.png" alt="logo" />
         </a>
       </div>
 
@@ -45,12 +46,19 @@ require 'db.php';
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-           <li class="nav-item">
-            <a class="nav-link" href="login.php"  style="margin-right: 20px;">
-              <i class="menu-icon mdi mdi-account-circle"></i>
-              <span class="menu-title">Login</span>
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Welcome Admin!</span>
+              <img class="img-xs rounded-circle" src="../images/default.png" alt="Profile image">
             </a>
-          </li> 
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item p-0">
+              </a>
+              <a class="dropdown-item mt-2" href="logout.php">
+                Logout
+            </a>
+            </div>
+          </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
@@ -65,17 +73,19 @@ require 'db.php';
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
+                <div class="profile-image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
+                  <div>
+                    <small class="designation text-muted">Admin</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">
-              <i class="menu-icon mdi mdi-account-circle"></i>
-              <span class="menu-title">Login</span>
-            </a>
-          </li>
-          
           <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="menu-icon mdi mdi-newspaper"></i>
@@ -91,12 +101,25 @@ require 'db.php';
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="req_moral.php">
+              <i class="menu-icon mdi mdi-comment"></i>
+              <span class="menu-title">Request Good Moral</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="aboutus.php">
               <i class="menu-icon mdi mdi-information"></i>
               <span class="menu-title">About Us</span>
             </a>
           </li>
           
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">
+              <i class="menu-icon mdi mdi-power"></i>
+              <span class="menu-title">Logout</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
@@ -149,17 +172,32 @@ require 'db.php';
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
-  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <script src="../vendors/js/vendor.bundle.base.js"></script>
+  <script src="../vendors/js/vendor.bundle.addons.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
   <!-- End plugin js for this page-->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/misc.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/misc.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
+  <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
 </html>
+<?php
+}
+else {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>
