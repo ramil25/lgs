@@ -2,8 +2,36 @@
 session_start();
   $success = '';
   require '../db.php';
+  $success = '';
+$target_dir = "../images/";
+$target_file = $target_dir . basename($_FILES["imgp"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     if (isset($_POST['add']))
     {
+      $check = getimagesize($_FILES["imgp"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["imgp"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["imgp"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
       $username = $_POST['username'];
       $password = $_POST['password'];
       $fname = $_POST['fullname'];
@@ -12,7 +40,8 @@ session_start();
       $gender = $_POST['gender'];
       $pos = $_POST['position'];
       $camp = $_POST['camp'];
-      $sql = 'INSERT INTO users(user_name,user_password,first_name,middle_name,last_name,gender,position,campus,user_level) values("'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'",1)';
+      $fulln =$fname." ".$lname;
+      $sql = 'INSERT INTO users(full_name,user_name,user_password,first_name,middle_name,last_name,gender,position,campus,profile_pic,user_level) values("'.$fulln.'","'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'","'.$target_file.'",1)';
       $query = mysqli_query($conn,$sql);
       if ($query)
       {
@@ -187,7 +216,7 @@ session_start();
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-              <form action="" method="POST">
+              <form action="" method="POST" enctype="multipart/form-data">
                 <!--FNAME-->
                 <?php echo $success; ?>
                 <div class="form-group row">
@@ -205,7 +234,7 @@ session_start();
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">First Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
+                     <input type="text" name="fullname" placeholder="First Name" required class="form-control" />
                   </div>
                 </div>
                   <!--MNAME-->
@@ -238,9 +267,15 @@ session_start();
                   </div>
                 </div>
                    <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Campus</label>
+                 <label class="label-dark col-sm-4 col-form-label">Email Address</label>
                   <div class="col-sm-8">
-                     <input type="text" name="camp" placeholder="Your Campus" required class="form-control" />
+                     <input type="text" name="camp" placeholder="Email Address" required class="form-control" />
+                  </div>
+                </div>
+                      <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Upload Photos</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="imgp" id="imgp" required class="btn btn-primary btn-block" />
                   </div>
                 </div>
                 <div class="form-group text-center">

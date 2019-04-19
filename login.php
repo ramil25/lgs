@@ -22,16 +22,19 @@ if($conn)
 			$_SESSION["user_name"] = $un;
 			if($_SESSION["user_level"]==0)
 			{
+        $_SESSION['profile_pic'] = $row['profile_pic'];
 				$_SESSION["user_name"] = $un;
 				header("location: admin/");
 			}
       else if($_SESSION["user_level"]==1)
       {
+          $_SESSION['profile_pic'] = $row['profile_pic'];
         $_SESSION["user_name"] = $un;
         header("location: staff/");
       }
 			else if($_SESSION["user_level"]==2)
 			{
+          $_SESSION['profile_pic'] = $row['profile_pic'];
 				$_SESSION["user_name"] = $un;
 				header("location: student/");
 			}

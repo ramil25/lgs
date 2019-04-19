@@ -2,9 +2,35 @@
 require '../db.php';
 session_start(); 
 $success = '';
-
+$target_dir = "images/";
+$target_file = $target_dir . basename($_FILES["imgp"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST['update-account']))
 {
+  $check = getimagesize($_FILES["imgp"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["imgp"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["imgp"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
    $fname = $_POST['fullname'];
    $posi = $_POST['position'];
    $username = $_POST['username'];
@@ -12,7 +38,7 @@ if(isset($_POST['update-account']))
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = "UPDATE users SET full_name='".$fname."',position='".$posi."',user_name='".$username."',user_password='".$password."',mobile='".$mobile."',email='".$email."' WHERE user_name='".$_SESSION['user_name']."'";
+   $sql = "UPDATE users SET profile_pic='".$target_file."', full_name='".$fname."',position='".$posi."',user_name='".$username."',user_password='".$password."',mobile='".$mobile."',email='".$email."' WHERE user_name='".$_SESSION['user_name']."'";
    $query = mysqli_query($conn,$sql);
     if ($password !== $repeat)
     {
@@ -50,7 +76,7 @@ if(isset($_GET['user_id']))
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student Admission</title>
+  <title>Update Account</title>
   <!-- plugins:css -->
   <link rel="icon" href="../images/lspu.png" />
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -113,7 +139,7 @@ if(isset($_GET['user_id']))
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo $row['profile_pic'] ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -150,12 +176,6 @@ if(isset($_GET['user_id']))
                 </li>
               </ul>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
@@ -201,7 +221,7 @@ if(isset($_GET['user_id']))
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">UPDATE STUDENT ACCOUNT</h1>
+                    <h1 class="text-center page-header p-2">UPDATE ACCOUNT</h1>
                   </div>
                  </div>
             </div>
@@ -210,7 +230,7 @@ if(isset($_GET['user_id']))
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
                       <?php echo $success; ?>
-              <form action="" method="post">
+              <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label"> Full Name</label>
                   <div class="col-sm-8">
@@ -256,7 +276,13 @@ if(isset($_GET['user_id']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Email</label>
                   <div class="col-sm-8">
-                    <input type="email" value="<?php echo $row['email']; ?>" name="email" placeholder="Course" required class="form-control">
+                    <input type="email" value="<?php echo $row['email']; ?>" name="email" placeholder="Email" required class="form-control">
+                  </div>
+                </div>
+                 <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Upload File</label>
+                  <div class="col-sm-8">
+                    <input type="file" name="imgp" id="imgp" placeholder="Course" required class="btn btn-block btn-primary">
                   </div>
                 </div>
 
