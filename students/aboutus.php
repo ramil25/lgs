@@ -45,20 +45,13 @@ if (isset($_SESSION["user_level"])) {
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Welcome Admin!</span>
-              <img class="img-xs rounded-circle" src="../images/default.png" alt="Profile image">
+       <ul class="navbar-nav navbar-nav-right">
+         <li class="nav-item">
+            <a class="nav-link" href="login.php"  style="margin-right: 20px;">
+              <i class="menu-icon mdi mdi-power"></i>
+              <span class="menu-title">Logout</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-              </a>
-              <a class="dropdown-item mt-2" href="logout.php">
-                Logout
-            </a>
-            </div>
-          </li>
+          </li> 
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
