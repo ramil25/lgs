@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2019 at 01:44 PM
+-- Generation Time: Apr 19, 2019 at 10:01 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -43,7 +43,7 @@ CREATE TABLE `users` (
   `user_level` int(1) NOT NULL,
   `student_number` varchar(100) NOT NULL,
   `course` varchar(100) NOT NULL,
-  `mobile` int(11) NOT NULL
+  `mobile` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,14 +51,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `email`, `full_name`, `first_name`, `middle_name`, `last_name`, `gender`, `position`, `campus`, `user_level`, `student_number`, `course`, `mobile`) VALUES
-(17, 'user', 'password12345', 'hh@gmail.com', 'Dem Soriano', 'Dem', 'Lalonio', 'Serrano', 'Male', '', '', 2, 'M-12-1-17222', 'BSIT/1st', 2147483647),
-(18, 'admin', 'admin', 'gg@gmail.com', 'Hanz Yow', 'Hanz', 'Law', 'Yow', 'Male', 'Admin', 'Sta. Cruz', 0, '', '', 0),
-(19, 'aby', '1122334455', 'gg@gmail.com', 'Aby Ser', '', '', '', 'Female', '', '', 2, 'M-12-1-17223', 'BSIT/1st', 2147483647),
-(20, 'Madam', '1234567890', 'ss@gg', 'Hanz Yow', 'Hanz', 'Yow', 'Yow', 'Male', 'Guidance', 'Sta. Cruz', 1, '', '', 0),
-(21, 'joyce', '12345', 'joyce@gmail.com', 'Joyce Ponce', '', '', '', '', '', '', 2, 'm19-22-1111', 'BSBA/2019', 2147483647),
-(22, 'joyce', '12345678910', 'joyce@gmail.com', 'Joyce Ponce', '', '', '', '', '', '', 2, 'M19-1-222000-121', 'BSBA/2019', 2147483647),
-(23, 'joy', '1234567890', 'joy@gmail.com', 'Joy Arroyo', '', '', '', 'Female', '', '', 2, 'm12-19-33333', 'BEED', 36888888),
-(24, 'staff', 'staff12345', '', '', 'Jaime', 'Jain', 'Sandoval', 'Male', 'Staff', 'Siniloan', 1, '', '', 0);
+(18, 'admin', 'admin12345', 'gg@gmail.com', 'Hanz Yow', 'Hanz', 'Law', 'Yow', 'Male', 'Admin', 'Sta. Cruz', 0, '', '', '0999999'),
+(20, 'Madam', '1234567890', 'ss@gg', 'Hanz Yow', 'Hanz', 'Yow', 'Yow', 'Male', 'Guidance', 'Sta. Cruz', 1, '', '', '0'),
+(24, 'staff', 'staff12345', '', '', 'Jaime', 'Jain', 'Sandoval', 'Male', 'Staff', 'Siniloan', 1, '', '', '0'),
+(31, 'joy_25', '1111111111', 'julita@gmail.com', 'James Cabantog', '', '', '', 'Male', '', '', 2, 'M12-1-11111', 'BA', '11111'),
+(32, 'student', 'student12345', 'justin_mapalad@yahoo.com', 'Dan Jerick Sison', '', '', '', 'Male', '', '', 2, 'M12-1-11111', 'BSBA', '111111');
 
 --
 -- Indexes for dumped tables
@@ -78,7 +75,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
