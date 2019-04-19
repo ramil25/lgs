@@ -86,7 +86,7 @@ if (isset($_SESSION["user_level"])) {
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="../images/default.png" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
