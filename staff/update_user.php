@@ -1,6 +1,7 @@
 <?php
 require '../db.php';
 session_start(); 
+$_SESSION['profile_pic'] = $row['profile_pic'];
 $success = '';
 $target_dir = "images/";
 $target_file = $target_dir . basename($_FILES["imgp"]["name"]);
@@ -59,6 +60,7 @@ if ($uploadOk == 0) {
     {
         $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Updated Successfully
         </p>';
+        session_destroy();
     }
 
 }
@@ -68,6 +70,8 @@ if(isset($_GET['user_id']))
     $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
     $ress =mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($ress);
+    session_start();
+    $_SESSION['profile_pic'] = $row['profile_pic'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

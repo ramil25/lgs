@@ -36,7 +36,7 @@ if($conn)
 			{
           $_SESSION['profile_pic'] = $row['profile_pic'];
 				$_SESSION["user_name"] = $un;
-				header("location: student/");
+				header("location: students/");
 			}
 	}
 	else if (!$row)
