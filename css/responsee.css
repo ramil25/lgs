@@ -716,7 +716,7 @@ nav.breadcrumb-nav ul li:last-child:after {content:"";}
     line-height:3;
     margin-right:0.625rem;
     max-width:100%;
-    text-align:center;
+    text-align:left;
     vertical-align:middle;
   }
   .nav-text:after {
@@ -821,7 +821,7 @@ nav.breadcrumb-nav ul li:last-child:after {content:"";}
     line-height:3;
     max-width:100%;
     padding-right:0.625rem;
-    text-align:center;
+    text-align:left;
     vertical-align:middle;
   }
   .aside-nav-text:after {

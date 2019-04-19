@@ -1,23 +1,18 @@
 <?php
-  require '../db.php';
-session_start();
-$std_id = $_GET['std_id'];
+require '../db.php';
+session_start(); 
 $success = '';
-if (isset($_SESSION["user_level"])) {
-  if (empty($std_id)) {
-    header("location:create_account.php");
-  }
-  if(isset($_POST['update-account']))
+
+if(isset($_POST['update-account']))
 {
    $fname = $_POST['fullname'];
-   $stdno = $_POST['studentnumber'];
-   $course = $_POST['course'];
+   $posi = $_POST['position'];
    $username = $_POST['username'];
    $password = $_POST['password'];
    $repeat = $_POST['repeat-password'];
    $mobile = $_POST['mobile'];
    $email = $_POST['email'];
-   $sql = "UPDATE users SET course='".$course."',user_name='".$username."',user_password='".$password."',mobile='".$mobile."',email='".$email."' WHERE user_id=".$std_id;
+   $sql = "UPDATE users SET full_name='".$fname."',position='".$posi."',user_name='".$username."',user_password='".$password."',mobile='".$mobile."',email='".$email."' WHERE user_name='".$_SESSION['user_name']."'";
    $query = mysqli_query($conn,$sql);
     if ($password !== $repeat)
     {
@@ -41,15 +36,13 @@ if (isset($_SESSION["user_level"])) {
     }
 
 }
-  if(isset($_GET['std_id']))
+
+if(isset($_GET['user_id']))
   {
-    $std_id = $_GET['std_id'];
-    $std =$_GET['std'];
-    $query ="SELECT * from users where user_level=2 and user_id=".$std_id;
+    $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
     $ress =mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($ress);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -219,27 +212,21 @@ if (isset($_SESSION["user_level"])) {
                       <?php echo $success; ?>
               <form action="" method="post">
                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                 <label class="label-dark col-sm-4 col-form-label"> Full Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" value="<?php echo $row['full_name']; ?>" readonly />
+                     <input type="text" name="fullname" placeholder="Full Name" class="form-control" value="<?php echo $row['full_name']; ?>" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Position</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="position" placeholder="Position" class="form-control" value="<?php echo $row['position']; ?>" />
                   </div>
                 </div>
 
 
                  <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Student Number</label>
-                  <div class="col-sm-8">
-                     <input type="text" value="<?php echo $row['student_number']; ?>" name="studentnumber" placeholder="Student Number" required class="form-control" readonly />
-                  </div>
-                </div> <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Course/Year</label>
-                  <div class="col-sm-8">
-                    <input type="text" name="course" value="<?php echo $row['course']; ?>" placeholder="Your Course/Year" required class="form-control" />
-                  </div>
-                </div>
-
-                 <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Student Username</label>
+                  <label class="label-dark col-sm-4 col-form-label"> Username</label>
                   <div class="col-sm-8">
                    <input type="text" name="username" value="<?php echo $row['user_name']; ?>" placeholder="Grade" required class="form-control"/>
                   </div>
@@ -326,20 +313,4 @@ if (isset($_SESSION["user_level"])) {
 </body>
 
 </html>
-<?php
-}
-}
-else {
-  echo '<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/lgs/">
-          <img src="../images/lspu.jpg" alt="logo" />
-        </a>
-      </div>
-  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
-  ;
-}
-
-?>
+<?php } ?>

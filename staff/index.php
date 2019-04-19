@@ -68,7 +68,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                 <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="../images/default.png" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -107,7 +107,12 @@ if (isset($_SESSION["user_level"])) {
               </ul>
             </div>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+           	</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
@@ -181,6 +186,23 @@ if (isset($_SESSION["user_level"])) {
                     <div class="float-right">
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-center mb-0">Student Account</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </a>
+            </div>
+             </div>
+
+             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <a href="add_staff.php">
+                <div class="card-body">
+                  <div class="clearfix text-center">
+                      <i class="mdi mdi-account-plus text-primary icon-lg"></i>
+                    <div class="float-right">
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-center mb-0">Create Staff Account</h3>
                       </div>
                     </div>
                   </div>
