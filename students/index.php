@@ -46,7 +46,7 @@ if (isset($_SESSION["user_level"])) {
 
         <ul class="navbar-nav navbar-nav-right">
          <li class="nav-item">
-            <a class="nav-link" href="login.php"  style="margin-right: 20px;">
+            <a class="nav-link" href="logout.php"  style="margin-right: 20px;">
               <i class="menu-icon mdi mdi-power"></i>
               <span class="menu-title">Logout</span>
             </a>
