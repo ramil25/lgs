@@ -85,7 +85,7 @@ $link1 ="cluster.php?year=2019";
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="../images/default.png" alt="profile image"></a>
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Dem</p>
