@@ -102,7 +102,7 @@ if (isset($_SESSION["user_level"])) {
           <li class="nav-item">
             <a class="nav-link" href="req_moral.php">
               <i class="menu-icon mdi mdi-comment"></i>
-              <span class="menu-title">Request Good Moral</span>
+              <span class="menu-title">Messaging</span>
             </a>
           </li>
 
