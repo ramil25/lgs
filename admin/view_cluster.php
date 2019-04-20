@@ -236,9 +236,7 @@ $res =mysqli_query($conn,$sql);
            <td><p style="color: black; font-size: 16px;"><?php echo $row['remarks'];
             ?></p></td>
             <td>
-              <form method="post">
-<input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
-                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
+            </td>
         </tr>
       <?php }
       if(isset($_POST['del']))

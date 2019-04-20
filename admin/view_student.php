@@ -178,7 +178,12 @@ $res =mysqli_query($conn,$sql);
 
           if($title=="VIEW ALL")
           {
-           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['full_name'];
+           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname'];
+           ?>
+            <form method="post" class="float-right">
+              <input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
+                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
+          <?php
            }
           else
           {
@@ -188,6 +193,29 @@ $res =mysqli_query($conn,$sql);
         </tr>
       <?php } ?>
                </table>
+               <?php 
+                if(isset($_POST['del']))
+              {
+                require '../db.php';
+                $sql ="SELECT * from students";
+                $res =mysqli_query($conn,$sql);
+                $fetch = mysqli_fetch_assoc($res);
+                $hid= $_POST['hid'];
+                $dsql ="DELETE FROM students where student_id = '".$hid."'";
+                $result =mysqli_query($conn,$dsql);
+                if ($result) {
+                  echo "<script>alert('Deleted');
+        location.href='student_admission.php';
+        </script>";
+                }
+                else
+                {
+                  echo "<script>alert('Something Went Wrong');
+        location.href='student_admission.php';
+        </script>";
+                }
+              }
+              ?>
                   </div>
                  </div>
 
