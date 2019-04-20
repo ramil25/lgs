@@ -187,7 +187,7 @@ $res =mysqli_query($conn,$sql);
            }
           else
           {
-            echo "update_student.php?std_id=".$row['student_id']; ?>><?php echo $row['full_name'];
+            echo "update_student.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; 
           }
             ?></a></td>
         </tr>
