@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title=$_GET['title'];
   $coll='';
   $rem ='';
@@ -6,7 +7,9 @@ $title=$_GET['title'];
 if(isset($_POST['add']))
 {
   require '../db.php';
-  $fn =$_POST['fullname'];
+  $fname =$_POST['fname'];
+  $sname =$_POST['surname'];
+  $mi =$_POST['mi'];
   $gender =$_POST['gender'];
   $lsa =$_POST['school_last_attended'];
   $sc =$_POST['strand_course'];
@@ -354,7 +357,7 @@ if(isset($_POST['add']))
       $coll ='none';
       $rem='Unqualified';
     }
-  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$fn."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
+  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
@@ -433,7 +436,7 @@ if(isset($_POST['add']))
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
+                 <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Dem</p>
@@ -532,11 +535,24 @@ if(isset($_POST['add']))
 
               <form method="post">
                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                 <label class="label-dark col-sm-4 col-form-label">Surname</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
+                     <input type="text" name="surname" placeholder="Your Last Name" required class="form-control" />
                   </div>
                 </div>
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="fname" placeholder="Your First Name" required class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Middle Initial</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="mi" placeholder="Middle Initial" required class="form-control" />
+                  </div>
+                </div>
+
                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
