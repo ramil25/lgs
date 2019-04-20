@@ -178,7 +178,7 @@ $res =mysqli_query($conn,$sql);
 
           if($title=="VIEW ALL")
           {
-           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname'];
+           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname']." ". $row['first_name']." ". $row['middle_name'];
            ?>
             <form method="post" class="float-right">
               <input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">

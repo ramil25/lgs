@@ -180,7 +180,7 @@ if($conn)
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
-                     <input type="text"  name="fullname" placeholder="Full Name" required readonly class="form-control-plaintext" value="<?php echo $fetch['full_name']; ?>" />
+                     <input type="text"  name="fullname" placeholder="Full Name" required readonly class="form-control-plaintext" value="<?php echo $fetch['Surname']." ". $fetch['first_name']." ". $fetch['middle_name']; ?>" />
                   </div>
                 </div>
                 <div class="form-group row">
