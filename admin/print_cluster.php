@@ -44,7 +44,9 @@ $res =mysqli_query($conn,$sql);
           <tr>
           <thead class="table-dark">
             <th>RN</th>
-            <th>NAME</th>
+            <th>Surname</th>
+            <th>First Name</th>
+            <th>Middle Initial</th>
             <th>COURSE</th>
             <th>RAW SCORE</th>
             <th>GWA</th>
@@ -56,7 +58,11 @@ $res =mysqli_query($conn,$sql);
       { $rn++; ?>
         <tr>
           <td><?php echo $rn; ?></td>
-          <td><?php echo $row['full_name'];
+          <td><?php echo $row['Surname'];
+            ?></td>
+            <td><?php echo $row['first_name'];
+            ?></td>
+            <td><?php echo $row['middle_name'];
             ?></td>
             <td><?php echo $row['fcourse'];
             ?></td>

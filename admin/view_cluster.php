@@ -225,7 +225,7 @@ $res =mysqli_query($conn,$sql);
         <tr>
             <td><p style="color: black; font-size: 16px;"><?php echo $num;
             ?></p></td>
-          <td><p style="color: black; font-size: 16px;"><?php echo $row['full_name'];
+          <td><p style="color: black; font-size: 16px;"><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name'];
             ?></p></td>
             <td><p style="color: black; font-size: 16px;"><?php echo $row['fcourse'];
             ?></p></td>
