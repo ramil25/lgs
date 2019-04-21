@@ -126,7 +126,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cluster.php">
+            <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
