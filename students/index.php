@@ -14,8 +14,10 @@ if (isset($_SESSION["user_level"])) {
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css">
-  <link rel="stylesheet" href="../assets/owl-carousel/owl.carousel.css">
-  <link rel="stylesheet" href="../assets/owl-carousel/owl.theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Material Design Bootstrap -->
+  <!-- Your custom styles (optional) -->
+  <link href="../assets/carousel/css/style.css" rel="stylesheet">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -118,8 +120,32 @@ if (isset($_SESSION["user_level"])) {
       <div class="main-panel">
         <div class="content-wrapper">
                <div class="row">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="../images/carousel/slide1.jpg"
+        alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="../images/carousel/slide2.jpg"
+        alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="../images/carousel/slide3.jpg"
+        alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                  <div class="card card-statistics">
+                  <div class="card card-statistics" style="margin-top: 20px;">
                     <h1 class="text-center page-header p-2">NEWSFEED</h1> 
                   </div>
                   <div class="card-body">
@@ -191,6 +217,13 @@ if (isset($_SESSION["user_level"])) {
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
+  <script type="text/javascript" src="../assets/carousel/js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="../assets/carousel/js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../assets/carousel/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../assets/carousel/js/mdb.min.js"></script>
 </body>
 </html>
 <?php
