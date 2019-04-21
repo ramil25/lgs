@@ -7,7 +7,7 @@ $title=$_GET['title'];
 $rn =0;
 if(isset($_GET['title']))
 {
-  $sql ="SELECT * FROM students where colleges='".$title."'";
+  $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
 $res =mysqli_query($conn,$sql);
 
 ?>
@@ -44,7 +44,9 @@ $res =mysqli_query($conn,$sql);
           <tr>
           <thead class="table-dark">
             <th>RN</th>
-            <th>NAME</th>
+            <th>Surname</th>
+            <th>First Name</th>
+            <th>Middle Initial</th>
             <th>COURSE</th>
             <th>RAW SCORE</th>
             <th>GWA</th>
@@ -56,7 +58,11 @@ $res =mysqli_query($conn,$sql);
       { $rn++; ?>
         <tr>
           <td><?php echo $rn; ?></td>
-          <td><?php echo $row['full_name'];
+          <td><?php echo $row['Surname'];
+            ?></td>
+            <td><?php echo $row['first_name'];
+            ?></td>
+            <td><?php echo $row['middle_name'];
             ?></td>
             <td><?php echo $row['fcourse'];
             ?></td>

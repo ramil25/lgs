@@ -1,23 +1,14 @@
 <?php
 session_start();
+require '../db.php';
+$sql="SELECT COUNT(*),YEAR(date_ad) AS YEAR FROM students GROUP BY YEAR(date_ad)";
+  $result =mysqli_query($conn,$sql);
 if (isset($_SESSION["user_level"])) {
 $ym =$_GET['category'];
 $link1 ="";
 $link2 ="";
 $link3 ="";
 $link1 ="";
-if($ym=="ENROLLEES CHART")
-{
-$link1 ="sems_menu.php?year=2019";
-}
-if($ym=="Qualifying Exam")
-{
-$link1 ="qualifying_exam.php?year=2019";
-}
-if($ym=="CLUSTER")
-{
-$link1 ="cluster.php?year=2019";
-}
 ?>
  <!DOCTYPE html>
 <html lang="en">
@@ -173,6 +164,22 @@ $link1 ="cluster.php?year=2019";
           <div class="row">
  <!-- partial -->
 
+            <?php  
+            while($row=mysqli_fetch_assoc($result))
+            {
+              if($ym=="ENROLLEES CHART")
+                {
+                $link1 ="sems_menu.php?year=".$row['YEAR'];
+                }
+                if($ym=="Qualifying Exam")
+                {
+                $link1 ="qualifying_exam.php?year=".$row['YEAR'];
+                }
+                if($ym=="CLUSTER")
+                {
+                $link1 ="cluster.php?year=".$row['YEAR'];
+                }
+            ?>          
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
                   <a href="<?php echo $link1; ?>">
@@ -180,14 +187,14 @@ $link1 ="cluster.php?year=2019";
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-timetable text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">2019</h1>
+                      <h1 class="float-right ml-5 mt-2"><?php echo $row['YEAR'];  ?></h1>
                     </div>
                   </div>
                 </div>
                 </a>
               </div>
             </div>
-
+          <?php }  ?>
 
           </div>
 

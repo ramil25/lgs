@@ -1,5 +1,6 @@
 <?php
 session_start();
+$year =$_GET['year'];
 if (isset($_SESSION["user_level"])) {
 ?>
 <!DOCTYPE html>
@@ -162,7 +163,7 @@ if (isset($_SESSION["user_level"])) {
                  </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CBMA&&year=2019">
+                <a  href="view_cluster.php?title=CBMA&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi  mdi-briefcase text-primary icon-lg"></i>
@@ -179,7 +180,7 @@ if (isset($_SESSION["user_level"])) {
 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CCJE&&year=2019">
+                <a  href="view_cluster.php?title=CCJE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-shield text-primary icon-lg"></i>
@@ -196,7 +197,7 @@ if (isset($_SESSION["user_level"])) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CTE&&year=2019">
+                <a  href="view_cluster.php?title=CTE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-book-open text-primary icon-lg"></i>
@@ -213,7 +214,7 @@ if (isset($_SESSION["user_level"])) {
 
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=IAE&&year=2019">
+                <a  href="view_cluster.php?title=IAE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-city text-primary icon-lg"></i>
@@ -230,7 +231,7 @@ if (isset($_SESSION["user_level"])) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CCS&&year=2019">
+               <a  href="view_cluster.php?title=CCS&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-laptop text-primary icon-lg"></i>
@@ -247,7 +248,7 @@ if (isset($_SESSION["user_level"])) {
 
              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CA&&year=2019">
+               <a  href="view_cluster.php?title=CA&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-leaf text-primary icon-lg"></i>
@@ -265,7 +266,7 @@ if (isset($_SESSION["user_level"])) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CAS&&year=2019">
+                <a  href="view_cluster.php?title=CAS&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                     <i class="mdi mdi-eye text-primary icon-lg"></i>
@@ -282,7 +283,7 @@ if (isset($_SESSION["user_level"])) {
 
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CHMT&&year=2019">
+               <a  href="view_cluster.php?title=CHMT&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-silverware text-primary icon-lg"></i>

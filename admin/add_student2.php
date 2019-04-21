@@ -21,7 +21,7 @@ if(isset($_POST['add']))
   $schoice =$_POST['schoice'];
   $tchoice =$_POST['tchoice'];
   $rs =$_POST['raw_score'];
-  $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
+ $date =$_POST['dates'];
 
   //first choice
     if($fchoice=='BSA' && $gwa>=87)
@@ -695,6 +695,8 @@ if(isset($_POST['add']))
                    <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date:</label>
                   <div class="col-sm-8 form-control">
+                    <input type="date" min="2019-01-01" name="dates" class="form-control">
+                    <!--
                    <select name="month">
             <option value="June">June</option>
             <option value="July">July</option>
@@ -758,7 +760,7 @@ if(isset($_POST['add']))
             <option value="2029">2029</option>
              <option value="2030">2030</option>
           </select>
-
+          -->
                   </div>
                 </div>
 
