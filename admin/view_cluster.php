@@ -11,35 +11,35 @@ if(isset($_GET['title']))
 {
   if($title=="CA")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CCS")
   {
-     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CHMT")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CCJE")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="IAE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+  $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CTE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CBMA")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
   else if($title=="CAS")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
   }
 $res =mysqli_query($conn,$sql);
 
@@ -204,7 +204,7 @@ $res =mysqli_query($conn,$sql);
                   </div>
                  </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-              <button class="btn btn-success" onclick="location.href='cluster.php'">Back</button>
+              <button class="btn btn-success" onclick="window.history.back()">Back</button>
                <a class="btn btn-primary text-light" href="print_cluster.php?title=<?php echo $title; ?>&year=<?php echo $year; ?>" target="_blank">Print</a>
                 <div class="card-body row no-gutters align-items-center">
               <table  class="table table-light table-responsive text-center">
@@ -225,7 +225,7 @@ $res =mysqli_query($conn,$sql);
         <tr>
             <td><p style="color: black; font-size: 16px;"><?php echo $num;
             ?></p></td>
-          <td><p style="color: black; font-size: 16px;"><?php echo $row['full_name'];
+          <td><p style="color: black; font-size: 16px;"><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name'];
             ?></p></td>
             <td><p style="color: black; font-size: 16px;"><?php echo $row['fcourse'];
             ?></p></td>

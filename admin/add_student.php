@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["user_level"])) {
+  $msg = '';
   $success = '';
   $std = $_GET['std'];
     $gender =$_GET['gender'];
@@ -10,6 +11,8 @@ if (isset($_SESSION["user_level"])) {
 if(isset($_POST['add']))
 {
   require '../db.php';
+  $image = $_FILES['image']['name'];
+  $target = "images/".basename($image);
    $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
    $course = $_POST['course'];
@@ -30,18 +33,26 @@ if(isset($_POST['add']))
     }
     else
     {
-      $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'")';
-   $query = mysqli_query($conn,$sql);
-   if (!$query)
-    {
-      $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
-      </p>';
-    }
-    else if ($query)
-    {
-        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+      $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender,profile_pic) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'","'.$image.'")';
+     $query = mysqli_query($conn,$sql);
+     if (!$query)
+      {
+        $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
         </p>';
-    }
+      }
+      else if ($query)
+      {
+          if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
+          {
+              $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+          </p>';
+          }else
+          {
+               $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
+        </p>';
+          }
+      }
+
     }
     
 
@@ -208,7 +219,7 @@ if(isset($_POST['add']))
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
                       <?php echo $success; ?>
-              <form action="" method="post">
+              <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
@@ -264,7 +275,12 @@ if(isset($_POST['add']))
                   </div>
                 </div>
 
-
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Photo</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="image" class="btn-primary form-control">
+                  </div>
+                </div>
 
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
