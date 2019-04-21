@@ -7,7 +7,7 @@ $title=$_GET['title'];
 $rn =0;
 if(isset($_GET['title']))
 {
-  $sql ="SELECT * FROM students where colleges='".$title."'";
+  $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
 $res =mysqli_query($conn,$sql);
 
 ?>
