@@ -4,7 +4,7 @@ session_start();
 
 	 require '../db.php';
 	 if (isset($_SESSION["user_level"])) {
-    $sql ="SELECT date_ad from students where YEAR(date_ad) LIKE '%".$year."' ORDER BY student_id";
+    $sql ="SELECT date_ad, COUNT(*) from students WHERE YEAR(date_ad)='".$year."' GROUP BY date_ad desc";
     $res =mysqli_query($conn,$sql);
 
 ?>

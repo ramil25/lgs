@@ -67,7 +67,7 @@ $res =mysqli_query($conn,$sql);
        ?>
         <tr>
           <td><?php echo $rn; ?></td>
-          <td><?php echo $row['full_name'];
+          <td><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name'];
             ?></td>
             <td><?php echo $row['strand_course'];
             ?></td>
