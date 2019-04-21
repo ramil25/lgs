@@ -7,6 +7,7 @@ $title=$_GET['title'];
 if(isset($_POST['add']))
 {
   require '../db.php';
+  
   $fname =$_POST['fname'];
   $sname =$_POST['surname'];
   $mi =$_POST['mi'];
@@ -357,13 +358,23 @@ if(isset($_POST['add']))
       $coll ='none';
       $rem='Unqualified';
     }
-  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
+  $image = $_FILES['image']['name'];
+  $target = "images/".basename($image);
+  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','".$image."')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
-    echo "<script>alert('Student added successfully');
-    location.href='student_admission.php';
-    </script>";
+     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
+          {
+                echo "<script>alert('Student added successfully');
+      location.href='student_admission.php';
+      </script>";
+          }else
+          {
+               echo "<script>alert('Something Went Wrong');
+      location.href='student_admission.php';
+      </script>";
+          }
   }
 }
 ?>
@@ -533,7 +544,7 @@ if(isset($_POST['add']))
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
 
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Surname</label>
                   <div class="col-sm-8">
@@ -761,6 +772,13 @@ if(isset($_POST['add']))
              <option value="2030">2030</option>
           </select>
           -->
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Photo</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="image" class="btn-primary form-control">
                   </div>
                 </div>
 
