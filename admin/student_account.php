@@ -161,9 +161,10 @@ session_start();
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">
-          <input type="text" name="search" class="col" placeholder="Search..." name="search" required />
+          <!--<input type="text" name="search" class="col" placeholder="Search..." name="search" required />
            <button type="submit" name="submit-search" class="col-auto">
-           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
+           <i class="mdi mdi-magnify btn-success icon-sm"></i></button>-->
+           <h1 class="text-center">Student Account</h1>
            </div>
           </form>
             </div>

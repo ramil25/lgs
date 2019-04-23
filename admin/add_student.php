@@ -12,7 +12,7 @@ if(isset($_POST['add']))
 {
   require '../db.php';
   $image = $_FILES['image']['name'];
-  $target = "images/".basename($image);
+  $target = "../students/images/".basename($image);
    $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
    $course = $_POST['course'];

@@ -179,14 +179,14 @@ session_start();
                       <?php } ?>
 											</div>
 
-
+                      <!--
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">
           <input type="text" name="search" class="col" placeholder="Search..." name="search"/>
            <button type="submit" name="submit-search" class="col-auto">
            <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
            </div>
-          </form>
+          </form>-->
             </div>
           <?php
 
@@ -195,11 +195,11 @@ session_start();
     $search = $_POST["search"];
     if($title=='Add')
     {
-    $sql = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR last_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sql = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR first_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
 
-    $sq = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR last_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sq = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR first_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $results = mysqli_query($conn,$sq);
     $checkResults = mysqli_num_rows($results);
     }
@@ -215,19 +215,24 @@ session_start();
     }
     echo "  About ".$checkResult." result(s)!";
     if ($checkResult > 0 ||  $checkResults > 0 ) {
-      while ($row = mysqli_fetch_assoc($result)) {
-
-            $fname = $row['Surname'];
 ?>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card-body">
                   <div class="clearfix">
                       <?php
+                      while ($row = mysqli_fetch_assoc($result)) {
+                      if($title=='Add')
+                        {
+                        $fname = $row['Surname']." ".$row['first_name'];
+                      }
+                      else
+                      {
+                      }
                       if($title=='Add')
                       {
                         ?>
                         <div style="float: left;">
-                      <h3 class="ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $fname; ?></a></h3>
+                      <h3 class="ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['Surname']." ".$row['first_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $fname; ?></a></h3>
                     </div>
                     <?php } }
                     ?>
