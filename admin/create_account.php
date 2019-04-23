@@ -195,21 +195,21 @@ session_start();
     $search = $_POST["search"];
     if($title=='Add')
     {
-    $sql = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sql = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR last_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
 
-    $sq = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sq = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR last_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $results = mysqli_query($conn,$sq);
     $checkResults = mysqli_num_rows($results);
     }
     else if($title=='Update' || $title=='View')
     {
-    $sql = "SELECT * FROM users WHERE Surname LIKE '%$search%' OR course LIKE '%$search%'";
+    $sql = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
 
-    $sq = "SELECT * FROM users WHERE Surname LIKE '%$search%' OR course LIKE '%$search%'";
+    $sq = "SELECT * FROM users WHERE full_name LIKE '%$search%' OR course LIKE '%$search%'";
     $results = mysqli_query($conn,$sq);
     $checkResults = mysqli_num_rows($results);
     }
@@ -293,7 +293,7 @@ else if($title=="View")
   if($title=='Add')
   {
     ?>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['Surname']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $row['Surname']; ?>
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['Surname']." ".$row['first_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $row['Surname']." ".$row['first_name']; ?>
 	</a></p></td>
 <?php }} ?>
 
@@ -303,7 +303,7 @@ while($row=mysqli_fetch_assoc($ress))
   if($title=='Update')
   {
     ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['user_id'];?>&std=<?php echo $row['Surname']; ?>"><?php echo $row['Surname']; ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "update_account.php?std_id=<?php echo $row['user_id'];?>&std=<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?>
   </a></p></td>
 <?php } ?>
 
@@ -311,7 +311,7 @@ while($row=mysqli_fetch_assoc($ress))
   if($title=='View')
   {
     ?>
-  <td><p style="color: black; font-size: 20px;"><a href = "view_account.php?std_id=<?php echo $row['user_id'];?>"><?php echo $row['Surname']; ?>
+  <td><p style="color: black; font-size: 20px;"><a href = "view_account.php?std_id=<?php echo $row['user_id'];?>"><?php echo $row['full_name']; ?>
   </a></p></td>
   <td>
               <form method="post">
