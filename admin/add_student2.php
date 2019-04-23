@@ -12,6 +12,7 @@ if(isset($_POST['add']))
   $sname =$_POST['surname'];
   $mi =$_POST['mi'];
   $gender =$_POST['gender'];
+  $addr =$_POST['addr'];
   $lsa =$_POST['school_last_attended'];
   $sc =$_POST['strand_course'];
   $gwa=$_POST['grade_GWA'];
@@ -360,7 +361,7 @@ if(isset($_POST['add']))
     }
   $image = $_FILES['image']['name'];
   $target = "images/".basename($image);
-  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','".$image."')";
+  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,address,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$addr."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','".$image."')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
@@ -572,6 +573,13 @@ if(isset($_POST['add']))
                    <option value="Male">Male</option>
                    <option value="Female">Female</option>
                   </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Town/City</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="addr" placeholder="Your Home Town or City" required class="form-control" />
                   </div>
                 </div>
 

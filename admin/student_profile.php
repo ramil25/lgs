@@ -191,6 +191,13 @@ if($conn)
                 </div>
 
                  <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Home Town/City</label>
+                  <div class="col-sm-8">
+                  <input type="text" readonly class="form-control-plaintext"  name="addr" required value="<?php echo $fetch['address']; ?>" >
+                  </div>
+                </div>
+
+                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">School Attended</label>
                   <div class="col-sm-8">
                      <input type="text" name="school_last_attended" placeholder="School Name" required readonly class="form-control-plaintext" value="<?php echo $fetch['school_last_attended']; ?>" >

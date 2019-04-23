@@ -209,6 +209,13 @@ if($conn)
                 </div>
 
                  <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Town/City</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="addr" placeholder="Your Home Town or City" required class="form-control" value="<?php echo $fetch['address']; ?>" />
+                  </div>
+                </div>
+
+                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">School Attended</label>
                   <div class="col-sm-8">
                      <input type="text" name="school_last_attended" placeholder="School Name" required class="form-control" value="<?php echo $fetch['school_last_attended']; ?>" >
@@ -398,6 +405,7 @@ if(isset($_POST['update']))
    $sn =$_POST['surname'];
     $mi =$_POST['mi'];
   $gender =$_POST['gender'];
+   $addr =$_POST['addr'];
   $lsa =$_POST['school_last_attended'];
   $sc =$_POST['strand_course'];
   $gwa=$_POST['grade_GWA'];
@@ -409,7 +417,7 @@ if(isset($_POST['update']))
   $tchoice =$_POST['tchoice'];
   $rs =$_POST['raw_score'];
   $rem =$_POST['remarks'];
-  $updatesql ="UPDATE students set Surname='".$sn."', first_name='".$fn."', middle_name='".$mi."',gender='".$gender."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
+  $updatesql ="UPDATE students set Surname='".$sn."', first_name='".$fn."', middle_name='".$mi."',gender='".$gender."',address='".$addr."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
    $res= mysqli_query($conn,$updatesql);
   if($res)
   {
