@@ -1,8 +1,6 @@
 <?php
 session_start();
 require '../db.php';
-$sql ="SELECT * FROM students WHERE remarks='Qualified'";
-$res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,52 +133,29 @@ $res =mysqli_query($conn,$sql);
           if(isset($_GET['submit-search']))
           {
           $s =$_GET['search'];
-          $query ="SELECT * FROM students WHERE full_name LIKE '".$s."%' AND remarks='Qualified'";
+          $query ="SELECT * FROM students WHERE (Surname LIKE '".$s."%' OR first_name LIKE '".$s."%') AND remarks='Qualified'";
           $ress =mysqli_query($conn,$query);
           if($ress)
           { ?>
             <tr>
             <th><h3>Surname</h3></th>
-            <th><h3>Middle Name</h3></th>
-            <th><h3>First Name</h3></th>
             <th><h3>Course</h3></th>
             <th><h3>Results</h3></th>
           </tr>
           <?php
-          while($rows=mysqli_fetch_assoc($ress))
+          while($row=mysqli_fetch_assoc($ress))
     { ?>
-    
-    <tr>
-  <td style="font-size: 20px;"><?php echo $rows['full_name']; ?></td>
-
-  <td style="font-size: 20px;"> <?php echo $rows['fchoice']; ?></td>
-
-  <td style="font-size: 20px;">  <?php echo $rows['remarks']; ?></td>
-    </tr>
-    <?php }
-          }
-        }
-        else
-        {
-          ?>
-          <tr>
-            <th><h3>Surname</h3></th>
-            <th><h3>Middle Name</h3></th>
-            <th><h3>First Name</h3></th>
-            <th><h3>Course</h3></th>
-            <th><h3>Results</h3></th>
-          </tr>
-          <?php
-          while($row=mysqli_fetch_assoc($res))
-    { ?>
-    <tr>
-  <td style="font-size: 20px;"><?php echo $row['full_name']; ?></td>
+    <tr onclick="alert('<?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; ?> \nYou`re qualified, Please proceed to the guidance office to claim your interview form.')">
+  <td  style="font-size: 20px;"><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; ?></td>
 
   <td style="font-size: 20px;"> <?php echo $row['fchoice']; ?></td>
 
   <td style="font-size: 20px;">  <?php echo $row['remarks']; ?></td>
     </tr>
-    <?php }  }?>
+    <?php }
+        }
+      }
+        ?>
         </table>
       </div>
       
