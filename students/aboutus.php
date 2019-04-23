@@ -3,6 +3,9 @@ session_start();
 require '../db.php';
 if (isset($_SESSION["user_level"])) {
     $success = '';
+    $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
+    $ress =mysqli_query($conn,$query);
+    $row=mysqli_fetch_assoc($ress);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +70,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><?php echo "<img src='images/".$row['profile_pic']."' >"; ?></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
