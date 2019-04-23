@@ -1,10 +1,14 @@
 <?php
 session_start();
-require '../db.php';
 if (isset($_SESSION["user_level"])) {
+  require '../db.php';
+
+  $towns ="SELECT address,COUNT(*) AS town FROM students group by address";
+   $result = mysqli_query($conn,$towns);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -40,6 +44,7 @@ if (isset($_SESSION["user_level"])) {
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -48,7 +53,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="logout.php">
+              <a class="dropdown-item mt-2" href="../index.php">
                 Logout
             </a>
             </div>
@@ -62,7 +67,7 @@ if (isset($_SESSION["user_level"])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -86,7 +91,6 @@ if (isset($_SESSION["user_level"])) {
               <span class="menu-title">Home</span>
             </a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-account"></i>
@@ -111,12 +115,12 @@ if (isset($_SESSION["user_level"])) {
             <a class="nav-link" href="add_staff.php">
               <i class="menu-icon mdi mdi-account-plus"></i>
               <span class="menu-title">Create Staff Account</span>
-           	</a>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Enrollees Chart</span>
+              <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
           <li class="nav-item">
@@ -126,7 +130,7 @@ if (isset($_SESSION["user_level"])) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cluster.php">
+            <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -152,84 +156,45 @@ if (isset($_SESSION["user_level"])) {
         </ul>
       </nav>
       <!-- partial -->
+      
       <div class="main-panel">
         <div class="content-wrapper">
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">CHART MENU</h1>
+                    <h1 class="text-center page-header p-2">Per Town Enrollees Chart</h1>
                   </div>
                  </div>
 
-                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                 <a href="chart_town.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-map-marker-radius text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Per Per Town Enrollees</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="chart_gender.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                    <i class="mdi mdi-account-multiple text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Male and Female Enrolees Chart</h3>
-                      </div>
-                    </div>
-                  </div>
+                      function drawChart() {
+
+                        var data = google.visualization.arrayToDataTable([
+                          ['Chart', 'Town'],
+                          <?php 
+                          while ($row=mysqli_fetch_assoc($result)) { ?>
+                          ['<?php echo $row["address"] ?>',<?php echo $row['town']; ?>]<?php echo ","; }?>
+                        ]);
+
+                        var options = {
+                          title: 'Enrollees per Town Chart'
+                        };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                        chart.draw(data,options);
+                      }
+                    </script>
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    
+                  
                 </div>
-            </a>
-            </div>
               </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                 <a href="chart_dep.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-city text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Per Per department enrollees</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
             </div>
-             </div>
-
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="chart_qualified.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-account-box text-primary icon-lg"></i>
-                    <div class="float-center">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Per Qualifier</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-             </div>
-
-
              </div>
            </div>
         <!-- content-wrapper ends -->
@@ -264,7 +229,9 @@ if (isset($_SESSION["user_level"])) {
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
+    <script src="../js/chart.js"></script>
 </body>
+
 </html>
 <?php
 }
