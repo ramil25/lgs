@@ -152,9 +152,7 @@ if ($uploadOk == 0) {
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
-                </li>
+                
               </ul>
             </div>
              <li class="nav-item">
