@@ -147,7 +147,7 @@ if(isset($_GET['user_id']))
           <li class="nav-item">
             <a class="nav-link" href="req_moral.php">
               <i class="menu-icon mdi mdi-comment"></i>
-              <span class="menu-title">Messaging</span>
+              <span class="menu-title">Request good moral</span>
             </a>
           </li>
 
