@@ -346,7 +346,7 @@ if($conn)
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks:</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control"value="<?php echo $fetch['remarks']; ?>" >
+                   <input type="text" name="remarks" placeholder="Remarks Here" readonly class="form-control"value="<?php echo $fetch['remarks']; ?>" >
                   </div>
                 </div>
 
@@ -401,6 +401,9 @@ if($conn)
   <?php
 if(isset($_POST['update']))
 {
+  $coll='';
+  $rem='';
+  $course='';
   $fn =$_POST['fn'];
    $sn =$_POST['surname'];
     $mi =$_POST['mi'];
@@ -416,8 +419,343 @@ if(isset($_POST['update']))
   $schoice =$_POST['schoice'];
   $tchoice =$_POST['tchoice'];
   $rs =$_POST['raw_score'];
-  $rem =$_POST['remarks'];
-  $updatesql ="UPDATE students set Surname='".$sn."', first_name='".$fn."', middle_name='".$mi."',gender='".$gender."',address='".$addr."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
+
+  //first choice
+    if($fchoice=='BSA' && $gwa>=87)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($fchoice=='BSAB' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($fchoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($fchoice=='BSFOODTECH' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($fchoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($fchoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($fchoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($fchoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if($fchoice=='BS Psychology' || $fchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($fchoice=='BS CRIMINOLOGY' || $fchoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+     else if($fchoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($fchoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($fchoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($fchoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($fchoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($fchoice=='BSEd' || $fchoice=='BSED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if($fchoice=='BEEd' || $fchoice=='BEED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if($fchoice=='BSAgEng' || $fchoice=='BSAGENG'  && $gwa>=87)
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+
+    //second choice
+    else if($schoice=='BSA' && $gwa>=87)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($schoice=='BSAB' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($schoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($schoice=='BSFOODTECH' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($schoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($schoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($schoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($schoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if($schoice=='BS Psychology' || $schoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($schoice=='BS CRIMINOLOGY' || $schoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+    else if($schoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($schoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($schoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($schoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($schoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($schoice=='BSEd' || $schoice=='BSED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if($schoice=='BEEd' || $schoice=='BEED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if($schoice=='BSAgEng' || $schoice=='BSAGENG'  && $gwa>=87)
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+
+    //third choice
+    else if($tchoice=='BSA' && $gwa>=87)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($tchoice=='BSAB' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($tchoice=='BAT' && $gwa>=79)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($tchoice=='BSFOODTECH' && $gwa>=83)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($tchoice=='BSCS' && $gwa>=83)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($tchoice=='BSIT' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($tchoice=='BSIS' && $gwa>=80)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($tchoice=='ACT' && $gwa>=75)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if($tchoice=='BS Psychology' || $tchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if($tchoice=='BS CRIMINOLOGY' || $tchoice=='BS Criminology' && $gwa>=75)
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+    else if($tchoice=='BSHM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($tchoice=='BSTM' && $gwa>=75)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($tchoice=='BSACCO' && $gwa>=87)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($tchoice=='BSBA' && $gwa>=85)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($tchoice=='BSOA' && $gwa>=75)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($tchoice=='BSEd' || $tchoice=='BSED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if($tchoice=='BEEd' || $tchoice=='BEED' && $gwa>=75)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if($tchoice=='BSAgEng' || $tchoice=='BSAGENG'  && $gwa>=87)
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+    else{
+      $course='none';
+      $coll ='none';
+      $rem='Unqualified';
+    }
+
+  $updatesql ="UPDATE students set Surname='".$sn."', first_name='".$fn."', middle_name='".$mi."',gender='".$gender."',address='".$addr."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',colleges='".$coll."',fcourse='".$course."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
    $res= mysqli_query($conn,$updatesql);
   if($res)
   {
