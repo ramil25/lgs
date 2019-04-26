@@ -359,14 +359,14 @@ if(isset($_POST['add']))
       $coll ='none';
       $rem='Unqualified';
     }
-  $image = $_FILES['image']['name'];
-  $target = "images/".basename($image);
-  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,address,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$addr."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','".$image."')";
+  //$image = $_FILES['image']['name'];
+  //$target = "images/".basename($image);
+  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,address,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad) VALUES('".$sname."','".$fname."','".$mi."','".$gender."','".$addr."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
-     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
-          {
+    // if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
+          //{
                 echo "<script>alert('Student added successfully');
       location.href='student_admission.php';
       </script>";
@@ -376,7 +376,7 @@ if(isset($_POST['add']))
       location.href='student_admission.php';
       </script>";
           }
-  }
+  //}
 }
 ?>
 
@@ -781,12 +781,12 @@ if(isset($_POST['add']))
                   </div>
                 </div>
 
-                <div class="form-group row">
+               <!-- <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Photo</label>
                   <div class="col-sm-8">
                      <input type="file" name="image" class="btn-primary form-control">
                   </div>
-                </div>
+                </div>-->
 
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
