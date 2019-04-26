@@ -130,68 +130,34 @@ if(isset($_GET['user_id']))
               </div>
             </div>
           </li>
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" href="index.php">
-              <i class="menu-icon mdi mdi-home"></i>
-              <span class="menu-title">Home</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-account"></i>
-              <span claclass="navbar-nav navbar-nav-left header-links d-none d-md-flex"ss="menu-title">Student</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="student_admission.php">Student Admission</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="student_account.php">Student Account</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="chart_menu.php">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Enrolees Chart</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="year_menu.php?category=CLUSTER">
-              <i class="menu-icon mdi mdi-poll"></i>
-              <span class="menu-title">Cluster Programs</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="year_menu.php?category=Qualifying Exam">
               <i class="menu-icon mdi mdi-newspaper"></i>
-              <span class="menu-title">Qualifying Exams</span>
+              <span class="menu-title">Newsfeed</span>
             </a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="announcement.php">
-              <i class="menu-icon mdi mdi-newspaper"></i>
-              <span class="menu-title">Announcements</span>
+            <a class="nav-link" href="result.php">
+              <i class="menu-icon mdi mdi-bulletin-board"></i>
+              <span class="menu-title">Results</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="req_moral.php">
+              <i class="menu-icon mdi mdi-comment"></i>
+              <span class="menu-title">Request good moral</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="aboutus.php">
+              <i class="menu-icon mdi mdi-information"></i>
+              <span class="menu-title">About Us</span>
+            </a>
+          </li>
+            
           <li class="nav-item">
             <a class="nav-link" href="logout.php">
               <i class="menu-icon mdi mdi-power"></i>
