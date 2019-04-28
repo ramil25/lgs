@@ -1,45 +1,12 @@
 <?php
 session_start();
+require '../db.php';
 if (isset($_SESSION["user_level"])) {
-  require '../db.php';
-  $cbma = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CBMA' ";
-  $ccje = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CCJE' ";
-  $cte= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CTE' ";
-    $iae= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'IAE' ";
-    $ccs= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CCS' ";
-    $ca= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CA' ";
-  $cas= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CAS' ";
-  $chmt= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CHMT' ";
-  $qcbma = mysqli_query($conn,$cbma);
-  $fcbma  =mysqli_fetch_assoc($qcbma);
-  $rcbma = $fcbma['total'];
-  $qccje = mysqli_query($conn,$ccje);
-  $fccje  =mysqli_fetch_assoc($qccje);
-  $rccje = $fccje['total'];
-
-  $qcte = mysqli_query($conn,$cte);
-  $fcte  =mysqli_fetch_assoc($qcte);
-  $rcte = $fcte['total'];
-
-   $qiae = mysqli_query($conn,$iae);
-  $fiae  =mysqli_fetch_assoc($qiae);
-  $riae = $fiae['total'];
-
-  $qccs = mysqli_query($conn,$ccs);
-  $fccs  =mysqli_fetch_assoc($qccs);
-  $rccs = $fccs['total'];
-
-  $qca = mysqli_query($conn,$ca);
-  $fca  =mysqli_fetch_assoc($qca);
-  $rca = $fca['total'];
-
-  $qcas = mysqli_query($conn,$cas);
-  $fcas  =mysqli_fetch_assoc($qcas);
-  $rcas = $fcas['total'];
-
-  $qchmt = mysqli_query($conn,$chmt);
-  $fchmt  =mysqli_fetch_assoc($qchmt);
-  $rchmt = $fchmt['total'];
+$rpt= $_GET['request'];
+if($conn)
+{
+$sql ="SELECT * from message";
+$res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +78,7 @@ if (isset($_SESSION["user_level"])) {
                    <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
+                  <p class="profile-name">Dem</p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -140,7 +107,7 @@ if (isset($_SESSION["user_level"])) {
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
+               <li class="nav-item">
                   <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
@@ -191,52 +158,45 @@ if (isset($_SESSION["user_level"])) {
         </ul>
       </nav>
       <!-- partial -->
-      
       <div class="main-panel">
         <div class="content-wrapper">
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">Per Departments Chart</h1>
+                    <h1 class="text-center page-header p-2"><?php echo $rpt; ?></h1>
                   </div>
                  </div>
 
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                 <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
+                  <?php
+          while($row=mysqli_fetch_assoc($res))
+      { ?>
+        <tr>
+              <td style="font-size:15px;">Sender</td>
+              <td style="font-size:15px;">Date</td>
+          </tr>
+        <tr>
+          <td><a style="color: blue; font-size: 20px;" href=<?php
 
-                      function drawChart() {
+          if($rpt=="VIEWREQUEST")
+          {
+           echo "view_request.php?request=".$row['msg_id']; ?>><?php echo $row['sender'];
 
-                        var data = google.visualization.arrayToDataTable([
-                          ['Chart', 'Departments'],
-                          ['CBMA',<?php echo $rcbma; ?>],
-                          ['CTE',<?php echo $rcte; ?>],
-                          ['IAE',<?php echo $riae; ?>],
-                          ['CCS',<?php echo $rccs; ?>],
-                          ['CA',<?php echo $rca; ?>],
-                          ['CAS',<?php echo $rcas; ?>],
-                          ['CHMT',<?php echo $rchmt; ?>],
-                          ['CCJE',<?php echo $rccje; ?>]
-                        ]);
+           }
+            ?></a><td style="font-size:17px;"><?php echo $row['date']; ?></td></td>
+        </tr>
+      <?php } ?>
+               </table>
+                  </div>
+                 </div>
 
-                        var options = {
-                          title: 'Per Departments',
-                           pieHole: 0.4,
-                        };
 
-                        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-                      }
-                    </script>
-                    <div id="donutchart" style="width: 900px; height: 500px;"></div>
-                    
-                  
-                </div>
-              </div>
-            </div>
+
              </div>
            </div>
+         <?php } ?>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -269,7 +229,6 @@ if (isset($_SESSION["user_level"])) {
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
-    <script src="../js/chart.js"></script>
 </body>
 
 </html>

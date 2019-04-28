@@ -1,46 +1,18 @@
 <?php
 session_start();
+require '../db.php';
 if (isset($_SESSION["user_level"])) {
-  require '../db.php';
-  $cbma = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CBMA' ";
-  $ccje = "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CCJE' ";
-  $cte= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CTE' ";
-    $iae= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'IAE' ";
-    $ccs= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CCS' ";
-    $ca= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CA' ";
-  $cas= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CAS' ";
-  $chmt= "SELECT COUNT(*) AS total FROM students WHERE colleges = 'CHMT' ";
-  $qcbma = mysqli_query($conn,$cbma);
-  $fcbma  =mysqli_fetch_assoc($qcbma);
-  $rcbma = $fcbma['total'];
-  $qccje = mysqli_query($conn,$ccje);
-  $fccje  =mysqli_fetch_assoc($qccje);
-  $rccje = $fccje['total'];
-
-  $qcte = mysqli_query($conn,$cte);
-  $fcte  =mysqli_fetch_assoc($qcte);
-  $rcte = $fcte['total'];
-
-   $qiae = mysqli_query($conn,$iae);
-  $fiae  =mysqli_fetch_assoc($qiae);
-  $riae = $fiae['total'];
-
-  $qccs = mysqli_query($conn,$ccs);
-  $fccs  =mysqli_fetch_assoc($qccs);
-  $rccs = $fccs['total'];
-
-  $qca = mysqli_query($conn,$ca);
-  $fca  =mysqli_fetch_assoc($qca);
-  $rca = $fca['total'];
-
-  $qcas = mysqli_query($conn,$cas);
-  $fcas  =mysqli_fetch_assoc($qcas);
-  $rcas = $fcas['total'];
-
-  $qchmt = mysqli_query($conn,$chmt);
-  $fchmt  =mysqli_fetch_assoc($qchmt);
-  $rchmt = $fchmt['total'];
+  $success = '';
+  $report = $_GET['request'];
+  $sql ="SELECT * FROM message WHERE msg_id=".$report;
+  $result =mysqli_query($conn,$sql);
+  $fetch  =mysqli_fetch_assoc($result);
+  if (empty($_GET['request'])) {
+    header('location:index.php');
+    exit();
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +20,7 @@ if (isset($_SESSION["user_level"])) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Admin</title>
+  <title>Consoledated Report</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -61,7 +33,8 @@ if (isset($_SESSION["user_level"])) {
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
 </head>
-
+<style type="text/css">
+</style>
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -88,7 +61,7 @@ if (isset($_SESSION["user_level"])) {
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
               </a>
-              <a class="dropdown-item mt-2" href="../index.php">
+              <a class="dropdown-item mt-2" href="logout.php">
                 Logout
             </a>
             </div>
@@ -102,12 +75,13 @@ if (isset($_SESSION["user_level"])) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
+                  <!-- user-img -->
                    <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
@@ -191,52 +165,32 @@ if (isset($_SESSION["user_level"])) {
         </ul>
       </nav>
       <!-- partial -->
-      
       <div class="main-panel">
         <div class="content-wrapper">
-               <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+          <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">Per Departments Chart</h1>
+                    <h1 class="text-center page-header p-2">VIEW REPORT</h1>
                   </div>
                  </div>
-
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-
-                      function drawChart() {
-
-                        var data = google.visualization.arrayToDataTable([
-                          ['Chart', 'Departments'],
-                          ['CBMA',<?php echo $rcbma; ?>],
-                          ['CTE',<?php echo $rcte; ?>],
-                          ['IAE',<?php echo $riae; ?>],
-                          ['CCS',<?php echo $rccs; ?>],
-                          ['CA',<?php echo $rca; ?>],
-                          ['CAS',<?php echo $rcas; ?>],
-                          ['CHMT',<?php echo $rchmt; ?>],
-                          ['CCJE',<?php echo $rccje; ?>]
-                        ]);
-
-                        var options = {
-                          title: 'Per Departments',
-                           pieHole: 0.4,
-                        };
-
-                        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-                      }
-                    </script>
-                    <div id="donutchart" style="width: 900px; height: 500px;"></div>
-                    
-                  
-                </div>
-              </div>
             </div>
-             </div>
+          
+        <div class="row w-100">
+                  <div class="col-lg-10 mx-auto">
+                      <div class="auto-form-wrapper">
+                      <div class="card">
+                      <div class="card-body">
+              <p style="font-size: 18px;" class="float-left">From: <?php echo $fetch['sender']; ?></p>
+              <p style="font-size: 18px;" class="float-right">Date: <?php echo $fetch['date']; ?></p><br><br>
+              <p class="text-center" style="font-size: 25px;"><?php echo $fetch['message']; ?></p>
+                      </div>
+                      </div>
+                </div>
            </div>
+           </div>
+            </div>
+          </div>
+        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -248,7 +202,6 @@ if (isset($_SESSION["user_level"])) {
             </span>
           </div>
         </footer>
-      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -256,6 +209,7 @@ if (isset($_SESSION["user_level"])) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -269,7 +223,6 @@ if (isset($_SESSION["user_level"])) {
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
-    <script src="../js/chart.js"></script>
 </body>
 
 </html>

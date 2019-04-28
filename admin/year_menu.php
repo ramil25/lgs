@@ -108,7 +108,9 @@ $link1 ="";
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-               
+               <li class="nav-item">
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
+                </li>
               </ul>
             </div>
           </li>
