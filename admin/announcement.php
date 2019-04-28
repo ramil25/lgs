@@ -4,7 +4,7 @@ require '../db.php';
   if (isset($_POST['submit']))
   {
   $annc = $_POST['announc'];
-  $sql = 'INSERT INTO announcement(announcement) VALUES ("'.$annc.'")';
+  $sql = 'INSERT INTO announcement(announcement,user_id) VALUES ("'.$annc.'",'.$_SESSION["user_id"].')';
   $query = mysqli_query($conn,$sql);
       if ($query)
       {

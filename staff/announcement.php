@@ -4,7 +4,7 @@ require '../db.php';
   if (isset($_POST['submit']))
   {
   $annc = $_POST['announc'];
-  $sql = 'INSERT INTO announcement(announcement) VALUES ("'.$annc.'")';
+  $sql = 'INSERT INTO announcement(announcement,user_id) VALUES ("'.$annc.'",'.$_SESSION["user_id"].')';
   $query = mysqli_query($conn,$sql);
       if ($query)
       {
@@ -89,7 +89,7 @@ require '../db.php';
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -121,13 +121,16 @@ require '../db.php';
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
-                </li>
+                
               </ul>
             </div>
           </li>
-         
+          <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>

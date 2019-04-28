@@ -24,11 +24,13 @@ if($conn)
 			{
         $_SESSION['profile_pic'] = $row['profile_pic'];
 				$_SESSION["user_name"] = $un;
+         $_SESSION["user_id"] = $row['user_id'];
 				header("location: admin/");
 			}
       else if($_SESSION["user_level"]==1)
       {
           $_SESSION['profile_pic'] = $row['profile_pic'];
+           $_SESSION["user_id"] = $row['user_id'];
         $_SESSION["user_name"] = $un;
         header("location: staff/");
       }

@@ -136,7 +136,7 @@ require 'db.php';
                       <?php
             require 'db.php';
 
-            $sql = "SELECT * FROM announcement ORDER BY announcement_id DESC";
+            $sql = "SELECT announcement.announcement announcement, users.full_name full_name, users.profile_pic profile_pic FROM announcement INNER JOIN users ON announcement.user_id = users.user_id ORDER BY announcement_id DESC";
             $result = $conn -> query($sql);
             if ($result -> num_rows > 0) {
               while ($row = $result -> fetch_assoc()) {
@@ -149,7 +149,11 @@ require 'db.php';
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
                     <div class="card-body">
-                    <div class="float-center">
+                      <div class="float-left">
+                        <img src="<?php echo $row['profile_pic'];  ?>" class="img-xs rounded-circle">
+                        <h4><?php echo $row['full_name']; ?></h4>
+                      </div>
+                    <div class="text-justify">
                      <?php
                 echo "<center><h5>".$row["announcement"]."</h5></center>"; 
               }
@@ -161,9 +165,6 @@ require 'db.php';
                     </div>
                   </div>
                 </div>
-
-
-
             </div>
            </div>
           </div>

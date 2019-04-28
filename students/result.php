@@ -139,6 +139,8 @@ $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
           $query ="SELECT * FROM students WHERE (Surname LIKE '".$s."%' OR first_name LIKE '".$s."%') AND remarks='Qualified'";
           $ress =mysqli_query($conn,$query);
           if($ress)
+          {
+          if($rows =mysqli_num_rows($ress)>0)
           { ?>
             <tr>
             <th><h3>Surname</h3></th>
@@ -156,7 +158,15 @@ $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
   <td style="font-size: 20px;">  <?php echo $row['remarks']; ?></td>
     </tr>
     <?php }
+
         }
+        else
+        {?>
+          <div class="col-12">
+            <h1>NO RESULT FOUND!!!</h1>
+          </div>
+       <?php }
+      }
       }
         ?>
         </table>

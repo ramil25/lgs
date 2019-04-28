@@ -11,35 +11,35 @@ if(isset($_GET['title']))
 {
   if($title=="CA")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CCS")
   {
-     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+      $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CHMT")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CCJE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="IAE")
   {
-  $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CTE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CBMA")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CAS")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
 $res =mysqli_query($conn,$sql);
 
@@ -212,6 +212,7 @@ $res =mysqli_query($conn,$sql);
             <td>COURSE
               <td>RAW SCORE</td></td>
               <td>GWA</td>
+              <td>Rate</td>
               <td>Remarks</td>
           </tr>
                   <?php
@@ -230,6 +231,9 @@ $res =mysqli_query($conn,$sql);
             <td><p style="color: black; font-size: 16px;"><?php echo $row['raw_score'];
             ?></p></td>
             <td><p style="color: black; font-size: 16px;"><?php echo $row['grade_GWA'];
+            ?></p></td>
+            <td><p style="color: black; font-size: 16px;"><?php $rate =$row['raw_score']/100*35+65;
+            echo $rate;
             ?></p></td>
            <td><p style="color: black; font-size: 16px;"><?php echo $row['remarks'];
             ?></p></td>

@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION["user_level"])) {
   require '../db.php';
 
-  $towns ="SELECT address,COUNT(*) AS town FROM students group by address";
+  $towns ="SELECT UPPER(address) AS address,COUNT(*) AS town FROM students group by address";
    $result = mysqli_query($conn,$towns);
 ?>
 <!DOCTYPE html>
