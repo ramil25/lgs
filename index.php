@@ -150,7 +150,7 @@ require 'db.php';
                   <div class="card card-statistics">
                     <div class="card-body">
                       <div class="float-left">
-                        <img src="<?php echo $row['profile_pic'];  ?>" class="img-xs rounded-circle">
+                        <img src="<?php echo substr($row['profile_pic'],3);  ?>" class="img-xs rounded-circle">
                         <h4><?php echo $row['full_name']; ?></h4>
                       </div>
                     <div class="text-justify">

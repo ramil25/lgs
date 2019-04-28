@@ -128,7 +128,7 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($fchoice=='BSAgEng' || $fchoice=='BSAGENG'  && $gwa>=87 && $rs>=54)
+    else if(($fchoice=='BSAgEng' || $fchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';
@@ -238,7 +238,7 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($schoice=='BSAgEng' || $schoice=='BSAGENG'  && $gwa>=87 && $rs>=54)
+    else if(($schoice=='BSAgEng' || $schoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';
@@ -348,7 +348,7 @@ if(isset($_POST['add']))
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($tchoice=='BSAgEng' || $tchoice=='BSAGENG'  && $gwa>=87 && $rs>=54)
+    else if(($tchoice=='BSAgEng' || $tchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';

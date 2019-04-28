@@ -171,7 +171,7 @@ if (isset($_SESSION["user_level"])) {
                   <div class="card card-statistics">
                     <div class="card-body">
                       <div class="float-left">
-                        <img src="../<?php echo $row['profile_pic'];  ?>" class="img-xs rounded-circle">
+                        <img src="<?php echo $row['profile_pic'];  ?>" class="img-xs rounded-circle">
                         <h4><?php echo $row['full_name']; ?></h4>
                       </div>
                     <div class="text-justify">

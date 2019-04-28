@@ -1,14 +1,13 @@
 <?php
 require '../db.php';
 session_start(); 
-$_SESSION['profile_pic'] = $row['profile_pic'];
 $success = '';
-$target_dir = "images/";
-$target_file = $target_dir . basename($_FILES["imgp"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if(isset($_POST['update-account']))
 {
+  $target_dir = "../images/";
+$target_file = "../images/".basename($_FILES["imgp"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
   $check = getimagesize($_FILES["imgp"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
@@ -60,7 +59,6 @@ if ($uploadOk == 0) {
     {
         $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Updated Successfully
         </p>';
-        session_destroy();
     }
 
 }
@@ -70,8 +68,6 @@ if(isset($_GET['user_id']))
     $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
     $ress =mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($ress);
-    session_start();
-    $_SESSION['profile_pic'] = $row['profile_pic'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -175,11 +171,15 @@ if(isset($_GET['user_id']))
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
-                </li>
+                
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="add_staff.php">
+              <i class="menu-icon mdi mdi-account-plus"></i>
+              <span class="menu-title">Create Staff Account</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
