@@ -6,6 +6,21 @@ if (isset($_SESSION["user_level"])) {
     $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
     $ress =mysqli_query($conn,$query);
     $row=mysqli_fetch_assoc($ress);
+    if (isset($_POST['submit'])) 
+    {
+      $msg = $_POST['message'];
+      $date = date("Y-m-d H:i:s");
+      $sql = 'INSERT INTO message(message,sender,date) values("'.$msg.'","'.$_SESSION['user_name'].'","'.$date.'")';
+      $ins = mysqli_query($conn,$sql);
+      if ($ins) {
+        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Request Sent
+        </p>';
+      }
+      else{
+         $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Request Failed
+        </p>';
+      }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,40 +146,14 @@ if (isset($_SESSION["user_level"])) {
             <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
                   <div class="col-lg-11 mx-auto">
-                    <div class="auto-form-wrapper">
-                    <form method="post" action="req_moral.php">
+                    <div class="auto-form-wrapper"> 
+                    <form method="post" action="">
+                    <?php echo $success; ?>
                     <div class="form-group">
-                    
-                    <center>
-                    <label for="rec1" style="margin-top: 20px;">Select Reciever:</label>
-                    </center>
-
-                    <select class="form-control" name="reciever">
-                      <option value="pick">Select Reciever</option>
-                <?php
-                session_start();
-            require '../db.php';
-
-                        $sql =  mysqli_query($conn,"SELECT * From users WHERE user_level='1'");
-                        $row = mysqli_num_rows($sql);
-
-
-                            while ($row = mysqli_fetch_array($sql))
-                            { ?>
-                              <option value="<?php echo $row['full_name']; ?>"><?php echo $row['full_name']; ?></option>
-                              <?php 
-                            }
-                            echo "</select>" ;
-
-                        ?>
-            </select><br>
-
-                      <textarea class="form-control" rows="8" name="comment" placeholder="Comment..."></textarea><br>
-
+                      <textarea class="form-control" style="height: 100px;" name="message" placeholder="Your message..." required></textarea><br>
                       <center><input type="submit" class="btn btn-lg btn-success" name="submit"></center>
                     </div>
               </form>      
-
                   </div>
                 </div>
               </form>

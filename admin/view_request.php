@@ -170,7 +170,7 @@ if (isset($_SESSION["user_level"])) {
           <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">VIEW REPORT</h1>
+                    <h1 class="text-center page-header p-2">VIEW REQUEST</h1>
                   </div>
                  </div>
             </div>

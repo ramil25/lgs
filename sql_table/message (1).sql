@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2019 at 03:41 PM
+-- Generation Time: Apr 28, 2019 at 04:22 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -40,7 +40,8 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`msg_id`, `message`, `sender`, `date`) VALUES
-(1, 'hi this is a test message request', 'student', '2019-04-19');
+(1, 'hi this is a test message request', 'student', '2019-04-19'),
+(3, 'Hi this is test message request number 3', 'student', '2019-04-28');
 
 --
 -- Indexes for dumped tables
@@ -51,6 +52,16 @@ INSERT INTO `message` (`msg_id`, `message`, `sender`, `date`) VALUES
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`msg_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `msg_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
