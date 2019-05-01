@@ -78,6 +78,18 @@ if(isset($_POST['add']))
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
+  <script>
+            function showPass()
+            {
+                var pass = document.getElementById('pass');
+                if(document.getElementById('check').checked)
+                {
+                    pass.setAttribute('type','text');
+                }else{
+                    pass.setAttribute('type','password');
+                }
+            }
+        </script>
 </head>
 <style type="text/css">
 </style>
@@ -250,10 +262,15 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="password" name="password" placeholder="Protect your account" required class="form-control"/>
+                   <input type="password" name="password" placeholder="Protect your account" required class="form-control" id="pass" />
                   </div>
                 </div>
-
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                     <input type="checkbox" id="check" onclick="showPass();"/>
+                     <small class="text-sm-right">Show Password</small>
+                  </div>
+                </div>
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">

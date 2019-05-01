@@ -24,7 +24,7 @@ if($conn)
 			{
         $_SESSION['profile_pic'] = $row['profile_pic'];
 				$_SESSION["user_name"] = $un;
-         $_SESSION["user_id"] = $row['user_id'];
+        $_SESSION["user_id"] = $row['user_id'];
 				header("location: admin/");
 			}
       else if($_SESSION["user_level"]==1)
@@ -67,6 +67,18 @@ if($conn)
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/lspu.png" />
+  <script>
+            function showPass()
+            {
+                var pass = document.getElementById('pass');
+                if(document.getElementById('check').checked)
+                {
+                    pass.setAttribute('type','text');
+                }else{
+                    pass.setAttribute('type','password');
+                }
+            }
+        </script>
 </head>
 
 <body>
@@ -97,7 +109,7 @@ if($conn)
                 <div class="form-group">
                   <label class="label-dark">Password</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" placeholder="Password" name="ps">
+                    <input type="password" class="form-control" placeholder="Password" name="ps" id="pass">
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>
@@ -106,6 +118,8 @@ if($conn)
                   </div>
                 </div>
                 <div class="form-group">
+                  <input type="checkbox" id="check" onclick="showPass();"/>
+                  <label>Show Password</label>
                   <button type="submit" class="btn btn-primary submit-btn btn-block" name="login">Login</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
