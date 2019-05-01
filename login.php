@@ -118,8 +118,10 @@ if($conn)
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="checkbox" id="check" onclick="showPass();"/>
-                  <label>Show Password</label>
+                <div class="form-group">
+                     <input type="checkbox" id="check" onclick="showPass();"/>
+                     <small class="text-sm-right">Show Password</small>
+                </div>
                   <button type="submit" class="btn btn-primary submit-btn btn-block" name="login">Login</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
