@@ -102,30 +102,6 @@ require 'db.php';
       <div class="main-panel">
         <div class="content-wrapper">
                <div class="row">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="images/carousel/slide1.jpg"
-        alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/carousel/slide2.jpg"
-        alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="images/carousel/slide3.jpg"
-        alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics" style="margin-top: 20px;">
                     <h1 class="text-center page-header p-2">NEWSFEED</h1> 
