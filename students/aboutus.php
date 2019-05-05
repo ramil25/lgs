@@ -184,7 +184,7 @@ if ($_SESSION["user_level"]==2) {
 </html>
 <?php
 }
-else {
+else if($_SESSION["user_level"]!=2 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -195,5 +195,6 @@ else {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
+  header('location: ../login.php');
 }
 ?>
