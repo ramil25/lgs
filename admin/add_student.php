@@ -98,8 +98,8 @@ if(isset($_POST['add']))
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -137,6 +137,7 @@ if(isset($_POST['add']))
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
@@ -187,7 +188,7 @@ if(isset($_POST['add']))
           <li class="nav-item">
             <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
+              <span class="menu-title">Consolidated Report</span>
             </a>
           </li>
           <li class="nav-item">

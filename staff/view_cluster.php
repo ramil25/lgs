@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
 $year=$_GET['year'];
 $title=$_GET['title'];
 $c1='';
@@ -11,35 +11,35 @@ if(isset($_GET['title']))
 {
   if($title=="CA")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CCS")
   {
-     $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+      $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CHMT")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CCJE")
   {
-    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="IAE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CTE")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CBMA")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
   else if($title=="CAS")
   {
-   $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified'";
+    $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."' order by Surname asc";
   }
 $res =mysqli_query($conn,$sql);
 
@@ -71,8 +71,8 @@ $res =mysqli_query($conn,$sql);
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+          <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -110,9 +110,10 @@ $res =mysqli_query($conn,$sql);
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Dem</p>
@@ -145,29 +146,19 @@ $res =mysqli_query($conn,$sql);
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -204,7 +195,7 @@ $res =mysqli_query($conn,$sql);
                   </div>
                  </div>
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-              <button class="btn btn-success" onclick="location.href='cluster.php'">Back</button>
+              <button class="btn btn-success" onclick="window.history.back()">Back</button>
                <a class="btn btn-primary text-light" href="print_cluster.php?title=<?php echo $title; ?>&year=<?php echo $year; ?>" target="_blank">Print</a>
                 <div class="card-body row no-gutters align-items-center">
               <table  class="table table-light table-responsive text-center">
@@ -214,6 +205,7 @@ $res =mysqli_query($conn,$sql);
             <td>COURSE
               <td>RAW SCORE</td></td>
               <td>GWA</td>
+              <td>Rate</td>
               <td>Remarks</td>
           </tr>
                   <?php
@@ -225,7 +217,7 @@ $res =mysqli_query($conn,$sql);
         <tr>
             <td><p style="color: black; font-size: 16px;"><?php echo $num;
             ?></p></td>
-          <td><p style="color: black; font-size: 16px;"><?php echo $row['full_name'];
+          <td><p style="color: black; font-size: 16px;"><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name'];
             ?></p></td>
             <td><p style="color: black; font-size: 16px;"><?php echo $row['fcourse'];
             ?></p></td>
@@ -233,12 +225,13 @@ $res =mysqli_query($conn,$sql);
             ?></p></td>
             <td><p style="color: black; font-size: 16px;"><?php echo $row['grade_GWA'];
             ?></p></td>
+            <td><p style="color: black; font-size: 16px;"><?php $rate =$row['raw_score']/100*35+65;
+            echo $rate;
+            ?></p></td>
            <td><p style="color: black; font-size: 16px;"><?php echo $row['remarks'];
             ?></p></td>
             <td>
-              <form method="post">
-<input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
-                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
+            </td>
         </tr>
       <?php }
       if(isset($_POST['del']))
@@ -295,7 +288,7 @@ $res =mysqli_query($conn,$sql);
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -306,6 +299,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

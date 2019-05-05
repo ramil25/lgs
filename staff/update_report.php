@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
   $success = '';
   $report = $_GET['rpt_id'];
   $sql ="SELECT * FROM report WHERE report_id=".$report;
@@ -53,8 +53,8 @@ if ($_SESSION["user_level"]==1) {
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -92,10 +92,11 @@ if ($_SESSION["user_level"]==1) {
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -128,29 +129,19 @@ if ($_SESSION["user_level"]==1) {
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -274,7 +265,7 @@ if ($_SESSION["user_level"]==1) {
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -285,6 +276,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

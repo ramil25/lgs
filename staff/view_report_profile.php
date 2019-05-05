@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
   $success = '';
   $report = $_GET['rpt_id'];
   $sql ="SELECT * FROM report WHERE report_id=".$report;
@@ -33,7 +33,7 @@ if ($_SESSION["user_level"]==1) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Consoledated Report</title>
+  <title>Consolidated Report</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -53,8 +53,8 @@ if ($_SESSION["user_level"]==1) {
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+         <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -92,10 +92,11 @@ if ($_SESSION["user_level"]==1) {
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
-                  <img src="../images/default.png" alt="profile image">
+                   <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -128,24 +129,19 @@ if ($_SESSION["user_level"]==1) {
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
-         
+          
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -184,31 +180,38 @@ if ($_SESSION["user_level"]==1) {
             </div>
             <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
         <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
+                  <div class="col-lg-10 mx-auto">
                       <div class="auto-form-wrapper">
               <form action="" method="post">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name of counselee</label>
                   <div class="col-sm-8">
-                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control" readonly value="<?php echo $fetch['report_counselee']; ?>" />
+                     <input type="text" name="counselee" placeholder="Counselee..." class="form-control-plaintext" readonly value="<?php echo $fetch['report_counselee']; ?>" />
                   </div>
                 </div>
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Nature of Case</label>
                   <div class="col-sm-8">
-                     <input type="text" name="case" placeholder="Case..." readonly class="form-control" value="<?php echo $fetch['report_case']; ?>" />
+                     <input type="text" name="case" placeholder="Case..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_case']; ?>" />
                   </div>
                 </div> <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date</label>
                   <div class="col-sm-8">
-                    <input type="date" name="date" placeholder="Date..." readonly class="form-control" value="<?php echo $fetch['report_date']; ?>" />
+                    <input type="date" name="date" placeholder="Date..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_date']; ?>" />
                   </div>
                 </div>
 
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks..." readonly class="form-control" value="<?php echo $fetch['report_remarks']; ?>" />
+                   <input type="text" name="remarks" placeholder="Remarks..." readonly class="form-control-plaintext" value="<?php echo $fetch['report_remarks']; ?>" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Reports</label>
+                  <div class="col-sm-8">
+                 <textarea style="height: 500px;" class="form-control-plaintext" name="report" placeholder="Write down events" readonly><?php echo $fetch['reports']; ?></textarea>
                   </div>
                 </div>
                 <!--  <div class="form-group text-center">
@@ -264,7 +267,7 @@ if ($_SESSION["user_level"]==1) {
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -275,6 +278,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

@@ -2,7 +2,7 @@
 session_start();
 	 require '../db.php';
    $title =$_GET['title'];
-	 if ($_SESSION["user_level"]==1) {
+	 if ($_SESSION["user_level"]==0) {
 		 $sql ="SELECT * from students";
      $res =mysqli_query($conn,$sql);
      $query ="SELECT * from users where user_level=2";
@@ -34,8 +34,8 @@ session_start();
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -73,9 +73,10 @@ session_start();
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -108,7 +109,7 @@ session_start();
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
@@ -124,7 +125,7 @@ session_start();
           <li class="nav-item">
             <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
+              <span class="menu-title">Consolidated Report</span>
             </a>
           </li>
           <li class="nav-item">
@@ -179,14 +180,14 @@ session_start();
                       <?php } ?>
 											</div>
 
-
+                      <!--
                       <form method="POST" class="card card-sm">
         <div class="card-body row no-gutters align-items-center">
           <input type="text" name="search" class="col" placeholder="Search..." name="search"/>
            <button type="submit" name="submit-search" class="col-auto">
            <i class="mdi mdi-magnify btn-success icon-sm"></i></button>
            </div>
-          </form>
+          </form>-->
             </div>
           <?php
 
@@ -195,11 +196,11 @@ session_start();
     $search = $_POST["search"];
     if($title=='Add')
     {
-    $sql = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sql = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR first_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $result = mysqli_query($conn,$sql);
     $checkResult = mysqli_num_rows($result);
 
-    $sq = "SELECT * FROM students WHERE full_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
+    $sq = "SELECT * FROM students WHERE Surname LIKE '%$search%' OR first_name LIKE '%$search%' OR fcourse LIKE '%$search%'";
     $results = mysqli_query($conn,$sq);
     $checkResults = mysqli_num_rows($results);
     }
@@ -215,19 +216,24 @@ session_start();
     }
     echo "  About ".$checkResult." result(s)!";
     if ($checkResult > 0 ||  $checkResults > 0 ) {
-      while ($row = mysqli_fetch_assoc($result)) {
-
-            $fname = $row['full_name'];
 ?>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card-body">
                   <div class="clearfix">
                       <?php
+                      while ($row = mysqli_fetch_assoc($result)) {
+                      if($title=='Add')
+                        {
+                        $fname = $row['Surname']." ".$row['first_name'];
+                      }
+                      else
+                      {
+                      }
                       if($title=='Add')
                       {
                         ?>
                         <div style="float: left;">
-                      <h3 class="ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $fname; ?></a></h3>
+                      <h3 class="ml-5 mt-2"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['Surname']." ".$row['first_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $fname; ?></a></h3>
                     </div>
                     <?php } }
                     ?>
@@ -293,7 +299,7 @@ else if($title=="View")
   if($title=='Add')
   {
     ?>
-	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['full_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $row['full_name']; ?>
+	<td><p style="color: black; font-size: 20px;"><a href = "add_student.php?std_id=<?php echo $row['student_id'];?>&std=<?php echo $row['Surname']." ".$row['first_name']; ?>&gender=<?php echo $row['gender']; ?>"><?php echo $row['Surname']." ".$row['first_name']; ?>
 	</a></p></td>
 <?php }} ?>
 
@@ -371,7 +377,7 @@ while($row=mysqli_fetch_assoc($ress))
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -382,6 +388,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

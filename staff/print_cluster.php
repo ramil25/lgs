@@ -1,13 +1,13 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
 $year=$_GET['year'];
 $title=$_GET['title'];
 $rn =0;
 if(isset($_GET['title']))
 {
-  $sql ="SELECT * FROM students where colleges='".$title."'";
+  $sql ="SELECT * from students WHERE colleges='".$title."' and remarks='Qualified' and YEAR(date_ad)='".$year."'";
 $res =mysqli_query($conn,$sql);
 
 ?>
@@ -44,7 +44,9 @@ $res =mysqli_query($conn,$sql);
           <tr>
           <thead class="table-dark">
             <th>RN</th>
-            <th>NAME</th>
+            <th>Surname</th>
+            <th>First Name</th>
+            <th>Middle Initial</th>
             <th>COURSE</th>
             <th>RAW SCORE</th>
             <th>GWA</th>
@@ -56,7 +58,11 @@ $res =mysqli_query($conn,$sql);
       { $rn++; ?>
         <tr>
           <td><?php echo $rn; ?></td>
-          <td><?php echo $row['full_name'];
+          <td><?php echo $row['Surname'];
+            ?></td>
+            <td><?php echo $row['first_name'];
+            ?></td>
+            <td><?php echo $row['middle_name'];
             ?></td>
             <td><?php echo $row['fcourse'];
             ?></td>
@@ -111,7 +117,7 @@ $res =mysqli_query($conn,$sql);
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -122,6 +128,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

@@ -2,6 +2,11 @@
 session_start();
 require '../db.php';
 if ($_SESSION["user_level"]==0) {
+$rpt= $_GET['request'];
+if($conn)
+{
+$sql ="SELECT * from message";
+$res =mysqli_query($conn,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +15,7 @@ if ($_SESSION["user_level"]==0) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student Admission</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -29,7 +34,7 @@ if ($_SESSION["user_level"]==0) {
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="brand-logo" href="index.php">
+        <a class=" brand-logo" href="index.php">
            <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
@@ -64,7 +69,7 @@ if ($_SESSION["user_level"]==0) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -74,7 +79,7 @@ if ($_SESSION["user_level"]==0) {
                    <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
-                  <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
+                  <p class="profile-name">Dem</p>
                   <div>
                     <small class="designation text-muted">Admin</small>
                     <span class="status-indicator online"></span>
@@ -103,24 +108,20 @@ if ($_SESSION["user_level"]==0) {
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
+               <li class="nav-item">
                   <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
+         
           <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -128,7 +129,7 @@ if ($_SESSION["user_level"]==0) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="year_menu.php?category=Qualifying Exam">
               <i class="menu-icon mdi mdi-newspaper"></i>
               <span class="menu-title">Qualifying Exams</span>
             </a>
@@ -150,53 +151,55 @@ if ($_SESSION["user_level"]==0) {
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
- <!-- partial -->
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-box text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Edit Profile</h1>
-                    </div>
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                    <h1 class="text-center page-header p-2"><?php echo $rpt; ?></h1>
                   </div>
-                </div>
-                </a>
-              </div>
-            </div>
+                 </div>
 
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-message-text text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">Message</h1>
-                    </div>
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                  <div class="card card-statistics">
+                 <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
+                  <?php
+          while($row=mysqli_fetch_assoc($res))
+      { ?>
+        <tr>
+              <td style="font-size:15px;">Sender</td>
+              <td style="font-size:15px;">Date</td>
+          </tr>
+        <tr>
+          <td><a style="color: blue; font-size: 20px;" href=<?php
+
+          if($rpt=="VIEWREQUEST")
+          {
+           echo "view_request.php?request=".$row['msg_id']; ?>><?php echo $row['sender'];
+
+           }
+            ?></a><td style="font-size:17px;"><?php echo $row['date']; ?></td></td>
+        </tr>
+      <?php } ?>
+               </table>
                   </div>
-                </div>
-                </a>
-              </div>
-            </div>
+                 </div>
 
 
-          </div>
 
-        </div>
+             </div>
+           </div>
+         <?php } ?>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
-              <a href="" target="_blank"></a>. All rights reserved.</span>
+              <a href="" target="_blank">LSPU</a>. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">LSPU
               <i class="mdi mdi-heart text-danger"></i>
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -204,7 +207,6 @@ if ($_SESSION["user_level"]==0) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>

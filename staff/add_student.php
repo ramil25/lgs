@@ -1,6 +1,7 @@
 <?php
 session_start();
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
+  $msg = '';
   $success = '';
   $std = $_GET['std'];
     $gender =$_GET['gender'];
@@ -10,6 +11,8 @@ if ($_SESSION["user_level"]==1) {
 if(isset($_POST['add']))
 {
   require '../db.php';
+  $image = $_FILES['image']['name'];
+  $target = "../students/images/".basename($image);
    $fname = $_POST['fullname'];
    $stdno = $_POST['studentnumber'];
    $course = $_POST['course'];
@@ -30,18 +33,26 @@ if(isset($_POST['add']))
     }
     else
     {
-      $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'")';
-   $query = mysqli_query($conn,$sql);
-   if (!$query)
-    {
-      $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
-      </p>';
-    }
-    else if ($query)
-    {
-        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+      $sql = 'INSERT INTO users(user_name,user_password,email,full_name,user_level,student_number,course,mobile,gender,profile_pic) values("'.$username.'","'.$password.'","'.$email.'","'.$fname.'",2,"'.$stdno.'","'.$course.'","'.$mobile.'","'.$gender.'","'.$image.'")';
+     $query = mysqli_query($conn,$sql);
+     if (!$query)
+      {
+        $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
         </p>';
-    }
+      }
+      else if ($query)
+      {
+          if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
+          {
+              $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Created Successfully
+          </p>';
+          }else
+          {
+               $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
+        </p>';
+          }
+      }
+
     }
     
 
@@ -67,6 +78,18 @@ if(isset($_POST['add']))
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
+  <script>
+            function showPass()
+            {
+                var pass = document.getElementById('pass');
+                if(document.getElementById('check').checked)
+                {
+                    pass.setAttribute('type','text');
+                }else{
+                    pass.setAttribute('type','password');
+                }
+            }
+        </script>
 </head>
 <style type="text/css">
 </style>
@@ -75,8 +98,8 @@ if(isset($_POST['add']))
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -114,10 +137,11 @@ if(isset($_POST['add']))
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
                   <!-- user-img -->
-                  <img src="../images/default.png" alt="profile image">
+                 <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -150,7 +174,7 @@ if(isset($_POST['add']))
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
@@ -164,7 +188,7 @@ if(isset($_POST['add']))
           <li class="nav-item">
             <a class="nav-link" href="consoledated.php">
               <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
+              <span class="menu-title">Consolidated Report</span>
             </a>
           </li>
           <li class="nav-item">
@@ -208,7 +232,7 @@ if(isset($_POST['add']))
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
                       <?php echo $success; ?>
-              <form action="" method="post">
+              <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">Name</label>
                   <div class="col-sm-8">
@@ -239,10 +263,15 @@ if(isset($_POST['add']))
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Password</label>
                   <div class="col-sm-8">
-                   <input type="password" name="password" placeholder="Protect your account" required class="form-control"/>
+                   <input type="password" name="password" placeholder="Protect your account" required class="form-control" id="pass" />
                   </div>
                 </div>
-
+                <div class="form-group row">
+                  <div class="col-sm-8">
+                     <input type="checkbox" id="check" onclick="showPass();"/>
+                     <small class="text-sm-right">Show Password</small>
+                  </div>
+                </div>
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Confirm Password</label>
                   <div class="col-sm-8">
@@ -264,7 +293,12 @@ if(isset($_POST['add']))
                   </div>
                 </div>
 
-
+                <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Photo</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="image" class="btn-primary form-control">
+                  </div>
+                </div>
 
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
@@ -319,7 +353,7 @@ if(isset($_POST['add']))
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -330,6 +364,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

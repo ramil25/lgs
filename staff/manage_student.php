@@ -116,12 +116,6 @@ if ($_SESSION["user_level"]==1) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>

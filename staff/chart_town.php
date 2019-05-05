@@ -1,68 +1,19 @@
 <?php
 session_start();
-  $success = '';
+if ($_SESSION["user_level"]==0) {
   require '../db.php';
-  $success = '';
-    if (isset($_POST['add']))
-    {
-      $target_dir = "../images/";
-$target_file = $target_dir . basename($_FILES["imgp"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-      $check = getimagesize($_FILES["imgp"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["imgp"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["imgp"]["name"]). " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-  }
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      $fname = $_POST['fullname'];
-      $mname = $_POST['middlename'];
-      $lname = $_POST['lastname'];
-      $gender = $_POST['gender'];
-      $pos = $_POST['position'];
-      $camp = $_POST['camp'];
-      $fulln =$fname." ".$lname;
-      $sql = 'INSERT INTO users(full_name,user_name,user_password,first_name,middle_name,last_name,gender,position,campus,profile_pic,user_level) values("'.$fulln.'","'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'","'.$target_file.'",1)';
-      $query = mysqli_query($conn,$sql);
-      if ($query)
-      {
-        $success .= '<p class="text-success text-uppercase text-center" style="font-weight:bold";>✔️ Added Successfully
-        </p>';
-      }
-      else if (!$query)
-      {
-        $success .= '<p class="text-danger text-uppercase text-center" style="font-weight:bold";>⚠️ Something Went Wrong
-        </p>';
-      }
-    }
-    if (isset($_SESSION["user_level"])) {
+
+  $towns ="SELECT UPPER(address) AS address,COUNT(*) AS town FROM students group by address";
+   $result = mysqli_query($conn,$towns);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Add Staff Account</title>
+  <title>Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
@@ -74,36 +25,26 @@ if ($uploadOk == 0) {
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
-  <script>
-            function showPass()
-            {
-                var pass = document.getElementById('pass');
-                if(document.getElementById('check').checked)
-                {
-                    pass.setAttribute('type','text');
-                }else{
-                    pass.setAttribute('type','password');
-                }
-            }
-        </script>
 </head>
-<style type="text/css">
-</style>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="brand-logo" href="index.php">
-           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
+          <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
         </a>
       </div>
+
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
+
         <ul class="navbar-nav navbar-nav-right">
+
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Welcome Admin!</span>
@@ -126,7 +67,7 @@ if ($uploadOk == 0) {
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-       <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -170,25 +111,15 @@ if ($uploadOk == 0) {
                 </li>
               </ul>
             </div>
-             <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
           </li>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consolidated Report</span>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -216,98 +147,47 @@ if ($uploadOk == 0) {
         </ul>
       </nav>
       <!-- partial -->
+      
       <div class="main-panel">
         <div class="content-wrapper">
-          <div class="row">
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+               <div class="row">
+                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">ADD STAFF</h1>
+                    <h1 class="text-center page-header p-2">Per Town Enrollees Chart</h1>
                   </div>
                  </div>
+
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
+
+                      function drawChart() {
+
+                        var data = google.visualization.arrayToDataTable([
+                          ['Chart', 'Town'],
+                          <?php 
+                          while ($row=mysqli_fetch_assoc($result)) { ?>
+                          ['<?php echo $row["address"] ?>',<?php echo $row['town']; ?>]<?php echo ","; }?>
+                        ]);
+
+                        var options = {
+                          title: 'Enrollees per Town Chart'
+                        };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                        chart.draw(data,options);
+                      }
+                    </script>
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    
+                  
+                </div>
+              </div>
             </div>
-            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-        <div class="row w-100">
-                  <div class="col-lg-6 mx-auto">
-                      <div class="auto-form-wrapper">
-              <form action="" method="POST" enctype="multipart/form-data">
-                <!--FNAME-->
-                <?php echo $success; ?>
-                <div class="form-group row">
-                <label class="label-dark col-sm-4 col-form-label">Username</label>
-                 <div class="col-sm-8">
-                    <input type="text" name="username" placeholder="Type your username" required class="form-control" />
-                 </div>
-               </div>
-                <div class="form-group row">
-                <label class="label-dark col-sm-4 col-form-label">Password</label>
-                 <div class="col-sm-8">
-                    <input type="password" name="password"  placeholder="Type your password" required class="form-control" id="pass" />
-                 </div>
-               </div>
-               <div class="form-group row">
-                  <div class="col-sm-8">
-                     <input type="checkbox" id="check" onclick="showPass();"/>
-                     <small class="text-sm-right">Show Password</small>
-                  </div>
-                </div>
-                <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">First Name</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="First Name" required class="form-control" />
-                  </div>
-                </div>
-                  <!--MNAME-->
-                  <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Middle Name</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="middlename" placeholder="Middle Name" required class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Last Name</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="lastname" placeholder="Last Name" required class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label class="label-dark col-sm-4 col-form-label">Gender</label>
-                  <div class="col-sm-8">
-                  <select class="form-control" name="gender" required>
-                    <option disabled>Choose Gender</option>
-                   <option value="Male">Male</option>
-                   <option value="Female">Female</option>
-                  </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Position</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="position" placeholder="Your Position" required class="form-control" />
-                  </div>
-                </div>
-                   <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Email Address</label>
-                  <div class="col-sm-8">
-                     <input type="text" name="camp" placeholder="Email Address" required class="form-control" />
-                  </div>
-                </div>
-                      <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Upload Photos</label>
-                  <div class="col-sm-8">
-                     <input type="file" name="imgp" id="imgp" required class="btn btn-primary btn-block" />
-                  </div>
-                </div>
-                <div class="form-group text-center">
-                  <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
-                </div>
-              </form>
-            </div>
-                </div>
+             </div>
            </div>
-           </div>
-            </div>
-          </div>
-        </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -319,6 +199,7 @@ if ($uploadOk == 0) {
             </span>
           </div>
         </footer>
+      </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -326,7 +207,6 @@ if ($uploadOk == 0) {
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
   <!-- plugins:js -->
   <script src="../vendors/js/vendor.bundle.base.js"></script>
   <script src="../vendors/js/vendor.bundle.addons.js"></script>
@@ -340,12 +220,13 @@ if ($uploadOk == 0) {
   <!-- Custom js for this page-->
   <script src="../js/dashboard.js"></script>
   <!-- End custom js for this page-->
+    <script src="../js/chart.js"></script>
 </body>
 
 </html>
 <?php
 }
-else {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

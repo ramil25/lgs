@@ -1,4 +1,7 @@
 <?php
+session_start();
+if ($_SESSION["user_level"]==0) {
+
 $title=$_GET['title'];
   $coll='';
   $rem ='';
@@ -6,8 +9,12 @@ $title=$_GET['title'];
 if(isset($_POST['add']))
 {
   require '../db.php';
-  $fn =$_POST['fullname'];
+  
+  $fname =$_POST['fname'];
+  $sname =$_POST['surname'];
+  $mi =$_POST['mi'];
   $gender =$_POST['gender'];
+  $addr =$_POST['addr'];
   $lsa =$_POST['school_last_attended'];
   $sc =$_POST['strand_course'];
   $gwa=$_POST['grade_GWA'];
@@ -18,112 +25,112 @@ if(isset($_POST['add']))
   $schoice =$_POST['schoice'];
   $tchoice =$_POST['tchoice'];
   $rs =$_POST['raw_score'];
-  $date=$_POST['month']."/".$_POST['day']."/".$_POST['year'];
+ $date =$_POST['dates'];
 
   //first choice
-    if($fchoice=='BSA' && $gwa>=87)
+    if($fchoice=='BSA' && $gwa>=87 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSA';
     }
-    else if($fchoice=='BSAB' && $gwa>=83)
+    else if($fchoice=='BSAB' && $gwa>=83 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSAB';
     }
-    else if($fchoice=='BAT' && $gwa>=79)
+    else if($fchoice=='BAT' && $gwa>=79 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BAT';
     }
-    else if($fchoice=='BSFOODTECH' && $gwa>=83)
+    else if($fchoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
-    else if($fchoice=='BSCS' && $gwa>=83)
+    else if($fchoice=='BSCS' && $gwa>=83 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSCS';
     }
-    else if($fchoice=='BSIT' && $gwa>=80)
+    else if($fchoice=='BSIT' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIT';
     }
-    else if($fchoice=='BSIS' && $gwa>=80)
+    else if($fchoice=='BSIS' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIS';
     }
-    else if($fchoice=='ACT' && $gwa>=75)
+    else if($fchoice=='ACT' && $gwa>=75 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='ACT';
     }
-    else if($fchoice=='BS Psychology' || $fchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    else if(($fchoice=='BS Psychology' || $fchoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
     {
       $coll='CAS';
       $rem ='Qualified';
       $course='BS Psychology';
     }
-    else if($fchoice=='BS CRIMINOLOGY' || $fchoice=='BS Criminology' && $gwa>=75)
+    else if(($fchoice=='BSCriminology' || $fchoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
     {
       $coll='CCJE';
       $rem ='Qualified';
       $course='BS Criminology';
     }
-     else if($fchoice=='BSHM' && $gwa>=75)
+     else if($fchoice=='BSHM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSHM';
     }
-    else if($fchoice=='BSTM' && $gwa>=75)
+    else if($fchoice=='BSTM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSTM';
     }
-    else if($fchoice=='BSACCO' && $gwa>=87)
+    else if($fchoice=='BSACCO' && $gwa>=87 && $rs>=68)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSACCO';
     }
-    else if($fchoice=='BSBA' && $gwa>=85)
+    else if($fchoice=='BSBA' && $gwa>=85 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSBA';
     }
-    else if($fchoice=='BSOA' && $gwa>=75)
+    else if($fchoice=='BSOA' && $gwa>=75 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSOA';
     }
-    else if($fchoice=='BSEd' || $fchoice=='BSED' && $gwa>=75)
+    else if($fchoice=='BSEd' || $fchoice=='BSED' && $gwa>=75 && $rs>=68)
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BSEd';
     }
-    else if($fchoice=='BEEd' || $fchoice=='BEED' && $gwa>=75)
+    else if(($fchoice=='BEEd' || $fchoice=='BEED') && ($gwa>=75 && $rs>=68))
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($fchoice=='BSAgEng' || $fchoice=='BSAGENG'  && $gwa>=87)
+    else if(($fchoice=='BSAgEng' || $fchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';
@@ -131,109 +138,109 @@ if(isset($_POST['add']))
     }
 
     //second choice
-    else if($schoice=='BSA' && $gwa>=87)
+    else if($schoice=='BSA' && $gwa>=87 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSA';
     }
-    else if($schoice=='BSAB' && $gwa>=83)
+    else if($schoice=='BSAB' && $gwa>=83 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSAB';
     }
-    else if($schoice=='BAT' && $gwa>=79)
+    else if($schoice=='BAT' && $gwa>=79 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BAT';
     }
-    else if($schoice=='BSFOODTECH' && $gwa>=83)
+    else if($schoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
-    else if($schoice=='BSCS' && $gwa>=83)
+    else if($schoice=='BSCS' && $gwa>=83 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSCS';
     }
-    else if($schoice=='BSIT' && $gwa>=80)
+    else if($schoice=='BSIT' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIT';
     }
-    else if($schoice=='BSIS' && $gwa>=80)
+    else if($schoice=='BSIS' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIS';
     }
-    else if($schoice=='ACT' && $gwa>=75)
+    else if($schoice=='ACT' && $gwa>=75 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='ACT';
     }
-    else if($schoice=='BS Psychology' || $schoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    else if(($schoice=='BS Psychology' || $schoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
     {
       $coll='CAS';
       $rem ='Qualified';
       $course='BS Psychology';
     }
-    else if($schoice=='BS CRIMINOLOGY' || $schoice=='BS Criminology' && $gwa>=75)
+    else if(($schoice=='BSCriminology' || $schoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
     {
       $coll='CCJE';
       $rem ='Qualified';
       $course='BS Criminology';
     }
-    else if($schoice=='BSHM' && $gwa>=75)
+    else if($schoice=='BSHM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSHM';
     }
-    else if($schoice=='BSTM' && $gwa>=75)
+    else if($schoice=='BSTM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSTM';
     }
-    else if($schoice=='BSACCO' && $gwa>=87)
+    else if($schoice=='BSACCO' && $gwa>=87 && $rs>=68)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSACCO';
     }
-    else if($schoice=='BSBA' && $gwa>=85)
+    else if($schoice=='BSBA' && $gwa>=85 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSBA';
     }
-    else if($schoice=='BSOA' && $gwa>=75)
+    else if($schoice=='BSOA' && $gwa>=75 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSOA';
     }
-    else if($schoice=='BSEd' || $schoice=='BSED' && $gwa>=75)
+    else if($schoice=='BSEd' || $schoice=='BSED' && $gwa>=75 && $rs>=68)
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BSEd';
     }
-    else if($schoice=='BEEd' || $schoice=='BEED' && $gwa>=75)
+    else if(($schoice=='BEEd' || $schoice=='BEED') && ($gwa>=75 && $rs>=68))
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($schoice=='BSAgEng' || $schoice=='BSAGENG'  && $gwa>=87)
+    else if(($schoice=='BSAgEng' || $schoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';
@@ -241,109 +248,109 @@ if(isset($_POST['add']))
     }
 
     //third choice
-    else if($tchoice=='BSA' && $gwa>=87)
+    else if($tchoice=='BSA' && $gwa>=87 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSA';
     }
-    else if($tchoice=='BSAB' && $gwa>=83)
+    else if($tchoice=='BSAB' && $gwa>=83 && $rs>=68)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSAB';
     }
-    else if($tchoice=='BAT' && $gwa>=79)
+    else if($tchoice=='BAT' && $gwa>=79 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BAT';
     }
-    else if($tchoice=='BSFOODTECH' && $gwa>=83)
+    else if($tchoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
     {
       $coll='CA';
       $rem ='Qualified';
       $course='BSFOODTECH';
     }
-    else if($tchoice=='BSCS' && $gwa>=83)
+    else if($tchoice=='BSCS' && $gwa>=83 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSCS';
     }
-    else if($tchoice=='BSIT' && $gwa>=80)
+    else if($tchoice=='BSIT' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIT';
     }
-    else if($tchoice=='BSIS' && $gwa>=80)
+    else if($tchoice=='BSIS' && $gwa>=80 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='BSIS';
     }
-    else if($tchoice=='ACT' && $gwa>=75)
+    else if($tchoice=='ACT' && $gwa>=75 && $rs>=54)
     {
       $coll='CCS';
       $rem ='Qualified';
       $course='ACT';
     }
-    else if($tchoice=='BS Psychology' || $tchoice=='BS PSYCHOLOGY'  && $gwa>=85)
+    else if(($tchoice=='BS Psychology' || $tchoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
     {
       $coll='CAS';
       $rem ='Qualified';
       $course='BS Psychology';
     }
-    else if($tchoice=='BS CRIMINOLOGY' || $tchoice=='BS Criminology' && $gwa>=75)
+    else if(($tchoice=='BSCriminology' || $tchoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
     {
       $coll='CCJE';
       $rem ='Qualified';
       $course='BS Criminology';
     }
-    else if($tchoice=='BSHM' && $gwa>=75)
+    else if($tchoice=='BSHM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSHM';
     }
-    else if($tchoice=='BSTM' && $gwa>=75)
+    else if($tchoice=='BSTM' && $gwa>=75 && $rs>=54)
     {
       $coll='CHMT';
       $rem ='Qualified';
       $course='BSTM';
     }
-    else if($tchoice=='BSACCO' && $gwa>=87)
+    else if($tchoice=='BSACCO' && $gwa>=87 && $rs>=68)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSACCO';
     }
-    else if($tchoice=='BSBA' && $gwa>=85)
+    else if($tchoice=='BSBA' && $gwa>=85 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSBA';
     }
-    else if($tchoice=='BSOA' && $gwa>=75)
+    else if($tchoice=='BSOA' && $gwa>=75 && $rs>=54)
     {
       $coll='CBMA';
       $rem ='Qualified';
       $course='BSOA';
     }
-    else if($tchoice=='BSEd' || $tchoice=='BSED' && $gwa>=75)
+    else if($tchoice=='BSEd' || $tchoice=='BSED' && $gwa>=75 && $rs>=68)
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BSEd';
     }
-    else if($tchoice=='BEEd' || $tchoice=='BEED' && $gwa>=75)
+    else if(($tchoice=='BEEd' || $tchoice=='BEED') && ($gwa>=75 && $rs>=68))
     {
       $coll='CTE';
       $rem ='Qualified';
       $course='BEED';
     }
-    else if($tchoice=='BSAgEng' || $tchoice=='BSAGENG'  && $gwa>=87)
+    else if(($tchoice=='BSAgEng' || $tchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
     {
       $coll='IAE';
       $rem ='Qualified';
@@ -354,14 +361,24 @@ if(isset($_POST['add']))
       $coll ='none';
       $rem='Unqualified';
     }
-  $addsql ="INSERT INTO students(full_name,gender,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad,photo_link) VALUES('".$fn."','".$gender."','".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."','')";
+  //$image = $_FILES['image']['name'];
+  //$target = "images/".basename($image);
+  $addsql ="INSERT INTO students(Surname,first_name,middle_name,gender,address,school_last_attended,strand_course,grade_GWA,grade_Math,grade_English,grade_Science,fchoice,schoice,tchoice,fcourse,raw_score,remarks,colleges,date_ad) VALUES('".$sname."','".$fname."','".$mi."','".$gender."',UPPER('".$addr."'),'".$lsa."','".$sc."','".$gwa."','".$math."','".$eng."','".$scie."','".$fchoice."','".$schoice."','".$tchoice."','".$course."','".$rs."','".$rem."','".$coll."','".$date."')";
   $res= mysqli_query($conn,$addsql);
   if($res)
   {
-    echo "<script>alert('Student added successfully');
-    location.href='student_admission.php';
-    </script>";
-  }
+    // if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) 
+          //{
+                echo "<script>alert('Student added successfully');
+      location.href='student_admission.php';
+      </script>";
+          }else
+          {
+               echo "<script>alert('Something Went Wrong');
+      location.href='student_admission.php';
+      </script>";
+          }
+  //}
 }
 ?>
 
@@ -392,8 +409,8 @@ if(isset($_POST['add']))
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -431,9 +448,10 @@ if(isset($_POST['add']))
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                 <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">Dem</p>
@@ -465,28 +483,16 @@ if(isset($_POST['add']))
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+               <li class="nav-item">
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
             </a>
           </li>
           <li class="nav-item">
@@ -530,13 +536,26 @@ if(isset($_POST['add']))
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
 
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                 <label class="label-dark col-sm-4 col-form-label">Surname</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
+                     <input type="text" name="surname" placeholder="Your Last Name" required class="form-control" />
                   </div>
                 </div>
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="fname" placeholder="Your First Name" required class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Middle Initial</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="mi" placeholder="Middle Initial" required class="form-control" />
+                  </div>
+                </div>
+
                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
@@ -545,6 +564,13 @@ if(isset($_POST['add']))
                    <option value="Male">Male</option>
                    <option value="Female">Female</option>
                   </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Town/City</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="addr" placeholder="Your Home Town or City" required class="form-control" />
                   </div>
                 </div>
 
@@ -679,6 +705,8 @@ if(isset($_POST['add']))
                    <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Date:</label>
                   <div class="col-sm-8 form-control">
+                    <input type="date" min="2019-01-01" name="dates" class="form-control">
+                    <!--
                    <select name="month">
             <option value="June">June</option>
             <option value="July">July</option>
@@ -742,9 +770,16 @@ if(isset($_POST['add']))
             <option value="2029">2029</option>
              <option value="2030">2030</option>
           </select>
-
+          -->
                   </div>
                 </div>
+
+               <!-- <div class="form-group row">
+                  <label class="label-dark col-sm-4 col-form-label">Photo</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="image" class="btn-primary form-control">
+                  </div>
+                </div>-->
 
                 <div class="form-group text-center">
                   <button type="submit" class="btn btn-success submit-btn w-50" name="add">Add</button>
@@ -797,3 +832,18 @@ if(isset($_POST['add']))
 </body>
 
 </html>
+<?php
+}
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
+  echo '<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+        <a class="navbar-brand brand-logo" href="/lgs/">
+          <img src="../images/lspu.jpg" alt="logo" />
+        </a>
+      </div>
+  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
+  ;
+}
+?>

@@ -2,8 +2,36 @@
 session_start();
   $success = '';
   require '../db.php';
+  $success = '';
     if (isset($_POST['add']))
     {
+      $target_dir = "../images/";
+$target_file = $target_dir . basename($_FILES["imgp"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+      $check = getimagesize($_FILES["imgp"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["imgp"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["imgp"]["name"]). " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+  }
       $username = $_POST['username'];
       $password = $_POST['password'];
       $fname = $_POST['fullname'];
@@ -12,7 +40,8 @@ session_start();
       $gender = $_POST['gender'];
       $pos = $_POST['position'];
       $camp = $_POST['camp'];
-      $sql = 'INSERT INTO users(user_name,user_password,first_name,middle_name,last_name,gender,position,campus,user_level) values("'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'",1)';
+      $fulln =$fname." ".$lname;
+      $sql = 'INSERT INTO users(full_name,user_name,user_password,first_name,middle_name,last_name,gender,position,campus,profile_pic,user_level) values("'.$fulln.'","'.$username.'","'.$password.'","'.$fname.'","'.$mname.'","'.$lname.'","'.$gender.'","'.$pos.'","'.$camp.'","'.$target_file.'",1)';
       $query = mysqli_query($conn,$sql);
       if ($query)
       {
@@ -45,6 +74,18 @@ session_start();
   <link rel="stylesheet" href="../css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../images/lspu.png" />
+  <script>
+            function showPass()
+            {
+                var pass = document.getElementById('pass');
+                if(document.getElementById('check').checked)
+                {
+                    pass.setAttribute('type','text');
+                }else{
+                    pass.setAttribute('type','password');
+                }
+            }
+        </script>
 </head>
 <style type="text/css">
 </style>
@@ -53,8 +94,8 @@ session_start();
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -89,9 +130,10 @@ session_start();
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -124,27 +166,15 @@ session_start();
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
-             <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
             </a>
           </li>
           <li class="nav-item">
@@ -187,7 +217,7 @@ session_start();
         <div class="row w-100">
                   <div class="col-lg-6 mx-auto">
                       <div class="auto-form-wrapper">
-              <form action="" method="POST">
+              <form action="" method="POST" enctype="multipart/form-data">
                 <!--FNAME-->
                 <?php echo $success; ?>
                 <div class="form-group row">
@@ -199,13 +229,19 @@ session_start();
                 <div class="form-group row">
                 <label class="label-dark col-sm-4 col-form-label">Password</label>
                  <div class="col-sm-8">
-                    <input type="password" name="password"  placeholder="Type your password" required class="form-control" />
+                    <input type="password" name="password"  placeholder="Type your password" required class="form-control" id="pass" />
                  </div>
                </div>
+               <div class="form-group row">
+                  <div class="col-sm-8">
+                     <input type="checkbox" id="check" onclick="showPass();"/>
+                     <small class="text-sm-right">Show Password</small>
+                  </div>
+                </div>
                 <div class="form-group row">
                  <label class="label-dark col-sm-4 col-form-label">First Name</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" />
+                     <input type="text" name="fullname" placeholder="First Name" required class="form-control" />
                   </div>
                 </div>
                   <!--MNAME-->
@@ -238,9 +274,15 @@ session_start();
                   </div>
                 </div>
                    <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Campus</label>
+                 <label class="label-dark col-sm-4 col-form-label">Email Address</label>
                   <div class="col-sm-8">
-                     <input type="text" name="camp" placeholder="Your Campus" required class="form-control" />
+                     <input type="text" name="camp" placeholder="Email Address" required class="form-control" />
+                  </div>
+                </div>
+                      <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Upload Photos</label>
+                  <div class="col-sm-8">
+                     <input type="file" name="imgp" id="imgp" required class="btn btn-primary btn-block" />
                   </div>
                 </div>
                 <div class="form-group text-center">
@@ -291,7 +333,7 @@ session_start();
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -302,6 +344,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

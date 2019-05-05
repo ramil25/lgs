@@ -1,7 +1,11 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==null) {
+header("location: ../login.php");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +32,8 @@ if ($_SESSION["user_level"]==1) {
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+          <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -66,14 +70,15 @@ if ($_SESSION["user_level"]==1) {
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                 <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="../images/default.png" alt="profile image"></a>
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
                   <div>
-                    <small class="designation text-muted">Admin</small>
+                    <small class="designation text-muted">Staff</small>
                     <span class="status-indicator online"></span>
                   </div>
                 </div>
@@ -101,26 +106,22 @@ if ($_SESSION["user_level"]==1) {
                 <li class="nav-item">
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+               <li class="nav-item">
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrollees Chart</span>
             </a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cluster.php">
+            <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
               <span class="menu-title">Cluster Programs</span>
             </a>
@@ -151,10 +152,10 @@ if ($_SESSION["user_level"]==1) {
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2">ADMIN PANEL</h1>
+                    <h1 class="text-center page-header p-2">STAFF PANEL</h1>
                   </div>
                  </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="student_admission.php">
                 <div class="card-body">
@@ -171,7 +172,7 @@ if ($_SESSION["user_level"]==1) {
             </div>
               </div>
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="student_account.php">
                 <div class="card-body">
@@ -188,7 +189,8 @@ if ($_SESSION["user_level"]==1) {
             </div>
              </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="manage_student.php">
                 <div class="card-body">
@@ -205,7 +207,7 @@ if ($_SESSION["user_level"]==1) {
             </div>
                 </div>
 
-               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="chart_menu.php">
                 <div class="card-body">
@@ -222,24 +224,8 @@ if ($_SESSION["user_level"]==1) {
               </div>
             </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <a href="consoledated.php">
-                <div class="card-body">
-                  <div class="clearfix text-center">
-                      <i class="mdi mdi-note-text text-primary icon-lg"></i>
-                    <div class="float-right">
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0 text-center">Consoledated Report</h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </a>
-            </div>
-          </div>
 
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="year_menu.php?category=CLUSTER">
                 <div class="card-body">
@@ -257,7 +243,7 @@ if ($_SESSION["user_level"]==1) {
             </div>
           </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="year_menu.php?category=Qualifying Exam">
                 <div class="card-body">
@@ -274,7 +260,7 @@ if ($_SESSION["user_level"]==1) {
             </div>
           </div>
 
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="announcement.php">
                 <div class="card-body">
@@ -282,7 +268,7 @@ if ($_SESSION["user_level"]==1) {
                       <i class="mdi mdi-transcribe text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Announcements</h3>
+                        <h4 class="font-weight-medium text-center mb-0">Announcements</h3>
                       </div>
                     </div>
                   </div>
@@ -328,17 +314,5 @@ if ($_SESSION["user_level"]==1) {
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
-  echo '<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/lgs/">
-          <img src="../images/lspu.jpg" alt="logo" />
-        </a>
-      </div>
-  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
-  ;
-  header('location: ../login.php');
-}
+
 ?>

@@ -2,7 +2,7 @@
 session_start();
 $sid =$_GET['std_id'];
 require '../db.php';
-if ($_SESSION["user_level"]==1) {
+if ($_SESSION["user_level"]==0) {
 
 if($conn)
 {
@@ -37,8 +37,8 @@ if($conn)
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -76,9 +76,10 @@ if($conn)
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                   <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -111,29 +112,19 @@ if($conn)
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="add_staff.php">
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Create Staff Account</span>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="chart_menu.php">
               <i class="menu-icon mdi mdi-chart-line"></i>
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -177,11 +168,26 @@ if($conn)
 
               <form method="post">
                 <div class="form-group row">
-                 <label class="label-dark col-sm-4 col-form-label">Name</label>
+                 <label class="label-dark col-sm-4 col-form-label">Surname</label>
                   <div class="col-sm-8">
-                     <input type="text" name="fullname" placeholder="Full Name" required class="form-control" value="<?php echo $fetch['full_name']; ?>" />
+                     <input type="text" name="surname" placeholder="Surname" required class="form-control" value="<?php echo $fetch['Surname']; ?>" />
                   </div>
                 </div>
+
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="fn" placeholder="First Name" required class="form-control" value="<?php echo $fetch['first_name']; ?>" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Middle Initial</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="mi" placeholder="Middle Initial" required class="form-control" value="<?php echo $fetch['middle_name']; ?>" />
+                  </div>
+                </div>
+
                 <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Gender</label>
                   <div class="col-sm-8">
@@ -190,6 +196,13 @@ if($conn)
                    <option value="Male">Male</option>
                    <option value="Female">Female</option>
                   </select>
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                 <label class="label-dark col-sm-4 col-form-label">Town/City</label>
+                  <div class="col-sm-8">
+                     <input type="text" name="addr" placeholder="Your Home Town or City" required class="form-control" value="<?php echo $fetch['address']; ?>" />
                   </div>
                 </div>
 
@@ -324,7 +337,7 @@ if($conn)
                  <div class="form-group row">
                   <label class="label-dark col-sm-4 col-form-label">Remarks:</label>
                   <div class="col-sm-8">
-                   <input type="text" name="remarks" placeholder="Remarks Here" required class="form-control"value="<?php echo $fetch['remarks']; ?>" >
+                   <input type="text" name="remarks" placeholder="Remarks Here" readonly class="form-control"value="<?php echo $fetch['remarks']; ?>" >
                   </div>
                 </div>
 
@@ -379,8 +392,14 @@ if($conn)
   <?php
 if(isset($_POST['update']))
 {
-  $fn =$_POST['fullname'];
+  $coll='';
+  $rem='';
+  $course='';
+  $fn =$_POST['fn'];
+   $sn =$_POST['surname'];
+    $mi =$_POST['mi'];
   $gender =$_POST['gender'];
+   $addr =$_POST['addr'];
   $lsa =$_POST['school_last_attended'];
   $sc =$_POST['strand_course'];
   $gwa=$_POST['grade_GWA'];
@@ -391,8 +410,343 @@ if(isset($_POST['update']))
   $schoice =$_POST['schoice'];
   $tchoice =$_POST['tchoice'];
   $rs =$_POST['raw_score'];
-  $rem =$_POST['remarks'];
-  $updatesql ="UPDATE students set full_name='".$fn."',gender='".$gender."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
+
+ //first choice
+    if($fchoice=='BSA' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($fchoice=='BSAB' && $gwa>=83 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($fchoice=='BAT' && $gwa>=79 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($fchoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($fchoice=='BSCS' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($fchoice=='BSIT' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($fchoice=='BSIS' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($fchoice=='ACT' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if(($fchoice=='BS Psychology' || $fchoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if(($fchoice=='BSCriminology' || $fchoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+     else if($fchoice=='BSHM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($fchoice=='BSTM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($fchoice=='BSACCO' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($fchoice=='BSBA' && $gwa>=85 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($fchoice=='BSOA' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($fchoice=='BSEd' || $fchoice=='BSED' && $gwa>=75 && $rs>=68)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if(($fchoice=='BEEd' || $fchoice=='BEED') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if(($fchoice=='BSAgEng' || $fchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+
+    //second choice
+    else if($schoice=='BSA' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($schoice=='BSAB' && $gwa>=83 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($schoice=='BAT' && $gwa>=79 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($schoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($schoice=='BSCS' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($schoice=='BSIT' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($schoice=='BSIS' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($schoice=='ACT' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if(($schoice=='BS Psychology' || $schoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if(($schoice=='BSCriminology' || $schoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+    else if($schoice=='BSHM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($schoice=='BSTM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($schoice=='BSACCO' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($schoice=='BSBA' && $gwa>=85 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($schoice=='BSOA' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($schoice=='BSEd' || $schoice=='BSED' && $gwa>=75 && $rs>=68)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if(($schoice=='BEEd' || $schoice=='BEED') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if(($schoice=='BSAgEng' || $schoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+
+    //third choice
+    else if($tchoice=='BSA' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSA';
+    }
+    else if($tchoice=='BSAB' && $gwa>=83 && $rs>=68)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSAB';
+    }
+    else if($tchoice=='BAT' && $gwa>=79 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BAT';
+    }
+    else if($tchoice=='BSFOODTECH' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CA';
+      $rem ='Qualified';
+      $course='BSFOODTECH';
+    }
+    else if($tchoice=='BSCS' && $gwa>=83 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSCS';
+    }
+    else if($tchoice=='BSIT' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIT';
+    }
+    else if($tchoice=='BSIS' && $gwa>=80 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='BSIS';
+    }
+    else if($tchoice=='ACT' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CCS';
+      $rem ='Qualified';
+      $course='ACT';
+    }
+    else if(($tchoice=='BS Psychology' || $tchoice=='BS PSYCHOLOGY')  && ($gwa>=85 && $rs>=68))
+    {
+      $coll='CAS';
+      $rem ='Qualified';
+      $course='BS Psychology';
+    }
+    else if(($tchoice=='BSCriminology' || $tchoice=='BS Criminology') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CCJE';
+      $rem ='Qualified';
+      $course='BS Criminology';
+    }
+    else if($tchoice=='BSHM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSHM';
+    }
+    else if($tchoice=='BSTM' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CHMT';
+      $rem ='Qualified';
+      $course='BSTM';
+    }
+    else if($tchoice=='BSACCO' && $gwa>=87 && $rs>=68)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSACCO';
+    }
+    else if($tchoice=='BSBA' && $gwa>=85 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSBA';
+    }
+    else if($tchoice=='BSOA' && $gwa>=75 && $rs>=54)
+    {
+      $coll='CBMA';
+      $rem ='Qualified';
+      $course='BSOA';
+    }
+    else if($tchoice=='BSEd' || $tchoice=='BSED' && $gwa>=75 && $rs>=68)
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BSEd';
+    }
+    else if(($tchoice=='BEEd' || $tchoice=='BEED') && ($gwa>=75 && $rs>=68))
+    {
+      $coll='CTE';
+      $rem ='Qualified';
+      $course='BEED';
+    }
+    else if(($tchoice=='BSAgEng' || $tchoice=='BSAGENG')  && ($gwa>=87 && $rs>=54))
+    {
+      $coll='IAE';
+      $rem ='Qualified';
+      $course='BSAgEng';
+    }
+    else{
+      $course='none';
+      $coll ='none';
+      $rem='Unqualified';
+    }
+
+  $updatesql ="UPDATE students set Surname='".$sn."', first_name='".$fn."', middle_name='".$mi."',gender='".$gender."',address='".$addr."',school_last_attended='".$lsa."',strand_course='".$sc."',grade_GWA=".$gwa.",grade_Math=".$math.",grade_English=".$eng.",grade_Science=".$scie.",fchoice='".$fchoice."',schoice='".$schoice."',tchoice='".$tchoice."',colleges='".$coll."',fcourse='".$course."',raw_score=".$rs.",remarks='".$rem."' WHERE student_id=".$sid;
    $res= mysqli_query($conn,$updatesql);
   if($res)
   {
@@ -408,7 +762,7 @@ if(isset($_POST['update']))
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -419,6 +773,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 session_start();
-if ($_SESSION["user_level"]==1) {
+$year =$_GET['year'];
+if ($_SESSION["user_level"]==0) { 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,8 @@ if ($_SESSION["user_level"]==1) {
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="../images/lspu.jpg" alt="logo" />
+        <a class=" brand-logo" href="index.php">
+           <img src="../images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="../images/lspu.png" alt="logo" />
@@ -67,9 +68,10 @@ if ($_SESSION["user_level"]==1) {
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <br><br><br>
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="../images/default.png" alt="profile image">
+                  <a href="update_user.php?user_id=<?php echo $_SESSION['user_name']; ?>"><img src="<?php echo  $_SESSION['profile_pic']; ?>" alt="profile image"></a>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $_SESSION['user_name']; ?></p>
@@ -102,7 +104,7 @@ if ($_SESSION["user_level"]==1) {
                   <a class="nav-link" href="student_account.php">Student Account</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="manage_student.php">Manage Student Request</a>
+                  <a class="nav-link" href="request.php?request=VIEWREQUEST">Requests</a>
                 </li>
               </ul>
             </div>
@@ -114,12 +116,7 @@ if ($_SESSION["user_level"]==1) {
               <span class="menu-title">Enrolees Chart</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="consoledated.php">
-              <i class="menu-icon mdi mdi-folder-outline"></i>
-              <span class="menu-title">Consoledated Report</span>
-            </a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="year_menu.php?category=CLUSTER">
               <i class="menu-icon mdi mdi-poll"></i>
@@ -157,7 +154,7 @@ if ($_SESSION["user_level"]==1) {
                  </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CBMA&&year=2019">
+                <a  href="view_cluster.php?title=CBMA&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi  mdi-briefcase text-primary icon-lg"></i>
@@ -174,7 +171,7 @@ if ($_SESSION["user_level"]==1) {
 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CCJE&&year=2019">
+                <a  href="view_cluster.php?title=CCJE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-shield text-primary icon-lg"></i>
@@ -191,7 +188,7 @@ if ($_SESSION["user_level"]==1) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CTE&&year=2019">
+                <a  href="view_cluster.php?title=CTE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-book-open text-primary icon-lg"></i>
@@ -208,7 +205,7 @@ if ($_SESSION["user_level"]==1) {
 
                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=IAE&&year=2019">
+                <a  href="view_cluster.php?title=IAE&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-city text-primary icon-lg"></i>
@@ -225,7 +222,7 @@ if ($_SESSION["user_level"]==1) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CCS&&year=2019">
+               <a  href="view_cluster.php?title=CCS&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                       <i class="mdi mdi-laptop text-primary icon-lg"></i>
@@ -242,7 +239,7 @@ if ($_SESSION["user_level"]==1) {
 
              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CA&&year=2019">
+               <a  href="view_cluster.php?title=CA&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-leaf text-primary icon-lg"></i>
@@ -260,7 +257,7 @@ if ($_SESSION["user_level"]==1) {
 
               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-                <a  href="view_cluster.php?title=CAS&&year=2019">
+                <a  href="view_cluster.php?title=CAS&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                     <i class="mdi mdi-eye text-primary icon-lg"></i>
@@ -277,7 +274,7 @@ if ($_SESSION["user_level"]==1) {
 
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
-               <a  href="view_cluster.php?title=CHMT&&year=2019">
+               <a  href="view_cluster.php?title=CHMT&&year=<?php echo $year; ?>">
                 <div class="card-body">
                   <div class="clearfix text-center">
                      <i class="mdi mdi-silverware text-primary icon-lg"></i>
@@ -331,7 +328,7 @@ if ($_SESSION["user_level"]==1) {
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -342,6 +339,5 @@ else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
-  header('location: ../login.php');
 }
 ?>

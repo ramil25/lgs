@@ -33,14 +33,13 @@ require 'db.php';
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.php">
-          <img src="images/lspu.jpg" alt="logo" />
+        <a class="brand-logo" href="index.php">
+          <img src="images/lspu.png" width="100" height="100" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="images/lspu.png" alt="logo" />
         </a>
       </div>
-
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
