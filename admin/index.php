@@ -1,7 +1,11 @@
 <?php
 session_start();
 require '../db.php';
-if ($_SESSION["user_level"]==0) {
+if ($_SESSION["user_level"]==null) {
+header("location: ../login.php");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,7 +164,7 @@ if ($_SESSION["user_level"]==0) {
                     <h1 class="text-center page-header p-2">ADMIN PANEL</h1>
                   </div>
                  </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="student_admission.php">
                 <div class="card-body">
@@ -177,7 +181,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
               </div>
 
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="student_account.php">
                 <div class="card-body">
@@ -194,7 +198,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
              </div>
 
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="add_staff.php">
                 <div class="card-body">
@@ -211,7 +215,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
              </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="manage_student.php">
                 <div class="card-body">
@@ -228,7 +232,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
                 </div>
 
-               <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="chart_menu.php">
                 <div class="card-body">
@@ -245,7 +249,7 @@ if ($_SESSION["user_level"]==0) {
               </div>
             </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="consoledated.php">
                 <div class="card-body">
@@ -262,7 +266,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
           </div>
 
-             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="year_menu.php?category=CLUSTER">
                 <div class="card-body">
@@ -280,7 +284,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
           </div>
 
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="year_menu.php?category=Qualifying Exam">
                 <div class="card-body">
@@ -297,7 +301,7 @@ if ($_SESSION["user_level"]==0) {
             </div>
           </div>
 
-          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <a href="announcement.php">
                 <div class="card-body">
@@ -305,7 +309,7 @@ if ($_SESSION["user_level"]==0) {
                       <i class="mdi mdi-transcribe text-primary icon-lg"></i>
                     <div class="float-right">
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-center mb-0">Announcements</h3>
+                        <h4 class="font-weight-medium text-center mb-0">Announcements</h3>
                       </div>
                     </div>
                   </div>
@@ -351,17 +355,5 @@ if ($_SESSION["user_level"]==0) {
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
-  echo '<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/lgs/">
-          <img src="../images/lspu.jpg" alt="logo" />
-        </a>
-      </div>
-  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
-  ;
-  header('location: ../login.php');
-}
+
 ?>
