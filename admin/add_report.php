@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) {
   $success = '';
 if(isset($_POST['add']))
 {

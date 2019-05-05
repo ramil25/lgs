@@ -3,7 +3,7 @@
 session_start();
 $std_id = $_GET['std_id'];
 $success = '';
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==1) {
   if (empty($std_id)) {
     header("location:create_account.php");
   }

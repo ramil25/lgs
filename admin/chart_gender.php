@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) {
   require '../db.php';
   $male = "SELECT COUNT(*) AS total FROM students WHERE gender = 'Male' ";
   $female = "SELECT COUNT(*) AS total FROM students WHERE gender = 'Female' ";

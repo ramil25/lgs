@@ -3,7 +3,7 @@ session_start();
 require '../db.php';
 $sql="SELECT COUNT(*),YEAR(date_ad) AS YEAR FROM students GROUP BY YEAR(date_ad)";
   $result =mysqli_query($conn,$sql);
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) {
 $ym =$_GET['category'];
 $link1 ="";
 $link2 ="";

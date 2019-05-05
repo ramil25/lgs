@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==2) {
     $success = '';
     $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
     $ress =mysqli_query($conn,$query);

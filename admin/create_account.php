@@ -2,7 +2,7 @@
 session_start();
 	 require '../db.php';
    $title =$_GET['title'];
-	 if (isset($_SESSION["user_level"])) {
+	 if ($_SESSION["user_level"]==0) {
 		 $sql ="SELECT * from students";
      $res =mysqli_query($conn,$sql);
      $query ="SELECT * from users where user_level=2";

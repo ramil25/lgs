@@ -1,7 +1,7 @@
 <?php
 session_start();
 $year =$_GET['year'];
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) { 
 ?>
 <!DOCTYPE html>
 <html lang="en">

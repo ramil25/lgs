@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) {
   $success = '';
   $report = $_GET['request'];
   $sql ="SELECT * FROM message WHERE msg_id=".$report;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==1) {
 $ym =$_GET['category'];
 $link1 ="";
 $link2 ="";

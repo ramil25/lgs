@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../db.php';
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==1) {
   $success = '';
   $report = $_GET['rpt_id'];
   $sql ="SELECT * FROM report WHERE report_id=".$report;

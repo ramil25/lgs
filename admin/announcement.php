@@ -1,5 +1,6 @@
 <?php
 session_start();
+if ($_SESSION["user_level"]==0) {
 require '../db.php';
   if (isset($_POST['submit']))
   {

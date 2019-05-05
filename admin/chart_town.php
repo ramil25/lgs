@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["user_level"])) {
+if ($_SESSION["user_level"]==0) {
   require '../db.php';
 
   $towns ="SELECT UPPER(address) AS address,COUNT(*) AS town FROM students group by address";

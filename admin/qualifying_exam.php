@@ -3,7 +3,7 @@ session_start();
 	 $year=$_GET['year'];
 
 	 require '../db.php';
-	 if (isset($_SESSION["user_level"])) {
+	 if ($_SESSION["user_level"]==0) {
     $sql ="SELECT date_ad, COUNT(*) from students WHERE YEAR(date_ad)='".$year."' GROUP BY date_ad desc";
     $res =mysqli_query($conn,$sql);
 
