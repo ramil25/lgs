@@ -2,7 +2,10 @@
 session_start();
 	 require '../db.php';
    $title =$_GET['title'];
-	 if ($_SESSION["user_level"]==0) {
+	 if ($_SESSION["user_level"]==null) {
+	header('location:../login.php');
+}
+else {
 		 $sql ="SELECT * from students";
      $res =mysqli_query($conn,$sql);
      $query ="SELECT * from users where user_level=2";
@@ -376,17 +379,5 @@ while($row=mysqli_fetch_assoc($ress))
 
 </html>
 <?php
-}
-else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
-  echo '<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/lgs/">
-          <img src="../images/lspu.jpg" alt="logo" />
-        </a>
-      </div>
-  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
-  ;
 }
 ?>

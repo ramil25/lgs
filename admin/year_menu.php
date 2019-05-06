@@ -3,7 +3,10 @@ session_start();
 require '../db.php';
 $sql="SELECT COUNT(*),YEAR(date_ad) AS YEAR FROM students GROUP BY YEAR(date_ad)";
   $result =mysqli_query($conn,$sql);
-if ($_SESSION["user_level"]==0) {
+if ($_SESSION["user_level"]==null) {
+  header('location:../login.php');
+}
+else {
 $ym =$_GET['category'];
 $link1 ="";
 $link2 ="";
@@ -236,17 +239,5 @@ $link1 ="";
 
 </html>
 <?php
-}
-else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
-  echo '<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="/lgs/">
-          <img src="../images/lspu.jpg" alt="logo" />
-        </a>
-      </div>
-  <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
-  ;
 }
 ?>
