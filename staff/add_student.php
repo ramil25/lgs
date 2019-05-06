@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION["user_level"]==0) {
+if ($_SESSION["user_level"]==1) {
   $msg = '';
   $success = '';
   $std = $_GET['std'];
@@ -353,7 +353,7 @@ if(isset($_POST['add']))
 </html>
 <?php
 }
-else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
+else if($_SESSION["user_level"]!=1 || $_SESSION['username']=='') {
   echo '<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -364,5 +364,7 @@ else if($_SESSION["user_level"]!=0 || $_SESSION['username']=='') {
       </div>
   <H1 style="font-family:Arial;">PLEASE LOGIN <a href="/lgs/">HERE</a></H1>'
   ;
+  header('location: ../login.php');
 }
 ?>
+
