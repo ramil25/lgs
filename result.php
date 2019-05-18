@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'db.php';
+    $success = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@ require 'db.php';
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Results</title>
+  <title>About Us</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -32,10 +33,10 @@ require 'db.php';
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="brand-logo" href="index.php">
+        <a class=" brand-logo" href="index.php">
           <img src="images/lspu.png" width="100" height="100" alt="logo" />
         </a>
-        <a class="brand-logo-mini" href="index.php">
+        <a class="navbar-brand brand-logo-mini" href="index.php">
           <img src="images/lspu.png" alt="logo" />
         </a>
       </div>
@@ -44,7 +45,7 @@ require 'db.php';
         <h2 style="font-family: times new roman;" class="navbar-nav d-none d-md-flex">Laguna State Polytechnic University</h2>
 
         <ul class="navbar-nav navbar-nav-right">
-         <li class="nav-item">
+           <li class="nav-item">
             <a class="nav-link" href="login.php"  style="margin-right: 20px;">
               <i class="menu-icon mdi mdi-account-circle"></i>
               <span class="menu-title">Login</span>
@@ -64,6 +65,7 @@ require 'db.php';
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="user-wrapper">
+              </div>
             </div>
           </li>
 
@@ -73,7 +75,7 @@ require 'db.php';
               <span class="menu-title">Login</span>
             </a>
           </li>
-
+          
           <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="menu-icon mdi mdi-newspaper"></i>
@@ -98,19 +100,71 @@ require 'db.php';
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">
+<div class="main-panel">
         <div class="content-wrapper">
                <div class="row">
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
-                
-                 </div>
+               <div class="col-11">
+        <form method="get">
+        <input class="form-control" type="text" name="search" placeholder="Search..." value="">
+      </div>
+      <div class="col-1">
+      <button type="submit" name="submit-search" class=" ml-0 form-control">
+           <i class="mdi mdi-magnify icon-sm"></i></button>
+       </form>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table table-hover table-responsive table-striped text-left" style="overflow-x: auto; width: 100%;">
+          <?php 
+          if(isset($_GET['submit-search']))
+          {
+          $s =$_GET['search'];
+          $query ="SELECT * FROM students WHERE (Surname LIKE '".$s."%' OR first_name LIKE '".$s."%') AND remarks='Qualified'";
+          $ress =mysqli_query($conn,$query);
+          if($ress)
+          {
+          if($rows =mysqli_num_rows($ress)>0)
+          { ?>
+            <tr>
+            <th><h3>Surname</h3></th>
+            <th><h3>Course</h3></th>
+            <th><h3>Results</h3></th>
+          </tr>
+          <?php
+          while($row=mysqli_fetch_assoc($ress))
+    { ?>
+    <tr onclick="alert('<?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; ?> \nYou`re qualified, Please proceed to the guidance office to claim your interview form.')">
+  <td  style="font-size: 20px;"><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; ?></td>
+
+  <td style="font-size: 20px;"> <?php echo $row['fchoice']; ?></td>
+
+  <td style="font-size: 20px;">  <?php echo $row['remarks']; ?></td>
+    </tr>
+    <?php }
+
+        }
+        else
+        {?>
+          <div class="col-12">
+            <h1>NO RESULT FOUND!!!</h1>
+          </div>
+       <?php }
+      }
+      }
+        ?>
+        </table>
+      </div>
+      
+    </div>
+    
+  </div>
+
+
                 </div>
-
-
-
             </div>
            </div>
           </div>
+      
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">

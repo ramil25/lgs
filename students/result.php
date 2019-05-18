@@ -131,8 +131,8 @@ $query ="SELECT * from users where user_name='".$_SESSION['user_name']."'";
        </form>
       </div>
 
-      <div class="col-12">
-        <table class="table table-hover table-striped text-left">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <table class="table table-hover table-responsive table-striped text-left" style="overflow-x: auto; width: 100%;">
           <?php 
           if(isset($_GET['submit-search']))
           {
