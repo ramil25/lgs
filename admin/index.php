@@ -2,7 +2,7 @@
 session_start();
 require '../db.php';
 if ($_SESSION["user_level"]==null) {
-header("location: ../login.php");
+	header('location:../login.php');
 }
 else
 {
@@ -356,5 +356,4 @@ else
 </html>
 <?php
 }
-
 ?>
