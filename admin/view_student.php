@@ -7,9 +7,13 @@ if ($_SESSION["user_level"]==null) {
 else {
 if($conn)
 {
-$title= $_GET['title'];
-$sql ="SELECT * from students";
+if(isset($_GET['submit-search']))
+{
+  $title= $_GET['h'];
+  $s = $_GET['search'];
+$sql ="SELECT * FROM students WHERE Surname LIKE '".$s."%' OR first_name LIKE '".$s."%'";
 $res =mysqli_query($conn,$sql);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -166,46 +170,46 @@ $res =mysqli_query($conn,$sql);
         <div class="content-wrapper">
                <div class="row">
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+
                   <div class="card card-statistics">
-                    <h1 class="text-center page-header p-2"><?php echo $title; ?></h1>
+                    <h1 class="text-center page-header p-2">Search student name to update</h1>
                   </div>
                  </div>
-
+                  <div class="col-lg-11 col-md-11 col-sm-11">
+                    <form method="get">
+        <input class="form-control" type="text" name="search" placeholder="Search..." value="">
+        <input type="hidden" name="h" value="Search student name to update">
+      </div>
+      <div class="col-1">
+      <button type="submit" name="submit-search" class=" ml-0 form-control">
+           <i class="mdi mdi-magnify icon-sm"></i></button>
+       </form>
+                  </div>
                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
                  <table style="margin-top: 20px; border-color: black; background-color: white; color: black;" class="table">
                   <?php
+                  if(isset($_GET['submit-search']))
+                  {
+                    $title= $_GET['h'];
           while($row=mysqli_fetch_assoc($res))
       { ?>
         <tr>
           <td><a style="color: black; font-size: 20px;" href=<?php
-
-          if($title=="VIEW ALL")
-          {
-           echo "student_profile.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname']." ". $row['first_name']." ". $row['middle_name'];
-           ?>
-            <form method="post" class="float-right">
-              <input type="hidden" name="hid" value="<?php echo $row['student_id']; ?>">
-                <button type="submit" class="btn btn-danger" name="del">Delete</button></form></td>
-          <?php
-           }
-          else
-          {
             echo "update_student.php?std_id=".$row['student_id']; ?>><?php echo $row['Surname']." ".$row['first_name']." ".$row['middle_name']; 
-          }
             ?></a></td>
+           
+            <td><form method="post"><button name="del" class="btn btn-danger btn-lg">Delete</button>
+             <input type="hidden" name="hid" value="<?php echo $row['student_id'];  ?>"></form></td>
         </tr>
-      <?php } ?>
+      <?php }} ?>
                </table>
                <?php 
+                require '../db.php';
                 if(isset($_POST['del']))
               {
-                require '../db.php';
-                $sql ="SELECT * from students";
-                $res =mysqli_query($conn,$sql);
-                $fetch = mysqli_fetch_assoc($res);
                 $hid= $_POST['hid'];
-                $dsql ="DELETE FROM students where student_id = '".$hid."'";
+                $dsql ="DELETE FROM students where student_id = $hid";
                 $result =mysqli_query($conn,$dsql);
                 if ($result) {
                   echo "<script>alert('Deleted');
