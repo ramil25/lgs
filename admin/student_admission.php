@@ -188,27 +188,12 @@ else {
 
              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
               <div class="card card-statistics">
-                  <a href="view_student.php?title=Select student to update">
+                  <a href="view_student.php?title=Search student name to update">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi  mdi-sync text-danger icon-lg"></i>
                       <h1 class="float-right ml-5 mt-2">Update Student</h1>
-                    </div>
-                  </div>
-                </div>
-                </a>
-              </div>
-            </div>
-
-             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin stretch-card">
-              <div class="card card-statistics">
-                  <a href="view_student.php?title=VIEW ALL">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-account-search text-danger icon-lg"></i>
-                      <h1 class="float-right ml-5 mt-2">View All</h1>
                     </div>
                   </div>
                 </div>
