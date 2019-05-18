@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="images/lspu.png">
   <title>
-    Newsfeed
+    Request Good Moral
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -34,13 +35,7 @@
         </div>
         <ul class="nav">
           <li>
-            <a href="login.php">
-              <i class="tim-icons icon-single-02"></i>
-              <p>Login</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="index.php">
+           <a href="index.php">
               <i class="tim-icons icon-bullet-list-67"></i>
               <p>Newsfeed</p>
             </a>
@@ -51,18 +46,25 @@
               <p>Results</p>
             </a>
           </li>
+          <li   class="active ">
+            <a href="req_moral.php">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>Request Good Moral</p>
+            </a>
+          </li>
           <li>
             <a href="aboutus.php">
               <i class="tim-icons icon-alert-circle-exc"></i>
               <p>About us</p>
             </a>
-          </li>          
+          </li>
+            
         </ul>
       </div>
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -82,17 +84,49 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">             
-                  <a href="login.php">
-                     <p>Login</p>
-                  </a>
+              <li class="search-bar input-group">
+               
+              </li>
+              <li class="dropdown nav-item">
+                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  
+              <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <div class="photo">
+                    <img src="assets/img/anime3.png" alt="Profile Photo">
+                  </div>
+                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                  <p class="d-lg-none">
+                    Log out
+                  </p>
+                </a>
+                <ul class="dropdown-menu dropdown-navbar">
+                  <li class="nav-link">
+                    <a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a>
+                  </li>
+                  <li class="dropdown-divider"></li>
+                  <li class="nav-link">
+                    <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
+                  </li>
+                </ul>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
         </div>
       </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
@@ -117,42 +151,40 @@
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-center">
-                      <h1 class="text-center page-header p-2">NEWSFEED</h1><br>
-                      <?php
-            require 'db.php';
-
-            $sql = "SELECT announcement.announcement announcement, users.full_name full_name, users.profile_pic profile_pic FROM announcement INNER JOIN users ON announcement.user_id = users.user_id ORDER BY announcement_id DESC";
-            $result = $conn -> query($sql);
-            if ($result -> num_rows > 0) {
-              while ($row = $result -> fetch_assoc()) {
-              ?>
-                    </div>
-                  </div>
-                </div>
-
-                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
+                      <h1 class="text-center page-header p-2">REQUEST GOOD MORAL</h1>
+                     <div class="content-wrapper">
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 grid-margin">
                   <div class="card card-statistics">
-                    <div class="card-body">
-                      <div class="float-left">
-                        <img src="<?php echo $row['profile_pic'];  ?>" class="img-xs rounded-circle" width="50" height="50">
-                        <h4><?php echo $row['full_name']; ?></h4>
-                      </div>
-                    <div class="text-justify">
-                     <?php
-                echo "<center><h5>".$row["announcement"]."</h5></center>"; 
-              }
-            }
-            else {
-              echo "<center><h5><i>No Announcements</i></h5></center>";
-            }
-              ?>
+                  </div>
+                 </div>
+            </div>
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+                  <div class="col-lg-11 mx-auto">
+                    <div class="auto-form-wrapper"> 
+                    <form method="post" action="">
+                    <div class="form-group">
+                      <textarea class="form-control" style="height: 100px;" name="message" placeholder="Your message..." required></textarea><br>
+                      <center><input type="submit" class="btn btn-lg btn-success" name="submit"></center>
+                    </div>
+              </form>      
+                  </div>
+                </div>
+              </form>
+            </div>
+                </div>
+           </div>
+           </div>
+            </div>
+          </div>
+        </div>
+
                     </div>
                   </div>
                 </div>
 
-
-
-              </div>
+               
             </div>
           </div>
         </div>

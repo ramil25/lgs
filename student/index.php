@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="images/lspu.png">
+  <link rel="icon" type="image/png" href="../images/lspu.png">
   <title>
     Newsfeed
   </title>
@@ -13,11 +13,11 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- Nucleo Icons -->
-  <link href="student/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link href="student/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <link href="assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="student/assets/demo/demo.css" rel="stylesheet" />
+  <link href="assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -33,12 +33,6 @@
           </a>
         </div>
         <ul class="nav">
-          <li>
-            <a href="login.php">
-              <i class="tim-icons icon-single-02"></i>
-              <p>Login</p>
-            </a>
-          </li>
           <li class="active ">
             <a href="index.php">
               <i class="tim-icons icon-bullet-list-67"></i>
@@ -52,17 +46,30 @@
             </a>
           </li>
           <li>
+            <a href="req_moral.php">
+              <i class="tim-icons icon-chat-33"></i>
+              <p>Request Good Moral</p>
+            </a>
+          </li>
+          <li>
             <a href="aboutus.php">
               <i class="tim-icons icon-alert-circle-exc"></i>
               <p>About us</p>
             </a>
-          </li>          
+          </li>
+          <li>
+            <a href="logout.php">
+              <i class="tim-icons icon-button-power"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+            
         </ul>
       </div>
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
@@ -73,7 +80,7 @@
               </button>
             </div>
             <a class="navbar-brand" href="javascript:void(0)">
-            <img src="images/lspulogo.png" width="150" height="50" alt="logo" /></a>
+            <img src="../images/lspulogo.png" width="150" height="50" alt="logo" /></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -82,17 +89,49 @@
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">             
-                  <a href="login.php">
-                     <p>Login</p>
-                  </a>
+              <li class="search-bar input-group">
+               
+              </li>
+              <li class="dropdown nav-item">
+                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  
+              <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <div class="photo">
+                    <img src="assets/img/anime3.png" alt="Profile Photo">
+                  </div>
+                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                  <p class="d-lg-none">
+                    Log out
+                  </p>
+                </a>
+                <ul class="dropdown-menu dropdown-navbar">
+                  <li class="nav-link">
+                    <a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a>
+                  </li>
+                  <li class="dropdown-divider"></li>
+                  <li class="nav-link">
+                    <a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a>
+                  </li>
+                </ul>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
           </div>
         </div>
       </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
@@ -119,7 +158,7 @@
                     <div class="float-center">
                       <h1 class="text-center page-header p-2">NEWSFEED</h1><br>
                       <?php
-            require 'db.php';
+            require '../db.php';
 
             $sql = "SELECT announcement.announcement announcement, users.full_name full_name, users.profile_pic profile_pic FROM announcement INNER JOIN users ON announcement.user_id = users.user_id ORDER BY announcement_id DESC";
             $result = $conn -> query($sql);
